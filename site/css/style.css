@@ -1,47 +1,50 @@
 /* ==========================================================================
-   ROAMINGPIGS.AI — THE INSTRUMENT LAB
-   Aesthetic: Precision Laboratory Workbench & Signal Telemetry
-   Semantic Color Canon:
-     - Vermilion (#f05623): [MEASURED] Empirical data, physical audio traces
-     - Emerald   (#10b981): [MODELED] Theoretical bounds, rooflines
-     - Amber     (#f59e0b): [GATE] Risk boundaries, squelch transients
-     - Hairlines (#262c3a): Precision graticule & instrument racks
+   ROAMINGPIGS.AI — THE RESEARCH LAB NOTEBOOK & BENCH INSTRUMENT
+   Design System: Scientific Lab Folio with Bolted-On Phosphor Instrument
    ========================================================================== */
 
 :root {
-  /* Surfaces & Base */
-  --bg-bench: #0a0c10;
-  --bg-surface: #10141c;
-  --bg-plate: #141924;
-  --bg-plate-sub: #181e2b;
-  --bg-input: #0e1118;
+  /* Paper & Ink System (Light Folio) */
+  --paper-bg: #f5f2eb;
+  --paper-grid: #e6e1d5;
+  --paper-grid-major: #d8d1c2;
+  --paper-surface: #fdfcf9;
+  --paper-ruled: #c8c0ae;
+  --paper-ruled-dark: #8c826e;
 
-  /* Semantic Signal Colors */
-  --signal-measured: #f05623;       /* Vermilion: Empirical data / measured truth */
-  --signal-measured-glow: rgba(240, 86, 35, 0.25);
-  --signal-modeled: #10b981;        /* Emerald: Mathematical models & theoretical bounds */
-  --signal-modeled-glow: rgba(16, 185, 129, 0.22);
-  --signal-gate: #f59e0b;           /* Amber: Risk threshold & stopping boundaries */
-  --signal-gate-glow: rgba(245, 158, 11, 0.22);
-  --signal-phosphor: #ffb000;       /* Amber phosphor CRT */
+  /* Ink Colors */
+  --ink-primary: #14161a;
+  --ink-secondary: #484f5c;
+  --ink-muted: #737c8c;
+  --ink-light: #9ea7b8;
 
-  /* Text & Ink */
-  --text-primary: #f1f3f7;
-  --text-secondary: #9aa5b8;
-  --text-muted: #5e6b82;
-  --text-mono-bright: #e2e8f0;
+  /* Semantic Engineering Stamps */
+  --stamp-vermilion: #d9381e;       /* [MEASURED] Empirical data / verified */
+  --stamp-vermilion-bg: #fcece9;
+  --stamp-forest: #0e6b5e;          /* [MODELED] Theoretical bounds / proof */
+  --stamp-forest-bg: #eaf5f2;
+  --stamp-ochre: #b45309;           /* [GATE] Risk threshold / asymmetric boundary */
+  --stamp-ochre-bg: #fef3c7;
 
-  /* Borders & Graticule */
-  --border-graticule: #1e2433;
-  --border-plate: #293245;
-  --border-highlight: #3d4a66;
+  /* Dark Phosphor Chassis (The Bench Instrument) */
+  --chassis-bg: #0b0d11;
+  --chassis-surface: #13171f;
+  --chassis-screen: #06080b;
+  --chassis-border: #222938;
+  --chassis-border-light: #343e54;
+  --phosphor-amber: #ffb000;
+  --phosphor-amber-dim: rgba(255, 176, 0, 0.15);
+  --phosphor-green: #10b981;
+  --phosphor-vermilion: #ff5722;
+  --chassis-text: #e2e8f0;
+  --chassis-text-muted: #64748b;
 
   /* Typography */
+  --font-serif: "Newsreader", "Charter", "Bitstream Charter", "Georgia", "Cambria", serif;
   --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  --font-mono: "JetBrains Mono", "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+  --font-mono: "JetBrains Mono", "SF Mono", "Consolas", "Liberation Mono", Menlo, monospace;
 
-  /* Layout */
-  --max-width: 1180px;
+  --max-width: 1200px;
 }
 
 *, *::before, *::after {
@@ -51,826 +54,803 @@
 }
 
 html {
-  background-color: var(--bg-bench);
-  color: var(--text-primary);
+  background-color: var(--paper-bg);
+  color: var(--ink-primary);
   font-family: var(--font-sans);
-  line-height: 1.6;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--paper-bg);
+  /* Millimeter Graph Paper Grid */
   background-image: 
-    linear-gradient(to right, rgba(30, 36, 51, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(30, 36, 51, 0.25) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(to right, var(--paper-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--paper-grid) 1px, transparent 1px),
+    linear-gradient(to right, var(--paper-grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--paper-grid-major) 1px, transparent 1px);
+  background-size: 16px 16px, 16px 16px, 64px 64px, 64px 64px;
+  background-position: -1px -1px;
 }
 
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   width: 100%;
 }
 
 /* --------------------------------------------------------------------------
-   NAVBAR: Instrument Header Bar
+   FOLIO TOP BAR & MASTHEAD (Scientific Monograph Header)
    -------------------------------------------------------------------------- */
-.bench-navbar {
-  background: rgba(10, 12, 16, 0.94);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-plate);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+.folio-masthead {
+  border-bottom: 2px solid var(--ink-primary);
+  background: var(--paper-surface);
+  padding: 0.75rem 0;
 }
 
-.bench-nav-inner {
+.masthead-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 3.75rem;
-}
-
-.nav-brand-block {
-  display: flex;
   align-items: center;
-  gap: 0.85rem;
-  text-decoration: none;
-}
-
-.nav-brand-logo {
-  width: 28px;
-  height: 28px;
-}
-
-.nav-title-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-title {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-secondary);
+}
+
+.masthead-id {
   font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
+  color: var(--ink-primary);
 }
 
-.nav-subdescriptor {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--signal-measured);
+.masthead-stamp {
+  font-weight: 700;
+  color: var(--stamp-vermilion);
+  background: var(--stamp-vermilion-bg);
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--stamp-vermilion);
+  border-radius: 1px;
+  letter-spacing: 0.08em;
 }
 
-.nav-telemetry-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--signal-modeled);
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 0.2rem 0.6rem;
-  border-radius: 2px;
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--signal-modeled);
-  border-radius: 50%;
-  box-shadow: 0 0 6px var(--signal-modeled);
-  animation: pulse 2.5s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.9); }
-}
-
-.nav-links-bench {
+.masthead-links {
   display: flex;
-  align-items: center;
   gap: 1.25rem;
   list-style: none;
 }
 
-.nav-links-bench a {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+.masthead-links a {
+  color: var(--ink-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
-  letter-spacing: 0.02em;
 }
 
-.nav-links-bench a:hover {
-  color: var(--text-primary);
+.masthead-links a:hover {
+  color: var(--stamp-vermilion);
 }
 
-.nav-ext-link {
-  color: var(--text-muted) !important;
-  font-size: 0.75rem !important;
-  padding: 0.2rem 0.5rem;
-  border: 1px solid var(--border-graticule);
-  border-radius: 2px;
+/* Folio Main Navigation */
+.folio-nav {
+  border-bottom: 1px solid var(--paper-ruled);
+  background: rgba(253, 252, 249, 0.92);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.nav-ext-link:hover {
-  border-color: var(--border-plate);
-  color: var(--text-secondary) !important;
-}
-
-/* --------------------------------------------------------------------------
-   HERO: Lab Thesis & Plate 00
-   -------------------------------------------------------------------------- */
-.hero-instrument {
-  padding: 4.5rem 0 3.5rem 0;
-  border-bottom: 1px solid var(--border-plate);
-  position: relative;
-}
-
-.hero-meta-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero-plate-id {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.hero-stamp-measured {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--signal-measured);
-  background: var(--signal-measured-glow);
-  border: 1px solid var(--signal-measured);
-  padding: 0.15rem 0.55rem;
-  border-radius: 2px;
-}
-
-.hero-tagline {
-  font-family: var(--font-sans);
-  font-size: 3.5rem;
-  line-height: 1.08;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  color: #ffffff;
-  margin-bottom: 1.25rem;
-}
-
-.hero-tagline span {
-  color: var(--signal-measured);
-}
-
-.hero-thesis-statement {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  max-width: 860px;
-  margin-bottom: 2rem;
-}
-
-.hero-thesis-statement strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.hero-telemetry-banner {
-  background: var(--bg-plate);
-  border: 1px solid var(--border-plate);
-  padding: 1rem 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 2.25rem;
-  border-left: 3px solid var(--signal-measured);
-}
-
-.telemetry-cell {
-  display: flex;
-  flex-direction: column;
-}
-
-.telemetry-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 0.25rem;
-}
-
-.telemetry-value {
-  font-family: var(--font-mono);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-mono-bright);
-}
-
-.telemetry-value.measured { color: var(--signal-measured); }
-.telemetry-value.modeled { color: var(--signal-modeled); }
-.telemetry-value.gate { color: var(--signal-gate); }
-
-.telemetry-unit {
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--text-secondary);
-  margin-left: 0.25rem;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-}
-
-.btn-bench {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.65rem 1.2rem;
-  border-radius: 2px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.15s ease;
-  letter-spacing: 0.02em;
-}
-
-.btn-bench-primary {
-  background: var(--signal-measured);
-  color: #ffffff;
-  border: 1px solid var(--signal-measured);
-}
-
-.btn-bench-primary:hover {
-  background: #d94515;
-  border-color: #d94515;
-}
-
-.btn-bench-secondary {
-  background: var(--bg-plate);
-  color: var(--text-primary);
-  border: 1px solid var(--border-plate);
-}
-
-.btn-bench-secondary:hover {
-  background: var(--bg-plate-sub);
-  border-color: var(--border-highlight);
-}
-
-.btn-bench-accent {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--signal-modeled);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-}
-
-.btn-bench-accent:hover {
-  background: rgba(16, 185, 129, 0.18);
-  border-color: var(--signal-modeled);
-}
-
-/* --------------------------------------------------------------------------
-   SIGNAL CHAIN: End-to-End Waterfall
-   -------------------------------------------------------------------------- */
-.signal-chain-section {
-  padding: 3rem 0;
-  border-bottom: 1px solid var(--border-plate);
-  background: rgba(16, 20, 28, 0.5);
-}
-
-.signal-chain-title-bar {
+.folio-nav-inner {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-graticule);
-  padding-bottom: 0.75rem;
+  align-items: center;
+  height: 3.5rem;
 }
 
-.chain-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--signal-gate);
-  margin-bottom: 0.3rem;
-}
-
-.chain-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.signal-chain-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1px;
-  background: var(--border-plate);
-  border: 1px solid var(--border-plate);
-}
-
-.chain-step {
-  background: var(--bg-surface);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.chain-step-num {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
-}
-
-.chain-step-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.chain-step-detail {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  flex-grow: 1;
-}
-
-.chain-step-stamp {
-  align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  padding: 0.15rem 0.45rem;
-  border-radius: 2px;
-}
-
-.stamp-measured {
-  color: var(--signal-measured);
-  background: rgba(240, 86, 35, 0.12);
-  border: 1px solid rgba(240, 86, 35, 0.35);
-}
-
-.stamp-modeled {
-  color: var(--signal-modeled);
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-}
-
-.stamp-gate {
-  color: var(--signal-gate);
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-}
-
-/* --------------------------------------------------------------------------
-   PLATES: Rigorous Technical Content Modules
-   -------------------------------------------------------------------------- */
-.plate-section {
-  padding: 4rem 0;
-  border-bottom: 1px solid var(--border-plate);
-}
-
-.plate-header {
-  margin-bottom: 2rem;
-}
-
-.plate-meta {
+.folio-brand {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  text-decoration: none;
 }
 
-.plate-index {
+.folio-brand-mark {
+  width: 24px;
+  height: 24px;
+}
+
+.folio-brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  letter-spacing: -0.01em;
+}
+
+.folio-brand-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stamp-vermilion);
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--paper-ruled);
+}
+
+.folio-toc {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.folio-toc a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.folio-toc a:hover {
+  color: var(--ink-primary);
+}
+
+.folio-toc .toc-num {
+  color: var(--ink-muted);
+  margin-right: 0.2rem;
+}
+
+.folio-ext-link {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--signal-measured);
+  color: var(--ink-muted) !important;
+  border: 1px solid var(--paper-ruled);
+  padding: 0.2rem 0.45rem;
+  background: var(--paper-surface);
 }
 
-.plate-title {
-  font-size: 1.85rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
-}
-
-.plate-subtitle {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  max-width: 820px;
-}
-
-.plate-body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.plate-narrative {
-  color: var(--text-secondary);
-  line-height: 1.7;
-  font-size: 0.95rem;
-}
-
-.plate-narrative strong {
-  color: var(--text-primary);
+.folio-ext-link:hover {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary) !important;
 }
 
 /* --------------------------------------------------------------------------
-   DATASHEET TABLES: Laboratory Spec Sheets
+   FOLIO DOCUMENT HEADER & THESIS
    -------------------------------------------------------------------------- */
-.datasheet-wrap {
-  border: 1px solid var(--border-plate);
-  background: var(--bg-surface);
-  overflow-x: auto;
-  margin: 1rem 0;
+.doc-header {
+  padding: 4.5rem 0 3.5rem 0;
+  border-bottom: 2px solid var(--ink-primary);
+  background: var(--paper-surface);
 }
 
-.datasheet-table {
+.doc-dossier-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--paper-grid-major);
+}
+
+.dossier-item strong {
+  color: var(--ink-primary);
+}
+
+.doc-title-group {
+  margin-bottom: 2rem;
+}
+
+.doc-tagline {
+  font-family: var(--font-serif);
+  font-size: 4.2rem;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--ink-primary);
+  margin-bottom: 1.25rem;
+}
+
+.doc-tagline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--stamp-vermilion);
+}
+
+.doc-thesis-statement {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  line-height: 1.55;
+  color: var(--ink-secondary);
+  max-width: 900px;
+  font-style: normal;
+}
+
+.doc-thesis-statement strong {
+  color: var(--ink-primary);
+  font-weight: 600;
+}
+
+/* Folio Specification Strip */
+.spec-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--paper-ruled);
+  border-bottom: 1px solid var(--paper-ruled);
+  margin-top: 2.5rem;
+  font-family: var(--font-mono);
+}
+
+.spec-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-cell-num {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.spec-cell-num.vermilion { color: var(--stamp-vermilion); }
+.spec-cell-num.forest { color: var(--stamp-forest); }
+.spec-cell-num.ochre { color: var(--stamp-ochre); }
+
+.spec-cell-label {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   TUFTE MARGINALIA TWO-COLUMN LAYOUT
+   -------------------------------------------------------------------------- */
+.folio-layout {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 4rem;
+  padding: 4rem 0;
+}
+
+.folio-main {
+  min-width: 0;
+}
+
+.folio-marginalia {
+  position: relative;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+}
+
+.marginal-note {
+  border-left: 2px solid var(--paper-ruled);
+  padding-left: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.marginal-note-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-primary);
+  margin-bottom: 0.4rem;
+}
+
+.marginal-hash {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  word-break: break-all;
+  margin-top: 0.5rem;
+  background: var(--paper-surface);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--paper-grid-major);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION PLATES & SCIENTIFIC SPEC SHEETS
+   -------------------------------------------------------------------------- */
+.folio-plate {
+  margin-bottom: 5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid var(--paper-ruled);
+}
+
+.folio-plate:last-child {
+  border-bottom: none;
+}
+
+.plate-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--paper-grid-major);
+  padding-bottom: 0.5rem;
+}
+
+.plate-number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stamp-vermilion);
+}
+
+.plate-heading {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+  margin-bottom: 0.75rem;
+}
+
+.plate-lead {
+  font-size: 1.05rem;
+  color: var(--ink-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.plate-prose {
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.plate-prose strong {
+  color: var(--ink-primary);
+}
+
+/* Scientific Datasheet Table */
+.spec-table-container {
+  margin: 1.5rem 0 2rem 0;
+  border: 1px solid var(--paper-ruled);
+  background: var(--paper-surface);
+  overflow-x: auto;
+}
+
+.spec-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.85rem;
   text-align: left;
 }
 
-.datasheet-table th {
-  background: var(--bg-plate);
+.spec-table th {
+  background: #ede8dc;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--ink-primary);
   padding: 0.85rem 1rem;
-  border-bottom: 1px solid var(--border-plate);
+  border-bottom: 2px solid var(--paper-ruled-dark);
   white-space: nowrap;
 }
 
-.datasheet-table td {
+.spec-table td {
   padding: 0.85rem 1rem;
-  border-bottom: 1px solid var(--border-graticule);
-  color: var(--text-secondary);
+  border-bottom: 1px solid var(--paper-grid-major);
+  color: var(--ink-secondary);
 }
 
-.datasheet-table tr:last-child td {
+.spec-table tr:last-child td {
   border-bottom: none;
 }
 
-.datasheet-table tr:hover td {
-  background: rgba(255, 255, 255, 0.015);
+.spec-table tr:hover td {
+  background: rgba(220, 215, 200, 0.2);
 }
 
-.datasheet-table td.col-mono {
+.col-data-mono {
   font-family: var(--font-mono);
-  color: var(--text-mono-bright);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-primary);
 }
 
-.datasheet-table td.col-measured {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--signal-measured);
-}
-
-.datasheet-table td.col-modeled {
+.col-measured {
   font-family: var(--font-mono);
   font-weight: 700;
-  color: var(--signal-modeled);
+  color: var(--stamp-vermilion);
 }
 
-.datasheet-table td.col-gate {
+.col-modeled {
   font-family: var(--font-mono);
   font-weight: 700;
-  color: var(--signal-gate);
+  color: var(--stamp-forest);
 }
 
-.ledger-badge {
+.col-gate {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--stamp-ochre);
+}
+
+/* Verification Stamp Pill */
+.stamp-pill {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: var(--text-muted);
-  background: var(--bg-input);
-  border: 1px solid var(--border-graticule);
-  padding: 0.15rem 0.4rem;
-  border-radius: 2px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 1px;
+  display: inline-block;
 }
 
-/* --------------------------------------------------------------------------
-   THE BENCH: Oscilloscope & Telemetry Workbench
-   -------------------------------------------------------------------------- */
-.the-bench-container {
-  background: #06070a;
-  border: 1px solid var(--border-plate);
-  border-top: 3px solid var(--signal-phosphor);
-  padding: 2.5rem;
-  margin: 3rem 0;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
-  position: relative;
+.stamp-pill.vermilion {
+  color: var(--stamp-vermilion);
+  background: var(--stamp-vermilion-bg);
+  border: 1px solid var(--stamp-vermilion);
 }
 
-.bench-header-bar {
+.stamp-pill.forest {
+  color: var(--stamp-forest);
+  background: var(--stamp-forest-bg);
+  border: 1px solid var(--stamp-forest);
+}
+
+.stamp-pill.ochre {
+  color: var(--stamp-ochre);
+  background: var(--stamp-ochre-bg);
+  border: 1px solid var(--stamp-ochre);
+}
+
+/* Reproduction Box */
+.repro-box {
+  background: #ede8dc;
+  border-left: 3px solid var(--ink-primary);
+  padding: 1rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border-graticule);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.repro-cmd {
+  color: var(--ink-primary);
+  font-weight: 600;
+}
+
+.repro-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.repro-links a {
+  color: var(--stamp-vermilion);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   THE BENCH: BOLTED-ON DARK PHOSPHOR OSCILLOSCOPE CHASSIS
+   -------------------------------------------------------------------------- */
+.chassis-wrapper {
+  margin: 4rem 0;
+  background: var(--chassis-bg);
+  border: 3px solid var(--chassis-border);
+  box-shadow: 
+    0 16px 36px rgba(18, 22, 28, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 2.5rem;
+  position: relative;
+  border-radius: 2px;
+}
+
+/* Chassis Mounting Bolts */
+.chassis-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 8px; left: 8px; width: 8px; height: 8px;
+  background: #55627a;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 1px #000;
+}
+
+.chassis-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 8px; right: 8px; width: 8px; height: 8px;
+  background: #55627a;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 1px #000;
+}
+
+.chassis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--chassis-border);
   padding-bottom: 1.25rem;
   margin-bottom: 2rem;
 }
 
-.bench-device-title {
+.chassis-title-group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
-.bench-device-title h3 {
+.chassis-name {
   font-family: var(--font-mono);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--signal-phosphor);
   letter-spacing: -0.01em;
+  color: var(--phosphor-amber);
 }
 
-.bench-scope-badge {
+.chassis-badge {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--signal-phosphor);
-  background: rgba(255, 176, 0, 0.12);
-  border: 1px solid rgba(255, 176, 0, 0.4);
-  padding: 0.2rem 0.5rem;
-  border-radius: 2px;
+  color: var(--phosphor-amber);
+  border: 1px solid var(--phosphor-amber);
+  background: var(--phosphor-amber-dim);
+  padding: 0.15rem 0.45rem;
+  border-radius: 1px;
 }
 
-.bench-status-readout {
+.chassis-telemetry-status {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--chassis-text-muted);
 }
 
-.bench-layout-grid {
+/* Chassis Instrument Grid */
+.chassis-grid {
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 2.5rem;
 }
 
-.bench-controls-rack {
+.chassis-controls {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.4rem;
 }
 
-.control-group {
+.chassis-field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
-.control-label {
+.chassis-label {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: var(--text-secondary);
   text-transform: uppercase;
+  color: var(--chassis-text-muted);
 }
 
-.control-val-readout {
-  color: var(--signal-phosphor);
+.chassis-label-val {
+  color: var(--phosphor-amber);
 }
 
-.bench-select, .bench-input {
-  background: var(--bg-input);
-  border: 1px solid var(--border-graticule);
-  color: var(--text-primary);
+.chassis-select, .chassis-input {
+  background: var(--chassis-surface);
+  border: 1px solid var(--chassis-border);
+  color: var(--chassis-text);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   padding: 0.65rem 0.85rem;
-  border-radius: 2px;
+  border-radius: 1px;
   outline: none;
   transition: border-color 0.15s ease;
 }
 
-.bench-select:focus, .bench-input:focus {
-  border-color: var(--signal-phosphor);
+.chassis-select:focus, .chassis-input:focus {
+  border-color: var(--phosphor-amber);
+  box-shadow: 0 0 6px var(--phosphor-amber-dim);
 }
 
-.bench-range {
+.chassis-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 6px;
-  background: var(--border-graticule);
-  border-radius: 1px;
+  background: var(--chassis-border);
   outline: none;
 }
 
-.bench-range::-webkit-slider-thumb {
+.chassis-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
-  background: var(--signal-phosphor);
+  width: 16px;
+  height: 16px;
+  background: var(--phosphor-amber);
   cursor: pointer;
-  border-radius: 2px;
-  box-shadow: 0 0 8px rgba(255, 176, 0, 0.6);
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(255, 176, 0, 0.7);
 }
 
-/* Telemetry Screen */
-.bench-screen {
-  background: #040507;
-  border: 1px solid #1c222e;
+/* Phosphor Oscilloscope Screen */
+.chassis-screen {
+  background: var(--chassis-screen);
+  border: 2px solid var(--chassis-border);
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  /* Phosphor scanlines */
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25) 1px, transparent 1px, transparent 2px),
+    linear-gradient(to right, rgba(34, 41, 56, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 41, 56, 0.2) 1px, transparent 1px);
+  background-size: 100% 2px, 32px 32px, 32px 32px;
 }
 
-.bench-screen::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0.15) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  pointer-events: none;
-}
-
-.screen-meters-grid {
+.screen-gauges {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
-.screen-meter {
-  border-left: 2px solid var(--border-plate);
+.screen-gauge {
+  border-left: 2px solid var(--chassis-border-light);
   padding-left: 0.85rem;
 }
 
-.screen-meter.active-primary {
-  border-left-color: var(--signal-phosphor);
-}
+.screen-gauge.primary { border-left-color: var(--phosphor-amber); }
+.screen-gauge.green { border-left-color: var(--phosphor-green); }
+.screen-gauge.vermilion { border-left-color: var(--phosphor-vermilion); }
 
-.screen-meter.active-green {
-  border-left-color: var(--signal-modeled);
-}
-
-.screen-meter.active-orange {
-  border-left-color: var(--signal-measured);
-}
-
-.meter-label {
+.gauge-lbl {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--chassis-text-muted);
   margin-bottom: 0.2rem;
 }
 
-.meter-value {
+.gauge-num {
   font-family: var(--font-mono);
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--text-mono-bright);
+  color: #ffffff;
 }
 
-.meter-unit {
-  font-size: 0.8rem;
+.gauge-unit {
+  font-size: 0.75rem;
   font-weight: 400;
-  color: var(--text-muted);
+  color: var(--chassis-text-muted);
   margin-left: 0.25rem;
 }
 
-.bench-verdict-box {
-  background: rgba(255, 176, 0, 0.05);
-  border: 1px solid rgba(255, 176, 0, 0.25);
+.screen-verdict {
+  background: var(--phosphor-amber-dim);
+  border: 1px solid rgba(255, 176, 0, 0.35);
   padding: 1rem;
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-secondary);
+  color: var(--chassis-text);
   line-height: 1.5;
 }
 
-.bench-verdict-box strong {
-  color: var(--signal-phosphor);
+.screen-verdict strong {
+  color: var(--phosphor-amber);
 }
 
 /* --------------------------------------------------------------------------
-   FOOTER: Lab Reference & Ecosystem Router
+   FOLIO COLOPHON & FOOTER
    -------------------------------------------------------------------------- */
-.bench-footer {
-  border-top: 1px solid var(--border-plate);
-  background: #080a0e;
-  padding: 3.5rem 0 2.5rem 0;
+.folio-footer {
+  border-top: 3px double var(--ink-primary);
+  background: var(--paper-surface);
+  padding: 4rem 0 3rem 0;
   margin-top: auto;
 }
 
-.footer-router-grid {
+.colophon-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 2.5rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border-graticule);
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--paper-ruled);
+  margin-bottom: 2rem;
 }
 
-.footer-bio p {
-  color: var(--text-secondary);
-  font-size: 0.88rem;
+.colophon-bio h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 0.5rem;
+}
+
+.colophon-bio p {
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
   line-height: 1.6;
-  margin-top: 0.5rem;
 }
 
-.footer-col h4 {
+.colophon-col h4 {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--ink-primary);
   margin-bottom: 1rem;
+  border-bottom: 1px solid var(--paper-grid-major);
+  padding-bottom: 0.3rem;
 }
 
-.footer-col ul {
+.colophon-col ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.footer-col a {
+.colophon-col a {
   font-size: 0.85rem;
-  color: var(--text-secondary);
+  color: var(--ink-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
-.footer-col a:hover {
-  color: var(--signal-measured);
+.colophon-col a:hover {
+  color: var(--stamp-vermilion);
 }
 
-.footer-legal-bar {
+.colophon-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  font-size: 0.72rem;
+  color: var(--ink-muted);
 }
 
 /* --------------------------------------------------------------------------
-   RESPONSIVE DESIGN
+   RESPONSIVE LAYOUT
    -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .hero-tagline { font-size: 2.6rem; }
-  .bench-layout-grid { grid-template-columns: 1fr; }
-  .footer-router-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 960px) {
+  .doc-tagline { font-size: 3rem; }
+  .folio-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .spec-strip { grid-template-columns: repeat(2, 1fr); }
+  .chassis-grid { grid-template-columns: 1fr; }
+  .colophon-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 640px) {
-  .hero-tagline { font-size: 2.1rem; }
-  .bench-nav-inner { flex-direction: column; height: auto; padding: 1rem 0; gap: 0.75rem; }
-  .nav-links-bench { flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
-  .screen-meters-grid { grid-template-columns: 1fr; }
-  .footer-router-grid { grid-template-columns: 1fr; }
-  .footer-legal-bar { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .doc-tagline { font-size: 2.3rem; }
+  .masthead-row { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  .folio-nav-inner { flex-direction: column; height: auto; padding: 0.75rem 0; gap: 0.5rem; }
+  .folio-toc { flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+  .spec-strip { grid-template-columns: 1fr; }
+  .screen-gauges { grid-template-columns: 1fr; }
+  .colophon-grid { grid-template-columns: 1fr; }
+  .colophon-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
