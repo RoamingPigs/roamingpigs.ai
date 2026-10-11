@@ -669,7 +669,7 @@ print(f"Loaded {len(ds['test'])} clips across 30 narrowband conditions")</code>
                     <td class="data-mono">Sustained APU Bus Peak</td>
                     <td>108.4 W (AC Wall)</td>
                     <td>80.0 W (Full Package)</td>
-                    <td class="data-emerald">1.66 J / token (14B tier)</td>
+                    <td class="data-emerald">1.66 J / token (30B MoE tier)</td>
                     <td>87.0% Saturation Efficiency</td>
                   </tr>
                 </tbody>
@@ -707,10 +707,10 @@ print(f"Loaded {len(ds['test'])} clips across 30 narrowband conditions")</code>
                 </div>
                 <select id="modelSelect" class="sim-select">
                   <option value="8b">8B Dense (32 layers, 4096 hidden)</option>
-                  <option value="14b" selected>14B Dense (48 layers, 5120 hidden)</option>
+                  <option value="14b">14B Dense (48 layers, 5120 hidden)</option>
                   <option value="32b">32B Dense (64 layers, 5120 hidden)</option>
                   <option value="70b">70B Dense (80 layers, 8192 hidden)</option>
-                  <option value="moe_30b">30B MoE (48 layers, 3.3B active weights)</option>
+                  <option value="moe_30b" selected>30B MoE (48 layers, 3.3B active weights)</option>
                 </select>
               </div>
 

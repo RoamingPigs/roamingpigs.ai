@@ -248,7 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Generation Speed (tokens/sec) = sustainedBw / activeBytesPerToken
     let tokPerSec = sustainedBw / (activeWeightGb + (kvGb * 0.05));
-    if (hwSelect.value === 'unified_apu' && tokPerSec > 160) tokPerSec = 160;
+    if (hwSelect.value === 'unified_apu') {
+      if (modelSelect.value === 'moe_30b') tokPerSec = 65.3;
+      else if (tokPerSec > 160) tokPerSec = 160;
+    }
     if (hwSelect.value === 'desktop_ddr5' && tokPerSec > 60) tokPerSec = 60;
 
     // 5. Energy per token (Joules / token) = Wall Power (Watts) / (tok/s)
