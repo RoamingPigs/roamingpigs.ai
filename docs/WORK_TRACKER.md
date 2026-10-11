@@ -17,3 +17,5 @@ Durable backlog. Update at every milestone and pause.
 - [ ] **Re-run the 125B mixture energy test.** Its recorded speed implies 356 GB/s on a 256 GB/s bus, so either its speed or its active-parameter count is wrong. It is excluded until fixed.
 - [ ] **Model batching** (throughput and energy per token versus batch size) so the data-centre comparison can be fair. Needs a source or a measurement.
 - [ ] Add prompt-processing (prefill) estimates. Currently not modelled.
+- [ ] **Live SEO audit `well-known` dimension** fails only on two Abundera-specific files (`abundera-capabilities.json`, an `llms.txt` redirect) that do not apply to this property. Add `"seo": {"skip": ["well-known"]}` for this site in `claude-code/config/cf-sites.json`. `gpc.json` is published.
+- [ ] **Cloudflare Web Analytics auto-injection.** Cloudflare tries to inject its beacon on production. The site CSP blocks it (nothing loads, the privacy statement holds) but it logs a console error that costs a Lighthouse best-practices point. Either turn off automatic setup for this hostname, or accept the beacon in the CSP and change the "no analytics" line. Operator's call.
