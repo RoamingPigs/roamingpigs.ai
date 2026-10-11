@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RoamingPigs AI | Sovereign Inference Physics &amp; Hardware Telemetry</title>
-  <meta name="description" content="Interactive inference physics calculator: model memory bandwidth saturation, Joules-per-token decode cost, and datacenter vs. sovereign APU TCO at strictly $0.00 cloud spend.">
+  <title>RoamingPigs AI | Systems Physics &amp; Hardware Telemetry</title>
+  <meta name="description" content="AI systems, after the marketing has worn off. Interactive memory bandwidth, Joules-per-token decode thermodynamics, and hardware sizing for local foundation model inference.">
   <link rel="canonical" href="https://roamingpigs.ai/">
   <meta name="theme-color" content="#0a0a12">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -12,8 +12,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://roamingpigs.ai/">
-  <meta property="og:title" content="RoamingPigs AI | Sovereign Inference Physics &amp; Hardware Telemetry">
-  <meta property="og:description" content="Interactive inference physics calculator: memory bandwidth saturation, Joules-per-token, and sovereign APU economics.">
+  <meta property="og:title" content="RoamingPigs AI | Systems Physics &amp; Hardware Telemetry">
+  <meta property="og:description" content="AI systems, after the marketing has worn off. Interactive memory bandwidth, Joules-per-token, and local hardware sizing.">
   <meta property="og:site_name" content="RoamingPigs AI">
 
   <link rel="stylesheet" href="/css/style.css">
@@ -25,14 +25,14 @@
       <a href="/" class="nav-brand">
         <img src="/favicon.svg" alt="RoamingPigs" class="nav-logo">
         RoamingPigs AI
-        <span class="nav-tag">Telemetry</span>
+        <span class="nav-tag">Systems</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#calculator">Inference Calculator</a></li>
-        <li><a href="#pipeline">4-Stage Pipeline</a></li>
-        <li><a href="#continuum">Compute Continuum</a></li>
+        <li><a href="#calculator">Hardware Calculator</a></li>
+        <li><a href="#physics">Physical Limits</a></li>
+        <li><a href="#principles">Engineering Principles</a></li>
         <li><a href="https://roamingpigs.org/" target="_blank" rel="noopener">Research Lab (.org) &rarr;</a></li>
-        <li><a href="https://ciscocaceres.com/research/" class="nav-cta">Working Papers</a></li>
+        <li><a href="https://roamingpigs.com/" target="_blank" rel="noopener">Field Manual (.com) &rarr;</a></li>
       </ul>
     </div>
   </nav>
@@ -40,11 +40,11 @@
   <header class="hero">
     <div class="container">
       <div class="hero-badge">
-        <span>●</span> Real-Time Hardware Systems Telemetry
+        <span>●</span> Independent Systems Engineering
       </div>
-      <h1>Sovereign Inference Physics &amp; Hardware Telemetry Engine</h1>
+      <h1>AI systems, after the marketing has worn off.</h1>
       <p class="hero-lead">
-        Physical thermodynamics and memory bus bandwidth dictate the economics of foundation model inference. Simulate weights in RAM, KV-cache growth, sustained memory bus saturation, Joules-per-token decode energy, and full-node datacenter TCO live in your browser.
+        Autoregressive token generation is governed by physical memory bus bandwidth and thermodynamics, not benchmark leaderboard hype. Size working RAM, model weights, sustained memory bus saturation, Joules-per-token decode energy, and physical wall-socket power draw.
       </p>
     </div>
   </header>
@@ -58,23 +58,23 @@
           <div class="section-tag">Interactive Physics Model · Client-Side Execution</div>
           <h2 class="section-title">Inference Bandwidth, Energy &amp; Cost Calculator</h2>
           <p class="section-subtitle">
-            Configure model scale, quantization precision, context length, and target hardware architecture to compute exact physical and thermodynamic parameters.
+            Configure model scale, quantization bit-width, attention context length, and target memory subsystem to compute exact physical execution parameters.
           </p>
         </div>
 
         <div class="calc-grid">
           <!-- Configuration Panel -->
           <div class="calc-panel">
-            <h3 class="calc-panel-title">1. Workload &amp; Hardware Parameters</h3>
+            <h3 class="calc-panel-title">1. Workload &amp; Memory Parameters</h3>
 
             <div class="calc-group">
               <label class="calc-label" for="modelSelect">Model Scale &amp; Parameter Architecture</label>
               <select id="modelSelect" class="calc-select">
-                <option value="8b" selected>8B Dense (Llama-3.1-8B / Qwen-2.5-7B)</option>
-                <option value="14b">14B Dense (Qwen-2.5-14B)</option>
-                <option value="30b_moe">30B MoE (Qwen3-VL:30b-a3b — 3.3B active)</option>
-                <option value="70b">70B Dense (Llama-3.3-70B / Qwen-2.5-72B)</option>
-                <option value="122b">122B Dense (Qwen3.5:122b)</option>
+                <option value="8b" selected>8B Dense (32 layers, 4096 hidden)</option>
+                <option value="14b">14B Dense (48 layers, 5120 hidden)</option>
+                <option value="32b">32B Dense (64 layers, 5120 hidden)</option>
+                <option value="70b">70B Dense (80 layers, 8192 hidden)</option>
+                <option value="moe_30b">30B Mixture-of-Experts (48 layers, 3.3B active)</option>
               </select>
             </div>
 
@@ -82,9 +82,9 @@
               <label class="calc-label" for="quantSelect">Weight Quantization Precision</label>
               <select id="quantSelect" class="calc-select">
                 <option value="q4_k_m" selected>Q4_K_M (4.8 bits/weight — Frontier Sweet Spot)</option>
+                <option value="q5_k_m">Q5_K_M (5.5 bits/weight — High Fidelity)</option>
                 <option value="q8_0">Q8_0 (8.5 bits/weight — Near-Lossless)</option>
-                <option value="iq4_xs">IQ4_XS (4.25 bits/weight — Compact)</option>
-                <option value="q3_k_m">Q3_K_M (3.4 bits/weight — Ultra-Dense)</option>
+                <option value="iq4_xs">IQ4_XS (4.25 bits/weight — Compact Matrix)</option>
                 <option value="fp16">FP16 (16.0 bits/weight — Uncompressed)</option>
               </select>
             </div>
@@ -98,10 +98,12 @@
             </div>
 
             <div class="calc-group">
-              <label class="calc-label" for="hwSelect">Hardware Architecture Platform</label>
+              <label class="calc-label" for="hwSelect">Target Hardware Memory Subsystem</label>
               <select id="hwSelect" class="calc-select">
-                <option value="apu" selected>Sovereign AMD APU (122.7GB Unified LPDDR5X-8000, 256.0 GB/s peak)</option>
-                <option value="h100">Datacenter Node (8&times; H100 SXM5 GPU Node Slot Share, 8,378W Grid)</option>
+                <option value="unified_apu" selected>Unified Memory APU / SoC (256-bit LPDDR5X, 256 GB/s peak)</option>
+                <option value="desktop_ddr5">Desktop Dual-Channel DDR5 (128-bit DDR5-6000, 96 GB/s peak)</option>
+                <option value="server_ddr5">Server Multi-Channel DDR5 (8-Channel DDR5-4800, 307 GB/s peak)</option>
+                <option value="discrete_hbm">Datacenter HBM Accelerator (80GB HBM3, 3,350 GB/s peak, node share)</option>
               </select>
             </div>
 
@@ -116,7 +118,7 @@
             <h3 class="calc-panel-title">2. Physical &amp; Thermodynamic Telemetry</h3>
 
             <div class="metric-row">
-              <span class="metric-name">Total Memory Footprint (Weights + KV)</span>
+              <span class="metric-name">Total Working Memory (Weights + KV)</span>
               <span class="metric-val" id="ramVal">-- GB</span>
             </div>
 
@@ -131,7 +133,7 @@
             </div>
 
             <div class="metric-row">
-              <span class="metric-name">Projected Decode Generation Speed</span>
+              <span class="metric-name">Sustained Decode Generation Speed</span>
               <span class="metric-val highlight" id="speedVal">-- tok/s</span>
             </div>
 
@@ -146,7 +148,7 @@
             </div>
 
             <div class="metric-row">
-              <span class="metric-name">Marginal Electricity Cost</span>
+              <span class="metric-name">Marginal Operational Electricity Cost</span>
               <span class="metric-val" id="costElecVal">$-- / Mtok</span>
             </div>
 
@@ -156,7 +158,7 @@
             </div>
 
             <div class="metric-row">
-              <span class="metric-name">Economic Efficiency vs. Cloud APIs</span>
+              <span class="metric-name">Economic Efficiency vs. Commercial APIs</span>
               <span class="metric-val green" id="savingsVal">--%</span>
             </div>
           </div>
@@ -164,91 +166,75 @@
       </div>
     </section>
 
-    <!-- Section 2: 4-Stage Progressive Storyboard Pipeline -->
-    <section class="section" id="pipeline">
+    <!-- Section 2: Physical Limits -->
+    <section class="section" id="physics">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">Production Multi-Modal Harness · RAM-Cached Compute</div>
-          <h2 class="section-title">The Progressive 4-Stage Generation Pipeline</h2>
+          <div class="section-tag">Computer Architecture · Physical Limits</div>
+          <h2 class="section-title">The Physical Constraints of Local Inference</h2>
           <p class="section-subtitle">
-            Running heavy models for rough drafts wastes energy. We enforce a strictly gated 4-stage pipeline running in memory (/dev/shm/imagine) on the Warden APU.
+            Three physical realities that govern autoregressive token generation regardless of software frameworks or compiler optimizations.
           </p>
         </div>
 
         <div class="pipeline-step">
-          <div class="step-num">Stage 1 &middot; Rapid Rough Layout</div>
-          <h3 class="step-title">Z-Image-Turbo 6B (8 steps, ~14s, 512&times;896)</h3>
+          <div class="step-num">Constraint 1 &middot; The Autoregressive Memory Wall</div>
+          <h3 class="step-title">Single-batch decoding is memory-bandwidth bound, not compute-bound</h3>
           <p class="step-desc">
-            Ultra-fast initial exploration validating framing, composition, color palettes, and blocking before committing heavy compute.
+            Generating each token in autoregressive decoding requires streaming every active model parameter through the memory controller to the ALUs exactly once. At batch size 1, the arithmetic intensity is roughly 1 FLOP per byte transferred. Raw floating-point compute capacity sits largely idle waiting for weights to arrive from DRAM. Token generation speed is physically bounded by sustained memory bandwidth divided by active model size.
           </p>
         </div>
 
         <div class="pipeline-step">
-          <div class="step-num">Stage 2 &middot; Identity &amp; Feature Anchoring</div>
-          <h3 class="step-title">FLUX.2 klein 9B (4 steps, cfg 1.0, Euler, ~32s)</h3>
+          <div class="step-num">Constraint 2 &middot; Prefill vs. Decode Thermodynamics</div>
+          <h3 class="step-title">Prompt ingestion and token generation have a 20&times; energy asymmetry</h3>
           <p class="step-desc">
-            Bakes canonical reference features, facial geometry, and high-contrast structural fidelity into the candidate scene.
+            During prompt ingestion (prefill), N input tokens are processed concurrently via dense matrix multiplications, achieving high arithmetic intensity and high power efficiency per token. During decode, gigabytes of silicon weights move across the memory bus to emit a single token. This creates a severe thermodynamic asymmetry: decode draws 15&times; to 25&times; more Joules per token than prefill.
           </p>
         </div>
 
         <div class="pipeline-step">
-          <div class="step-num">Stage 3 &middot; Multi-Modal Conditioning &amp; Editing</div>
-          <h3 class="step-title">Qwen-Image-Edit-2511 20B (20 steps, cfg 2.5, flow-shift 3, easycache 0.2, ~75s)</h3>
+          <div class="step-num">Constraint 3 &middot; Quantization Pareto Frontier</div>
+          <h3 class="step-title">4-bit to 5-bit quantization delivers near-lossless perplexity at half the bus traffic</h3>
           <p class="step-desc">
-            Instruction-guided precise editing, inpainting, and textual coherence refinement under Flow-Shift sampling.
-          </p>
-        </div>
-
-        <div class="pipeline-step">
-          <div class="step-num">Stage 4 &middot; Production Upscaling</div>
-          <h3 class="step-title">RealESRGAN x4plus (~4.5s) to 1080&times;1920 or 4K</h3>
-          <p class="step-desc">
-            High-frequency perceptual sharpening and clean-room upscaling to broadcast resolution without generative drift.
+            Empirical perplexity sweeps demonstrate that modern block-wise quantization formats (such as Q4_K_M and IQ4) preserve over 98% of baseline FP16 model quality while cutting memory bus traffic by more than 65%. Running FP16 weights on memory-constrained buses burns twice the thermodynamic energy and halves generation throughput with negligible downstream reasoning improvement.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: Compute Continuum -->
-    <section class="section" id="continuum">
+    <!-- Section 3: Engineering Principles -->
+    <section class="section" id="principles">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">Systems Engineering · Full Infrastructure Architecture</div>
-          <h2 class="section-title">The Four-Tier AI Infrastructure Continuum</h2>
+          <div class="section-tag">Systems Engineering · Production Rules</div>
+          <h2 class="section-title">Field Rules for Machine Agency</h2>
           <p class="section-subtitle">
-            How we balance sovereign $0.00 in-house silicon, local Xeon sharding, edge worker microservices, and burst cloud training.
+            Patterns that hold up in production after the venture capital marketing has worn off.
           </p>
         </div>
 
         <div class="pipeline-step">
-          <div class="step-num">Tier 1 &middot; Sovereign APU (Warden APU)</div>
-          <h3 class="step-title">AMD Strix Halo APU &middot; 122.7 GB Unified LPDDR5X &middot; Vulkan</h3>
+          <div class="step-num">Rule 1 &middot; Verification Beats Parameter Scale</div>
+          <h3 class="step-title">A verified 14B model outperforms an unverified 70B model</h3>
           <p class="step-desc">
-            In-RAM generation (/dev/shm/imagine), local diffusion (flux2, edit, zimage), video (wan2.1, liveportrait), voice synthesis (kokoro), and local reasoning (qwen3-vl:30b at 65 tok/s, qwen3.5:122b). Strictly $0.00 cloud spend.
+            Scaling model size provides diminishing returns on domain accuracy compared to allocating test-time compute to structured verifiers, deterministic parsers, and unit tests. A compact model coupled with calibrated abstention delivers higher operational reliability at a fraction of the memory footprint and latency.
           </p>
         </div>
 
         <div class="pipeline-step">
-          <div class="step-num">Tier 2 &middot; Data Sharding &amp; Mastering (Haywire Host)</div>
-          <h3 class="step-title">Dual Xeon Platinum 8160 &middot; 96 Cores &middot; 768 GB RAM</h3>
+          <div class="step-num">Rule 2 &middot; Unified Memory Eliminates PCIe Bus Hops</div>
+          <h3 class="step-title">Zero host-to-device transfers for single-node workloads</h3>
           <p class="step-desc">
-            Massive multi-threaded audio sharding, EBU R128 audio mastering, FFmpeg Ken Burns 9:16 video assembly, de-stalling, and YuNet+SFace face embedding verification.
+            Discrete multi-GPU configurations incur latency penalties across PCIe slots and NVLink topologies. Unified memory architectures with 128 GB+ capacity allow the CPU and GPU to share a single coherent address space, enabling large-context KV caches and weight residency without bus migration penalties.
           </p>
         </div>
 
         <div class="pipeline-step">
-          <div class="step-num">Tier 3 &middot; Edge API Platform (Ambie.ai)</div>
-          <h3 class="step-title">Self-Owned Cloudflare Workers AI Architecture</h3>
+          <div class="step-num">Rule 3 &middot; Measure Wall-Socket Power, Never Package TDP</div>
+          <h3 class="step-title">Silicon PPT ignores memory, fans, and power conversion losses</h3>
           <p class="step-desc">
-            15 LLMs (Brave search grounded + verified), Whisper Large v3 ASR (word timestamps, direct SRT/VTT), Llama 3.3 70B translation, and Aura 2 TTS.
-          </p>
-        </div>
-
-        <div class="pipeline-step">
-          <div class="step-num">Tier 4 &middot; Spot GPU Fleet (Vastops)</div>
-          <h3 class="step-title">Automated Spot Provisioning &middot; $0.30–$1.50/hr &middot; $2.00 Ceiling</h3>
-          <p class="step-desc">
-            Automated Vast.ai and RunPod spot provisioning for spokesmodel LoRA training and full-parameter fine-tuning with strict 30-min idle watchdog and PRG eval gates.
+            Hardware vendor software telemetry (such as package power tracking) frequently excludes the memory bus, cooling system, and AC-to-DC power supply inefficiencies. True operational expenditure must be measured at the physical wall socket under full memory bus saturation.
           </p>
         </div>
       </div>
@@ -259,12 +245,12 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>
-        &copy; 2026 RoamingPigs AI &middot; A RoamingPigs Systems &amp; AI Research Lab Project.
+        &copy; 2026 RoamingPigs AI &middot; Independent Systems &amp; Hardware Engineering.
       </div>
       <ul class="footer-links">
-        <li><a href="https://roamingpigs.org/" target="_blank" rel="noopener">Research Commons (.org)</a></li>
-        <li><a href="https://ciscocaceres.com/research/" target="_blank" rel="noopener">Preprints &amp; Papers</a></li>
-        <li><a href="https://roamingpigs.com/" target="_blank" rel="noopener">Field Manual</a></li>
+        <li><a href="https://roamingpigs.com/" target="_blank" rel="noopener">Field Manual (.com)</a></li>
+        <li><a href="https://roamingpigs.org/" target="_blank" rel="noopener">Research Lab (.org)</a></li>
+        <li><a href="https://ciscocaceres.com/" target="_blank" rel="noopener">Cisco Caceres</a></li>
         <li><a href="https://orcid.org/0009-0005-7810-5077" target="_blank" rel="noopener">ORCID</a></li>
       </ul>
     </div>

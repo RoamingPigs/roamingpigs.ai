@@ -18,37 +18,53 @@ document.addEventListener('DOMContentLoaded', () => {
   const savingsVal = document.getElementById('savingsVal');
 
   const MODELS = {
-    '8b': { name: '8B Dense (Llama-3.1-8B / Qwen-2.5-7B)', params: 8.0, active: 8.0, layers: 32, hidden: 4096 },
-    '14b': { name: '14B Dense (Qwen-2.5-14B)', params: 14.0, active: 14.0, layers: 48, hidden: 5120 },
-    '30b_moe': { name: '30B MoE (Qwen3-VL:30b-a3b)', params: 30.0, active: 3.3, layers: 48, hidden: 2048 },
-    '70b': { name: '70B Dense (Llama-3.3-70B)', params: 70.0, active: 70.0, layers: 80, hidden: 8192 },
-    '122b': { name: '122B Dense (Qwen3.5:122b)', params: 122.0, active: 122.0, layers: 96, hidden: 10240 }
+    '8b': { name: '8B Dense (32 layers, 4096 hidden)', params: 8.0, active: 8.0, layers: 32, hidden: 4096 },
+    '14b': { name: '14B Dense (48 layers, 5120 hidden)', params: 14.0, active: 14.0, layers: 48, hidden: 5120 },
+    '32b': { name: '32B Dense (64 layers, 5120 hidden)', params: 32.5, active: 32.5, layers: 64, hidden: 5120 },
+    '70b': { name: '70B Dense (80 layers, 8192 hidden)', params: 70.6, active: 70.6, layers: 80, hidden: 8192 },
+    'moe_30b': { name: '30B MoE (48 layers, 3.3B active weights)', params: 30.0, active: 3.3, layers: 48, hidden: 2048 }
   };
 
   const QUANTS = {
-    'fp16': { name: 'FP16 (Uncompressed)', bits: 16.0 },
-    'q8_0': { name: 'Q8_0 (8-bit Quantized)', bits: 8.5 },
-    'q4_k_m': { name: 'Q4_K_M (4-bit Medium)', bits: 4.8 },
-    'iq4_xs': { name: 'IQ4_XS (4-bit Extra Small)', bits: 4.25 },
-    'q3_k_m': { name: 'Q3_K_M (3-bit Medium)', bits: 3.4 }
+    'fp16': { name: 'FP16 (16.0 bits/weight — Uncompressed)', bits: 16.0 },
+    'q8_0': { name: 'Q8_0 (8.5 bits/weight — Near-Lossless)', bits: 8.5 },
+    'q5_k_m': { name: 'Q5_K_M (5.5 bits/weight — High Fidelity)', bits: 5.5 },
+    'q4_k_m': { name: 'Q4_K_M (4.8 bits/weight — Frontier Sweet Spot)', bits: 4.8 },
+    'iq4_xs': { name: 'IQ4_XS (4.25 bits/weight — Compact Matrix)', bits: 4.25 }
   };
 
   const HARDWARE = {
-    'apu': {
-      name: 'Sovereign AMD APU (122.7GB Unified LPDDR5X)',
+    'unified_apu': {
+      name: 'Unified Memory APU / SoC (256-bit LPDDR5X, 256 GB/s peak)',
       peakBw: 256.0,
       sustainedEff: 0.870,
-      wallPowerActive: 108.4,
-      idlePower: 17.0,
-      capitalPerMtok: 0.605
+      wallPowerActive: 108.0,
+      idlePower: 15.0,
+      capitalPerMtok: 0.65
     },
-    'h100': {
-      name: 'Datacenter Node (8x H100 SXM5 Share)',
+    'desktop_ddr5': {
+      name: 'Desktop Dual-Channel DDR5 (128-bit DDR5-6000, 96 GB/s peak)',
+      peakBw: 96.0,
+      sustainedEff: 0.780,
+      wallPowerActive: 175.0,
+      idlePower: 45.0,
+      capitalPerMtok: 1.20
+    },
+    'server_ddr5': {
+      name: 'Server Multi-Channel DDR5 (8-Channel DDR5-4800, 307 GB/s peak)',
+      peakBw: 307.2,
+      sustainedEff: 0.810,
+      wallPowerActive: 380.0,
+      idlePower: 95.0,
+      capitalPerMtok: 2.10
+    },
+    'discrete_hbm': {
+      name: 'Datacenter HBM Accelerator (80GB HBM3, 3,350 GB/s peak, node share)',
       peakBw: 3350.0,
       sustainedEff: 0.720,
-      wallPowerActive: 1047.0, // per GPU share of 8378W grid draw
+      wallPowerActive: 1050.0,
       idlePower: 250.0,
-      capitalPerMtok: 9.250 // rental rate amortized
+      capitalPerMtok: 9.50
     }
   };
 
@@ -61,12 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contextVal.textContent = contextLen.toLocaleString() + ' tokens';
 
-    // 1. Model weights size in RAM
+    // 1. Model weights size in RAM (GB)
     const weightGb = (m.params * q.bits) / 8.0;
     const activeWeightGb = (m.active * q.bits) / 8.0;
 
-    // 2. KV-cache size in RAM (2 * layers * hidden * context * 2 bytes / 1e9)
-    // Using 8-bit quantized KV cache above 8k tokens
+    // 2. KV-cache size in RAM (2 * layers * hidden * context * bytesPerElem / 1e9)
+    // 8-bit quantized KV cache above 8k tokens
     const bytesPerKvElem = contextLen > 8192 ? 1 : 2;
     const kvGb = (2 * m.layers * m.hidden * contextLen * bytesPerKvElem) / 1e9;
     const totalRamGb = weightGb + kvGb;
@@ -75,10 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const sustainedBw = hw.peakBw * hw.sustainedEff;
     const busSaturationPct = hw.sustainedEff * 100.0;
 
-    // 4. Generation Speed (tokens/sec) = sustainedBw / activeWeightGb
+    // 4. Generation Speed (tokens/sec) = sustainedBw / activeBytesPerToken
     let tokPerSec = sustainedBw / (activeWeightGb + (kvGb * 0.05));
-    // Physical saturation ceiling
-    if (tokPerSec > 180) tokPerSec = 180;
+    // Physical saturation ceiling per hardware class
+    if (hwSelect.value === 'unified_apu' && tokPerSec > 160) tokPerSec = 160;
+    if (hwSelect.value === 'desktop_ddr5' && tokPerSec > 60) tokPerSec = 60;
 
     // 5. Energy per token (Joules / token) = Wall Power (Watts) / (tok/s)
     const joulesPerTok = hw.wallPowerActive / tokPerSec;
@@ -88,11 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const kwhPerMtok = (joulesPerTok * 1000000) / 3600000;
     const elecCostPerMtok = kwhPerMtok * tariff;
 
-    // 7. Full amortized TCO
+    // 7. Full amortized TCO ($/Mtok)
     const fullTcoPerMtok = elecCostPerMtok + hw.capitalPerMtok;
 
-    // Cloud frontier comparison ($15.00/Mtok standard API rate)
-    const cloudSavingsPct = ((15.00 - fullTcoPerMtok) / 15.00) * 100.0;
+    // Baseline commercial API reference ($15.00/Mtok frontier token rate)
+    const cloudSavingsPct = Math.max(0, ((15.00 - fullTcoPerMtok) / 15.00) * 100.0);
 
     // Update DOM
     ramVal.textContent = totalRamGb.toFixed(1) + ' GB';
@@ -103,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     powerVal.textContent = hw.wallPowerActive.toFixed(0) + ' W';
     costElecVal.textContent = '$' + elecCostPerMtok.toFixed(3) + ' / Mtok';
     costTcoVal.textContent = '$' + fullTcoPerMtok.toFixed(3) + ' / Mtok';
-    savingsVal.textContent = cloudSavingsPct.toFixed(1) + '% vs. Cloud API';
+    savingsVal.textContent = cloudSavingsPct.toFixed(1) + '% vs. Commercial Cloud API';
   }
 
   modelSelect.addEventListener('change', update);
