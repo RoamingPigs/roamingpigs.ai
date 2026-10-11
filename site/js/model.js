@@ -77,7 +77,7 @@
       totalMidQuarterDuty: h.cost.mode === "rent" ? total(tokMid) : total(tokMid, 0.25),
       capexNote: capexNote, duty: duty,
       api: inp.api,
-      validated: !!h.validated
+      calibrationReferenceAvailable: !!h.calibration_reference_available
     };
   }
 

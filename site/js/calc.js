@@ -139,8 +139,8 @@
       if (!r.fits) { warn.hidden = false; warn.textContent = "Does not fit. This needs " + num(r.neededGB, 1) + " GB and the machine has " + num(r.capacityGB, 0) + " GB. Try a smaller model, a lower quantisation or a shorter context."; }
       else warn.hidden = true;
       var wa = $("warn-assumed");
-      if (!r.validated) { wa.hidden = false; wa.textContent = "Efficiency and power for this machine are assumptions, not measurements. Only the unified-memory machine has been checked against meter readings."; }
-      else wa.hidden = true;
+      if (!r.calibrationReferenceAvailable) { wa.hidden = false; wa.textContent = "These defaults are assumptions without calibration reference rows for this machine."; }
+      else { wa.hidden = false; wa.textContent = "Reference rows were used to fit this range; they are not independent predictive validation. Efficiency remains an editable assumption."; }
 
       // speed scale
       var sc = $("scale"); clear(sc);

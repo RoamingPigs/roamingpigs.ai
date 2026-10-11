@@ -38,11 +38,11 @@
     </table>
   </div>
 
-  <h2 id="validation" class="prose-h">Does the model match what was measured?</h2>
-  <div class="prose"><p>Each row compares the speed ceiling with a real run on the unified-memory machine. A ratio near 1 means the ceiling is tight. Below 1 means the machine runs slower than the bandwidth limit.</p></div>
+  <h2 id="validation" class="prose-h">Source-fitted calibration references</h2>
+  <div class="prose"><p>Each row compares the assumed speed ceiling with a reported owner summary or a cited published speed. Raw traces and external source validation are not supplied by this build. A ratio near 1 means the ceiling is tight. Below 1 means the machine runs slower than the bandwidth limit.</p></div>
   <div class="table-wrap" tabindex="0" role="region" aria-label="Validation table, scrolls sideways on small screens">
     <table class="data">
-      <caption>Efficiency 0.84 &times; 256 GB/s = {{ val.bw }} GB/s. Context for published rows is not stated by their authors, so I assumed {{ val.ctx }} tokens.</caption>
+      <caption>Assumed efficiency 0.84 &times; 256 GB/s = {{ val.bw }} GB/s. Context for published rows is not stated by their authors, so I assumed {{ val.ctx }} tokens.</caption>
       <thead><tr><th>Run</th><th class="n">GB read per token</th><th class="n">Ceiling tok/s</th><th class="n">Observed tok/s</th><th class="n">Ratio</th><th>Evidence</th></tr></thead>
       <tbody>
         {% for r in val.rows %}<tr><td>{{ r.name }}</td><td class="n">{{ r.gb }}</td><td class="n">{{ r.ceiling }}</td><td class="n">{{ r.observed }}</td><td class="n">{{ r.ratio }}</td><td>{{ chip(r.cls) }} <span class="small">{{ r.src }}</span></td></tr>
@@ -51,14 +51,14 @@
     </table>
   </div>
   <div class="prose">
-    <p>Dense models land at the ceiling. Mixture models run well below it, because routing between experts and small reads cost more than the bandwidth sum suggests. The calculator turns this into an expected range of {{ m.expected_fraction_of_ceiling.dense.low }} to {{ m.expected_fraction_of_ceiling.dense.high }} of the ceiling for dense models and {{ m.expected_fraction_of_ceiling.moe.low }} to {{ m.expected_fraction_of_ceiling.moe.high }} for mixtures. The build fails if a row above falls outside its range.</p>
-    <p>A third metered run, on a 125B mixture model, is excluded. Its recorded speed implies {{ val.excl_gbps }} GB/s of memory traffic on a {{ val.peak }} GB/s bus. Either its speed or its active-parameter count is wrong in the ledger.</p>
+    <p>Dense models land at the ceiling. Mixture models run well below it, because routing between experts and small reads cost more than the bandwidth sum suggests. The calculator turns this into an expected range of {{ m.expected_fraction_of_ceiling.dense.low }} to {{ m.expected_fraction_of_ceiling.dense.high }} of the ceiling for dense models and {{ m.expected_fraction_of_ceiling.moe.low }} to {{ m.expected_fraction_of_ceiling.moe.high }} for mixtures. These same reference rows were used to fit the ranges; coverage by construction is not held-out predictive validation. The build checks arithmetic and fit consistency only.</p>
+    <p>A third metered run, on a 125B mixture model, is excluded. Its recorded speed implies {{ val.excl_gbps }} GB/s of memory traffic on a {{ val.peak }} GB/s bus. It is outside this simplified traffic model, not proven wrong; the original summary remains in the results file.</p>
 
     <h2 id="gaps">What it does not model</h2>
     <ul>
       <li><strong>Batching.</strong> Serving many requests at once reuses each weight read many times. It changes energy and cost per token several-fold and is the main reason data-centre figures differ from this page.</li>
       <li><strong>Prompt processing.</strong> The first tokens are limited by arithmetic, not bandwidth, and are not estimated here.</li>
-      <li><strong>Other machines.</strong> Only the unified-memory machine is validated. Efficiency and power for the other three are assumptions, marked as such.</li>
+      <li><strong>Other machines.</strong> The unified-memory inputs have limited reported reference rows, not independent validation. Efficiency and extrapolated power are assumptions for every machine.</li>
       <li><strong>Long contexts.</strong> Attention compute grows with context and is ignored. The KV read is included.</li>
       <li><strong>Prices.</strong> Electricity, hardware and API prices move. The defaults are dated and editable.</li>
     </ul>

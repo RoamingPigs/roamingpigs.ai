@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Local LLM Cost Calculator: Memory, Speed, Energy, Price</title>
-  <meta name="description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.">
+  <meta name="description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, compared with limited reported summaries.">
   <link rel="canonical" href="https://roamingpigs.ai/inference-cost/">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <meta name="theme-color" content="#0a0b0f">
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="RoamingPigs Instruments">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Local LLM Cost Calculator: Memory, Speed, Energy, Price">
-  <meta property="og:description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.">
+  <meta property="og:description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, compared with limited reported summaries.">
   <meta property="og:url" content="https://roamingpigs.ai/inference-cost/">
   <meta property="og:image" content="https://roamingpigs.ai/og/inference-cost.png">
   <meta property="og:image:width" content="1200">
@@ -24,11 +24,11 @@
   <meta property="og:image:alt" content="Local LLM Cost Calculator: Memory, Speed, Energy, Price">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Local LLM Cost Calculator: Memory, Speed, Energy, Price">
-  <meta name="twitter:description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.">
+  <meta name="twitter:description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, compared with limited reported summaries.">
   <meta name="twitter:image" content="https://roamingpigs.ai/og/inference-cost.png">
   <meta name="twitter:image:alt" content="Local LLM Cost Calculator: Memory, Speed, Energy, Price">
   <meta property="article:modified_time" content="2026-10-11">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://roamingpigs.ai/#website","url":"https://roamingpigs.ai/","name":"RoamingPigs Instruments","inLanguage":"en","publisher":{"@id":"https://roamingpigs.ai/#org"},"author":{"@id":"https://roamingpigs.ai/#author"}},{"@type":"Organization","@id":"https://roamingpigs.ai/#org","name":"RoamingPigs","url":"https://roamingpigs.ai/","logo":"https://roamingpigs.ai/icon-512.png","founder":{"@id":"https://roamingpigs.ai/#author"},"sameAs":["https://roamingpigs.org/","https://roamingpigs.com/","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"Person","@id":"https://roamingpigs.ai/#author","name":"Cisco Caceres","url":"https://ciscocaceres.com/","sameAs":["https://orcid.org/0009-0005-7810-5077","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"WebPage","@id":"https://roamingpigs.ai/inference-cost/#page","url":"https://roamingpigs.ai/inference-cost/","name":"Local LLM Cost Calculator: Memory, Speed, Energy, Price","description":"Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.","inLanguage":"en","isPartOf":{"@id":"https://roamingpigs.ai/#website"},"author":{"@id":"https://roamingpigs.ai/#author"},"dateModified":"2026-10-11"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Instruments","item":"https://roamingpigs.ai/"},{"@type":"ListItem","position":2,"name":"Inference cost","item":"https://roamingpigs.ai/inference-cost/"}]},{"@type":"WebApplication","name":"Local inference cost calculator","url":"https://roamingpigs.ai/inference-cost/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@id":"https://roamingpigs.ai/#author"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://roamingpigs.ai/#website","url":"https://roamingpigs.ai/","name":"RoamingPigs Instruments","inLanguage":"en","publisher":{"@id":"https://roamingpigs.ai/#org"},"author":{"@id":"https://roamingpigs.ai/#author"}},{"@type":"Organization","@id":"https://roamingpigs.ai/#org","name":"RoamingPigs","url":"https://roamingpigs.ai/","logo":"https://roamingpigs.ai/icon-512.png","founder":{"@id":"https://roamingpigs.ai/#author"},"sameAs":["https://roamingpigs.org/","https://roamingpigs.com/","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"Person","@id":"https://roamingpigs.ai/#author","name":"Cisco Caceres","url":"https://ciscocaceres.com/","sameAs":["https://orcid.org/0009-0005-7810-5077","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"WebPage","@id":"https://roamingpigs.ai/inference-cost/#page","url":"https://roamingpigs.ai/inference-cost/","name":"Local LLM Cost Calculator: Memory, Speed, Energy, Price","description":"Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, compared with limited reported summaries.","inLanguage":"en","isPartOf":{"@id":"https://roamingpigs.ai/#website"},"author":{"@id":"https://roamingpigs.ai/#author"},"dateModified":"2026-10-11"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Instruments","item":"https://roamingpigs.ai/"},{"@type":"ListItem","position":2,"name":"Inference cost","item":"https://roamingpigs.ai/inference-cost/"}]},{"@type":"WebApplication","name":"Local inference cost calculator","url":"https://roamingpigs.ai/inference-cost/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@id":"https://roamingpigs.ai/#author"}}]}</script>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
@@ -127,15 +127,15 @@
       </div>
 
       <div class="panel viz" id="refs-panel" hidden>
-        <h3>Metered on this machine <span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span></h3>
+        <h3>Reported summaries and derived estimates <span class="chip modelled"><svg aria-hidden="true"><use href="#g-modelled"/></svg>Modelled</span></h3>
         <table class="refs">
-          <thead><tr><th>Model, one run</th><th class="n">tok/s</th><th class="n">Wall W</th><th class="n">J/token</th></tr></thead>
+          <thead><tr><th>Model, one run</th><th class="n">tok/s</th><th class="n">Wall W</th><th class="n">Power/rate J/token estimate</th></tr></thead>
           <tbody>
 <tr><td>9.7B dense, Q4_K_M</td><td class="n">36.7</td><td class="n">140</td><td class="n">3.81</td></tr>
 <tr><td>31.1B mixture, 3B active, Q4_K_M</td><td class="n">67.3</td><td class="n">171</td><td class="n">2.54</td></tr>
           </tbody>
         </table>
-        <p class="small">Smart-plug wall power averaged over a single run of 6 to 10 seconds, 2026-10-10 23:26 UTC. Includes the whole machine. <a href="https://roamingpigs.org/#inference-energy">The record and its limits</a>, and <a href="https://roamingpigs.org/results/sovereign-apu-inference-ledger.json">the results file</a>.</p>
+        <p class="small">Reported wall power divided by decode throughput from a single summary of 6 to 10 seconds, 2026-10-10 23:26 UTC. Raw timestamped power arrays are absent, and this ratio is not the recorded integrated-energy estimate. <a href="https://roamingpigs.org/#inference-energy">The record and its limits</a>, and <a href="https://roamingpigs.org/results/sovereign-apu-inference-ledger.json">the results file</a>.</p>
       </div>
     </div>
   </div>
@@ -174,7 +174,7 @@
   </div>
 </footer>
 <script src="/js/site.js?v=294f21cf" defer></script>
-<script src="/js/model.js?v=d3e16a0b" defer></script>
-<script src="/js/calc.js?v=a927855f" defer></script>
+<script src="/js/model.js?v=0dcc5ad9" defer></script>
+<script src="/js/calc.js?v=c4169c37" defer></script>
 </body>
 </html>

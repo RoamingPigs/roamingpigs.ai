@@ -19,3 +19,8 @@ Durable backlog. Update at every milestone and pause.
 - [ ] Add prompt-processing (prefill) estimates. Currently not modelled.
 - [ ] **Live SEO audit `well-known` dimension** fails only on two Abundera-specific files (`abundera-capabilities.json`, an `llms.txt` redirect) that do not apply to this property. Add `"seo": {"skip": ["well-known"]}` for this site in `claude-code/config/cf-sites.json`. `gpc.json` is published.
 - [ ] **Cloudflare Web Analytics auto-injection.** Cloudflare tries to inject its beacon on production. The site CSP blocks it (nothing loads, the privacy statement holds) but it logs a console error that costs a Lighthouse best-practices point. Either turn off automatic setup for this hostname, or accept the beacon in the CSP and change the "no analytics" line. Operator's call.
+
+
+## Evidence correction — 11 October 2026 Pacific
+
+Power/rate ratios now remain separate from reported integrated energy. Raw historical power arrays remain unavailable, and the bandwidth screen is an explicit model assumption. Efficiency defaults and source-fitted ranges are assumptions/calibration, not independent validation. The original Echo aggregate is separate from programmatic MAST annotations and allocated resources, whose export has explicit evidence metadata. The unused unsupported calculator asset was removed after script-reference and hash checks. Build, visual, publication and live verification remain pending for this correction.

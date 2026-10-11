@@ -100,12 +100,12 @@
     "dense": {
       "low": 0.9,
       "high": 1.07,
-      "basis": "Spans the metered dense run and the published 70B range. The method page shows each ratio."
+      "basis": "Source-fitted range covering the displayed dense reference rows; not an independent held-out validation."
     },
     "moe": {
       "low": 0.55,
       "high": 0.85,
-      "basis": "Spans the metered mixture run and the published 30B-A3B range. The method page shows each ratio."
+      "basis": "Source-fitted range covering the displayed moe reference rows; not an independent held-out validation."
     }
   },
   "hardware": [
@@ -116,18 +116,18 @@
       "capacity_gb": 122.7,
       "efficiency": {
         "value": 0.84,
-        "basis": "measured",
+        "basis": "assumed",
         "range": [
           0.83,
           0.88
         ],
-        "source": "About 215 GB/s sustained on this class of machine (Framework community forum, 2025-07-22); 83 to 88% in the owner's ledger, 2026-10-10"
+        "source": "Editable 0.84 modeling assumption. The owner saturation curve was formula-generated and supplies no measured-efficiency evidence."
       },
       "power_w": {
         "dense": 140,
         "moe": 171,
-        "basis": "measured",
-        "source": "Smart-plug wall power, one run each, 2026-10-10: 139.6 W (9.7B dense), 170.7 W (31B mixture). Other sizes assumed equal to the nearest class."
+        "basis": "assumed",
+        "source": "Defaults rounded from two limited owner-labeled wall-power summaries. Raw timestamped traces are absent; extrapolation to other models is an assumption."
       },
       "cost": {
         "mode": "own",
@@ -136,7 +136,7 @@
         "basis": "assumed",
         "source": "Illustrative. 128 GB machines of this class were listed near $2,459 in January 2026."
       },
-      "validated": true
+      "calibration_reference_available": true
     },
     {
       "id": "desktop",
@@ -165,7 +165,7 @@
         "basis": "assumed",
         "source": "Illustrative."
       },
-      "validated": false
+      "calibration_reference_available": false
     },
     {
       "id": "server",
@@ -194,7 +194,7 @@
         "basis": "assumed",
         "source": "Illustrative."
       },
-      "validated": false
+      "calibration_reference_available": false
     },
     {
       "id": "h100",
@@ -222,7 +222,7 @@
         "basis": "assumed",
         "source": "About $3 per GPU-hour in August 2026 rental listings."
       },
-      "validated": false
+      "calibration_reference_available": false
     }
   ],
   "defaults": {

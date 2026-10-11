@@ -64,15 +64,15 @@
       </div>
 
       <div class="panel viz" id="refs-panel" hidden>
-        <h3>Metered on this machine {{ chip('measured') }}</h3>
+        <h3>Reported summaries and derived estimates {{ chip('modelled') }}</h3>
         <table class="refs">
-          <thead><tr><th>Model, one run</th><th class="n">tok/s</th><th class="n">Wall W</th><th class="n">J/token</th></tr></thead>
+          <thead><tr><th>Model, one run</th><th class="n">tok/s</th><th class="n">Wall W</th><th class="n">Power/rate J/token estimate</th></tr></thead>
           <tbody>
             {% for r in refs %}<tr><td>{{ r.label }}</td><td class="n">{{ r.tok }}</td><td class="n">{{ r.w }}</td><td class="n">{{ r.j }}</td></tr>
             {% endfor %}
           </tbody>
         </table>
-        <p class="small">Smart-plug wall power averaged over a single run of {{ refs_seconds }} seconds, {{ refs_date }}. Includes the whole machine. <a href="https://roamingpigs.org/#inference-energy">The record and its limits</a>, and <a href="https://roamingpigs.org/results/sovereign-apu-inference-ledger.json">the results file</a>.</p>
+        <p class="small">Reported wall power divided by decode throughput from a single summary of {{ refs_seconds }} seconds, {{ refs_date }}. Raw timestamped power arrays are absent, and this ratio is not the recorded integrated-energy estimate. <a href="https://roamingpigs.org/#inference-energy">The record and its limits</a>, and <a href="https://roamingpigs.org/results/sovereign-apu-inference-ledger.json">the results file</a>.</p>
       </div>
     </div>
   </div>

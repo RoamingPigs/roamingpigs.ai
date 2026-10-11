@@ -48,7 +48,7 @@ PAGES = [
         "path": "/inference-cost/",
         "template": "inference.html",
         "title": "Local LLM Cost Calculator: Memory, Speed, Energy, Price",
-        "description": "Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.",
+        "description": "Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, compared with limited reported summaries.",
         "breadcrumb": [("Instruments", "/"), ("Inference cost", "/inference-cost/")],
         "scripts": ["/js/model.js", "/js/calc.js"],
         "sumbar": True,
@@ -57,8 +57,8 @@ PAGES = [
     {
         "path": "/codec-grid/",
         "template": "grid.html",
-        "title": "Speech Model Codec Grid: 900 Real Transcripts Explorer",
-        "description": "Explore 900 transcripts from six open speech models through telephone codecs and noise. See where word error passes 100% and read what each model wrote.",
+        "title": "Speech Model Codec Grid: 5,760 Real Transcripts Explorer",
+        "description": "Explore 5,760 transcripts from six open speech models reading 40 radio calls through telephone codecs and noise. Read what each model wrote beside what was said.",
         "breadcrumb": [("Instruments", "/"), ("Codec grid", "/codec-grid/")],
         "scripts": ["/js/grid.js"],
         "app": {"name": "Speech model codec grid explorer", "category": "EducationalApplication"},
@@ -67,7 +67,7 @@ PAGES = [
         "path": "/method/",
         "template": "method.html",
         "title": "Calculator Method: Formula, Constants, Validation",
-        "description": "The one formula behind the inference cost calculator, every constant with its source and date, and a comparison with real wall-meter and published speeds.",
+        "description": "The one formula behind the inference cost calculator, every constant with its source and date, and a source-fitted comparison with reported and published speeds.",
         "breadcrumb": [("Instruments", "/"), ("Method", "/method/")],
         "scripts": [],
     },
@@ -105,12 +105,12 @@ def validation(model: dict, canon: dict) -> dict:
             "cls": cls, "src": src, "kind": kind, "r": (r_lo, r_hi),
         })
 
-    runs = [r for r in canon["apu"]["metered_runs"] if r["plausible"]]
+    runs = [r for r in canon["apu"]["reported_runs"] if r["within_bandwidth_assumption"]]
     for r in runs:
         gb = r["weights_gb"] * r["active_b"] / r["params_b"]
         kind = "dense" if r["kind"].startswith("Dense") else "moe"
         nm = f'{r["params_b"]:g}B dense' if kind == "dense" else f'{r["params_b"]:g}B mixture, {r["active_b"]:g}B active'
-        add(f"{nm}, Q4_K_M", gb, r["tokens_per_sec"], r["tokens_per_sec"], "measured", "Smart-plug run, 2026-10-10, one run", kind)
+        add(f"{nm}, Q4_K_M", gb, r["tokens_per_sec"], r["tokens_per_sec"], "reported", "Owner-labeled summary, 2026-10-10, one run; raw power trace absent", kind)
     for mid, lo, hi, src in [
         ("d70", 4.5, 5.1, "Published llama-bench, 2025-07-22 and repo to 2026-03"),
         ("d32", 11.3, 11.3, "Published llama-bench, repo to 2026-03"),
@@ -119,13 +119,13 @@ def validation(model: dict, canon: dict) -> dict:
     ]:
         m = byid[mid]
         gb = m["active_b"] * q4 / 8 + kv_gb(m, VAL_CTX)
-        add(f'{m["label"]}, Q4_K_M', gb, lo, hi, "measured", src, m["kind"])
+        add(f'{m["label"]}, Q4_K_M', gb, lo, hi, "published", src, m["kind"])
     for kind, f in model["expected_fraction_of_ceiling"].items():
         for r in rows:
             if r["kind"] != kind:
                 continue
             assert f["low"] <= r["r"][0] and r["r"][1] <= f["high"], f"{r['name']} ratio {r['r']} is outside the {kind} range {f}"
-    excl = [r for r in canon["apu"]["metered_runs"] if not r["plausible"]]
+    excl = [r for r in canon["apu"]["reported_runs"] if not r["within_bandwidth_assumption"]]
     return {
         "rows": rows, "bw": f"{bw:.0f}", "ctx": VAL_CTX,
         "excl_gbps": f'{excl[0]["implied_gbps"]:.0f}' if excl else "",
@@ -156,8 +156,8 @@ console.log(JSON.stringify({{rows: out, hero: {{tokLow: h.tokLow, tokHigh: h.tok
         "label": f'{m["label"]}, {q["label"]}',
         "rows": [{"name": names[r["id"]], "pct": f'{r["ceiling"] / mx * 100:.1f}', "value": f'{r["ceiling"]:.0f}'} for r in rows],
     }
-    labs = {"clean": "No noise", "snr_20": "20 dB", "snr_10": "10 dB", "snr_0": "0 dB", "snr_-6": "−6 dB"}
-    w = canon["e2"]["mean_wer_by_snr"]
+    labs = {"clean": "No noise", "20 dB": "20 dB", "10 dB": "10 dB", "0 dB": "0 dB"}
+    w = {k: canon["trcs_v2"]["analysis"]["e2"]["normalised"]["A1_by_noise"][k]["point"] for k in labs}
     vmax = max(w.values())
     grid = {"rows": [{"name": labs[k], "pct": f"{w[k] / vmax * 100:.1f}", "value": f"{w[k] * 100:.0f}%"} for k in labs]}
     def rng(a, b2, d):
@@ -195,16 +195,16 @@ def site_ld() -> list[dict]:
 
 def render(model: dict, canon: dict) -> dict[str, str]:
     c = canon
-    runs = [r for r in c["apu"]["metered_runs"] if r["plausible"]]
+    runs = [r for r in c["apu"]["reported_runs"] if r["within_bandwidth_assumption"]]
     refs = []
     for r in runs:
         dense = r["kind"].startswith("Dense")
         refs.append({
             "label": (f'{r["params_b"]:g}B dense' if dense else f'{r["params_b"]:g}B mixture, {r["active_b"]:g}B active') + f', {r["quant"]}',
-            "tok": f'{r["tokens_per_sec"]:.1f}', "w": f'{r["wall_w_mean"]:.0f}', "j": f'{r["j_per_token_mean_power"]:.2f}',
+            "tok": f'{r["tokens_per_sec"]:.1f}', "w": f'{r["wall_w_mean"]:.0f}', "j": f'{r["power_rate_estimate_j_per_token"]:.2f}',
         })
     ctx = {
-        "c": c, "m": model, "v": {"e2_date": utc_label(c["e2"]["date_utc"])},
+        "c": c, "m": model, "v": {"n_transcripts": f"{6 * 960:,}", "n_utt": c["trcs_v2"]["analysis"]["e2"]["n_utterances"], "run_end": c["trcs_v2"]["run"]["finished_utc"]},
         "prev": previews(model, c), "val": validation(model, c),
         "refs": refs, "refs_date": utc_label(c["apu"]["date_utc"]),
         "refs_seconds": f'{min(r["run_seconds"] for r in runs):.0f} to {max(r["run_seconds"] for r in runs):.0f}',
@@ -283,7 +283,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args()
-    canon_cmd = [sys.executable, str(Path.home() / "projects/siteops/scripts/rp-canon.py"), "--out", str(ROOT / "data/canon.json"), "--sections", "trcs,e2,apu", "--e2-grid", str(SITE / "data/e2-grid.json")]
+    canon_cmd = [sys.executable, str(Path.home() / "projects/siteops/scripts/rp-canon.py"), "--out", str(ROOT / "data/canon.json"), "--sections", "trcs,apu,trcs_v2", "--grid-v2", str(SITE / "data/e2v2-grid.json")]
     if a.check and subprocess.run(canon_cmd + ["--check"]).returncode:
         return 1
     for cmd in (["node", "--test", str(ROOT / "tests/model.test.mjs")], [sys.executable, str(ROOT / "tests/cross-check.py")]):
