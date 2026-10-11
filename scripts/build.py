@@ -275,7 +275,8 @@ def static_files() -> dict[str, str]:
   Cache-Control: public, max-age=86400
 """
     sec = f"Contact: https://ciscocaceres.com/contact/\nExpires: 2027-10-11T00:00:00.000Z\nPreferred-Languages: en\nCanonical: {BASE}.well-known/security.txt\n"
-    return {"site.webmanifest": json.dumps(manifest, indent=2) + "\n", "_headers": headers, ".well-known/security.txt": sec}
+    gpc = json.dumps({"gpc": True, "lastUpdate": MODIFIED}) + "\n"
+    return {"site.webmanifest": json.dumps(manifest, indent=2) + "\n", "_headers": headers, ".well-known/security.txt": sec, ".well-known/gpc.json": gpc}
 
 
 def main() -> int:
