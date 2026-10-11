@@ -1,0 +1,133 @@
+<!doctype html>
+<!-- nav-canonical-exempt: independent RoamingPigs property on a personal Cloudflare account, not an Abundera site; it has its own header and footer. -->
+<!-- footer-canonical-exempt: same reason as the nav exemption above. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Speech Model Codec Grid: 900 Real Transcripts Explorer</title>
+  <meta name="description" content="Explore 900 transcripts from six open speech models through telephone codecs and noise. See where word error passes 100% and read what each model wrote.">
+  <link rel="canonical" href="https://roamingpigs.ai/codec-grid/">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="color-scheme" content="dark">
+  <meta name="author" content="Cisco Caceres">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RoamingPigs Instruments">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Speech Model Codec Grid: 900 Real Transcripts Explorer">
+  <meta property="og:description" content="Explore 900 transcripts from six open speech models through telephone codecs and noise. See where word error passes 100% and read what each model wrote.">
+  <meta property="og:url" content="https://roamingpigs.ai/codec-grid/">
+  <meta property="og:image" content="https://roamingpigs.ai/og/codec-grid.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Speech Model Codec Grid: 900 Real Transcripts Explorer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Speech Model Codec Grid: 900 Real Transcripts Explorer">
+  <meta name="twitter:description" content="Explore 900 transcripts from six open speech models through telephone codecs and noise. See where word error passes 100% and read what each model wrote.">
+  <meta name="twitter:image" content="https://roamingpigs.ai/og/codec-grid.png">
+  <meta name="twitter:image:alt" content="Speech Model Codec Grid: 900 Real Transcripts Explorer">
+  <meta property="article:modified_time" content="2026-10-11">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://roamingpigs.ai/#website","url":"https://roamingpigs.ai/","name":"RoamingPigs Instruments","inLanguage":"en","publisher":{"@id":"https://roamingpigs.ai/#org"},"author":{"@id":"https://roamingpigs.ai/#author"}},{"@type":"Organization","@id":"https://roamingpigs.ai/#org","name":"RoamingPigs","url":"https://roamingpigs.ai/","logo":"https://roamingpigs.ai/icon-512.png","founder":{"@id":"https://roamingpigs.ai/#author"},"sameAs":["https://roamingpigs.org/","https://roamingpigs.com/","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"Person","@id":"https://roamingpigs.ai/#author","name":"Cisco Caceres","url":"https://ciscocaceres.com/","sameAs":["https://orcid.org/0009-0005-7810-5077","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"WebPage","@id":"https://roamingpigs.ai/codec-grid/#page","url":"https://roamingpigs.ai/codec-grid/","name":"Speech Model Codec Grid: 900 Real Transcripts Explorer","description":"Explore 900 transcripts from six open speech models through telephone codecs and noise. See where word error passes 100% and read what each model wrote.","inLanguage":"en","isPartOf":{"@id":"https://roamingpigs.ai/#website"},"author":{"@id":"https://roamingpigs.ai/#author"},"dateModified":"2026-10-11"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Instruments","item":"https://roamingpigs.ai/"},{"@type":"ListItem","position":2,"name":"Codec grid","item":"https://roamingpigs.ai/codec-grid/"}]},{"@type":"WebApplication","name":"Speech model codec grid explorer","url":"https://roamingpigs.ai/codec-grid/","applicationCategory":"EducationalApplication","operatingSystem":"Any (web browser)","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@id":"https://roamingpigs.ai/#author"}}]}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css?v=3194abd3">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="g-measured" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="currentColor"/></symbol>
+    <symbol id="g-modelled" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></symbol>
+    <symbol id="g-simulated" viewBox="0 0 16 16"><path d="M8 1.8 14.2 8 8 14.2 1.8 8z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="g-proposed" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-dasharray="2.6 2.2"/></symbol>
+  </defs>
+</svg>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">RoamingPigs <span>Instruments</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+<li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/" aria-current="page">Codec grid</a></li><li><a href="/method/">Method</a></li>        <li><a class="sister" href="https://roamingpigs.org/">Research notes <span aria-hidden="true">&nearr;</span><span class="sr-only"> (roamingpigs.org)</span></a></li>
+      </ul>
+    </nav>
+    <details class="nav-toggle">
+      <summary>Menu</summary>
+      <nav class="site-nav-mobile" aria-label="Main (mobile)">
+        <ul>
+<li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/" aria-current="page">Codec grid</a></li><li><a href="/method/">Method</a></li>          <li><a class="sister" href="https://roamingpigs.org/">Research notes (roamingpigs.org) &nearr;</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <nav class="breadcrumb crumbs" aria-label="Breadcrumb"><a href="/">Instruments</a> / Codec grid</nav>
+    <h1>Where the words go wrong</h1>
+    <p class="lede">900 transcripts from 6 open speech models, run through 6 audio paths and 5 noise levels. Choose a model, click a cell, and read what it wrote next to what was said.</p>
+    <p class="banner"><strong><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> A small pilot.</strong> Run 2026-10-10 18:34 UTC. 5 scripted utterances, synthetic speech, one decoding setting, point estimates with no confidence intervals. Word error above 100% includes inserted words. <a href="https://roamingpigs.org/#radio-audio">The record and its limits</a>.</p>
+  </div>
+</section>
+<div class="wrap">
+  <noscript><p class="noscript">The explorer needs JavaScript. The per-cell figures are on <a href="https://roamingpigs.org/#radio-audio">the record</a>.</p></noscript>
+  <div class="calc grid-page" id="grid" data-src="/data/e2-grid.json">
+    <div class="controls">
+      <div class="panel">
+        <fieldset class="field"><legend>Model size</legend><div class="seg cols2" id="seg-model"></div></fieldset>
+        <fieldset class="field" id="f-utt" hidden><legend>Utterance</legend><div class="seg cols3" id="seg-utt"></div></fieldset>
+        <p class="key-line">In the transcripts: <ins>inserted</ins> <del>missed</del> <span class="sub">wrong word</span></p>
+      </div>
+    </div>
+    <div id="out" aria-live="polite">
+      <div class="panel">
+        <h3 class="sr-only">Mean word error rate by audio path and noise level</h3>
+        <div class="heat-wrap" tabindex="0" role="region" aria-label="Heat map, scrolls sideways on small screens"><table class="heat-table" id="heat"></table></div>
+        <div class="scale-key"><span>0%</span><span class="ramp" id="ramp"></span><span>160%+</span><span>Each cell is a mean of utterances and models. Click one.</span></div>
+      </div>
+      <div class="panel viz" id="detail" hidden>
+        <h3 id="detail-h"></h3>
+        <div class="transcripts" id="trs"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>RoamingPigs Instruments</h2>
+      <p>Calculators and explorers that show their assumptions. By <a href="https://ciscocaceres.com/">Cisco Caceres</a>. Self-published and not peer reviewed.</p>
+    </div>
+    <div>
+      <h2>Instruments</h2>
+      <ul><li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li></ul>
+    </div>
+    <div>
+      <h2>The record</h2>
+      <ul>
+        <li><a href="https://roamingpigs.org/">Research notes</a></li>
+        <li><a href="https://roamingpigs.org/corrections/">Corrections</a></li>
+        <li><a href="https://roamingpigs.org/datasets/trcs/">TRCS dataset</a></li>
+        <li><a href="https://ciscocaceres.com/research/">Papers</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://roamingpigs.com/">Field Manual</a></li>
+        <li><a href="https://github.com/RoamingPigs">GitHub</a></li>
+        <li><a href="https://huggingface.co/RoamingPigs">Hugging Face</a></li>
+        <li><a href="https://orcid.org/0009-0005-7810-5077">ORCID</a></li>
+      </ul>
+    </div>
+    <p class="footer-note">&copy; 2026 Cisco Caceres. No cookies, no analytics, nothing loaded from other domains. Everything you type into an instrument stays in your browser. Last build 11 October 2026.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=294f21cf" defer></script>
+<script src="/js/grid.js?v=bc28210b" defer></script>
+</body>
+</html>

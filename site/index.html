@@ -1,944 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- nav-canonical-exempt: independent RoamingPigs property on a personal Cloudflare account, not an Abundera site; it has its own header and footer. -->
+<!-- footer-canonical-exempt: same reason as the nav exemption above. -->
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RoamingPigs AI — Independent Systems Physics &amp; Empirical AI Architecture</title>
-  <meta name="description" content="Independent Systems Physics &amp; Empirical AI Architecture across tactical speech science (TRCS), verifier error covariance theory, autonomous agent swarms, and physical silicon thermodynamics.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>RoamingPigs Instruments: AI Cost and Speech Explorers</title>
+  <meta name="description" content="Calculators and explorers for AI systems that show their assumptions: local inference cost per token, and real speech-model transcripts through noisy channels.">
   <link rel="canonical" href="https://roamingpigs.ai/">
-  <meta name="theme-color" content="#12151b">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
-  <!-- Open Graph -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="color-scheme" content="dark">
+  <meta name="author" content="Cisco Caceres">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RoamingPigs Instruments">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="RoamingPigs Instruments: AI Cost and Speech Explorers">
+  <meta property="og:description" content="Calculators and explorers for AI systems that show their assumptions: local inference cost per token, and real speech-model transcripts through noisy channels.">
   <meta property="og:url" content="https://roamingpigs.ai/">
-  <meta property="og:title" content="RoamingPigs AI — Independent Systems Physics &amp; Empirical AI Architecture">
-  <meta property="og:description" content="Independent Systems Physics &amp; Empirical AI Architecture: tactical speech science, verifier error covariance, autonomous agent swarms, and physical silicon thermodynamics.">
-  <meta property="og:site_name" content="RoamingPigs AI">
-
-  <link rel="stylesheet" href="/css/style.css">
+  <meta property="og:image" content="https://roamingpigs.ai/og/default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="RoamingPigs Instruments: AI Cost and Speech Explorers">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RoamingPigs Instruments: AI Cost and Speech Explorers">
+  <meta name="twitter:description" content="Calculators and explorers for AI systems that show their assumptions: local inference cost per token, and real speech-model transcripts through noisy channels.">
+  <meta name="twitter:image" content="https://roamingpigs.ai/og/default.png">
+  <meta name="twitter:image:alt" content="RoamingPigs Instruments: AI Cost and Speech Explorers">
+  <meta property="article:modified_time" content="2026-10-11">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://roamingpigs.ai/#website","url":"https://roamingpigs.ai/","name":"RoamingPigs Instruments","inLanguage":"en","publisher":{"@id":"https://roamingpigs.ai/#org"},"author":{"@id":"https://roamingpigs.ai/#author"}},{"@type":"Organization","@id":"https://roamingpigs.ai/#org","name":"RoamingPigs","url":"https://roamingpigs.ai/","logo":"https://roamingpigs.ai/icon-512.png","founder":{"@id":"https://roamingpigs.ai/#author"},"sameAs":["https://roamingpigs.org/","https://roamingpigs.com/","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"Person","@id":"https://roamingpigs.ai/#author","name":"Cisco Caceres","url":"https://ciscocaceres.com/","sameAs":["https://orcid.org/0009-0005-7810-5077","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"WebPage","@id":"https://roamingpigs.ai/#page","url":"https://roamingpigs.ai/","name":"RoamingPigs Instruments: AI Cost and Speech Explorers","description":"Calculators and explorers for AI systems that show their assumptions: local inference cost per token, and real speech-model transcripts through noisy channels.","inLanguage":"en","isPartOf":{"@id":"https://roamingpigs.ai/#website"},"author":{"@id":"https://roamingpigs.ai/#author"},"dateModified":"2026-10-11"}]}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css?v=3194abd3">
 </head>
 <body>
-
-  <!-- Extruded Aluminum Header Rail (19-inch Rack Format) -->
-  <header class="aluminum-header-rail">
-    <div class="rack-container rail-flex">
-      <div class="rail-ear-group">
-        <span class="rack-bolt" aria-hidden="true"></span>
-        <span>UNIT: RP-AI-2026-REV4 // CHASSIS: 19-INCH 5-BAY BENCH</span>
-      </div>
-
-      <div class="rail-telemetry-badge">
-        <span>SYSTEM TELEMETRY: NOMINAL</span>
-      </div>
-
-      <ul class="rail-nav-links">
-        <li><a href="#bay-01">Bay 01 Acoustics</a></li>
-        <li><a href="#bay-02">Bay 02 Verifiers</a></li>
-        <li><a href="#bay-03">Bay 03 Swarm</a></li>
-        <li><a href="#bay-04">Bay 04 Silicon</a></li>
-        <li><a href="#bay-05">Bay 05 Calibration</a></li>
-        <li><a href="https://roamingpigs.org/" class="ext-target" target="_blank" rel="noopener">.org Research Commons &rarr;</a></li>
-        <li><a href="https://roamingpigs.com/" class="ext-target" target="_blank" rel="noopener">.com Field Manual &rarr;</a></li>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="g-measured" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="currentColor"/></symbol>
+    <symbol id="g-modelled" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></symbol>
+    <symbol id="g-simulated" viewBox="0 0 16 16"><path d="M8 1.8 14.2 8 8 14.2 1.8 8z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="g-proposed" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-dasharray="2.6 2.2"/></symbol>
+  </defs>
+</svg>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">RoamingPigs <span>Instruments</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+<li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li>        <li><a class="sister" href="https://roamingpigs.org/">Research notes <span aria-hidden="true">&nearr;</span><span class="sr-only"> (roamingpigs.org)</span></a></li>
       </ul>
-
-      <div class="rail-ear-group">
-        <span class="rack-bolt" aria-hidden="true"></span>
+    </nav>
+    <details class="nav-toggle">
+      <summary>Menu</summary>
+      <nav class="site-nav-mobile" aria-label="Main (mobile)">
+        <ul>
+<li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li>          <li><a class="sister" href="https://roamingpigs.org/">Research notes (roamingpigs.org) &nearr;</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">RoamingPigs Instruments</p>
+      <h1>Instruments for the real cost of running AI.</h1>
+      <p class="lede">Calculators and explorers that show their assumptions. Where I have measurements, they use them. Where I do not, they say so.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="/inference-cost/">Open the cost calculator</a>
+        <a class="btn" href="/codec-grid/">Explore the transcripts</a>
       </div>
     </div>
-  </header>
-
-  <!-- Workbench Masthead / Apex Brand Bar -->
-  <section class="workbench-masthead">
-    <div class="rack-container">
-      <div class="masthead-grid">
-        <div class="brand-shield">
-          <img src="/favicon.svg" alt="RoamingPigs AI" class="brand-icon">
-          <div class="brand-identity">
-            <h1>
-              <span>RoamingPigs AI</span>
-              <span class="brand-code">MODULAR BENCH</span>
-            </h1>
-            <p class="tagline-primary">Independent Systems Physics &amp; Empirical AI Architecture</p>
-            <p class="tagline-subdescriptor">Signal &middot; Verdict &middot; Swarm &middot; Silicon</p>
-          </div>
-        </div>
-
-        <div class="masthead-spec-grid">
-          <div class="spec-cell">
-            <span class="spec-label">Acoustic Fixtures</span>
-            <span class="spec-val cyan">1,050 TRCS</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">Calibration Tasks</span>
-            <span class="spec-val emerald">504 Frozen</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">Asymmetric Risk</span>
-            <span class="spec-val amber">C_FA &gt;&gt; C_FR</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">Sustained APU Bus</span>
-            <span class="spec-val ruby">222.7 GB/s</span>
-          </div>
-        </div>
+    <aside class="hero-card" aria-label="Example calculator output">
+      <div class="cap"><span>Example, default inputs</span><span class="chip modelled"><svg aria-hidden="true"><use href="#g-modelled"/></svg>Modelled</span></div>
+      <p class="scn">30B mixture of experts, 3.3B active, Q4_K_M, 16k context, unified-memory APU</p>
+      <div class="trio">
+        <div class="a"><b>33–50</b><span>tokens per second</span></div>
+        <div><b>3.4–5.2</b><span>joules per token</span></div>
+        <div><b>$0.82</b><span>per million tokens</span></div>
       </div>
-    </div>
-  </section>
+      <p class="foot">Batch size one. Electricity is $0.21 of that. <a href="/inference-cost/">Change any input</a>.</p>
+    </aside>
+  </div>
+</section>
 
-  <!-- Quick Bay Navigation Bar -->
-  <nav class="bay-nav-strip" aria-label="Instrument Bay Selection">
-    <div class="rack-container bay-nav-flex">
-      <div class="control-label">INSTRUMENT BAYS:</div>
-      <ul class="bay-nav-items">
-        <li><a href="#bay-01">BAY 01: TRCS Acoustic Channel Analyzer</a></li>
-        <li><a href="#bay-02">BAY 02: VEC-SCR Verifier Covariance Scope</a></li>
-        <li><a href="#bay-03">BAY 03: Echo Swarm PRG Gate Array</a></li>
-        <li><a href="#bay-04">BAY 04: Silicon Thermodynamics &amp; Memory Roofline</a></li>
-        <li><a href="#bay-05">BAY 05: Master Calibration Bay Simulator</a></li>
+<section class="section" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="tools-h">Two instruments</h2>
+      <p>Each reads from data you can inspect and states what it cannot tell you.</p>
+    </div>
+    <div class="cards two">
+      <a class="card link" href="/inference-cost/">
+        <p><span class="chip modelled"><svg aria-hidden="true"><use href="#g-modelled"/></svg>Modelled</span> <span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span></p>
+        <h3>Inference cost calculator</h3>
+        <p>For a model on a given machine: memory needed, decode speed, energy per token and cost per million tokens. Checked against wall-meter runs on one machine.</p>
+        <div class="preview" aria-label="Preview: decode speed ceiling by hardware, default model">
+          <div class="row"><span>30B mixture of experts, 3.3B active, Q4_K_M</span><span>tokens per second, ceiling</span></div>
+          <div class="bars">
+<div class="bar-row"><span>APU</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="8.6" height="8" rx="2"/></svg><span class="v">59</span></div>
+<div class="bar-row"><span>Desktop</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="2.9" height="8" rx="2"/></svg><span class="v">20</span></div>
+<div class="bar-row"><span>Server</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="9.2" height="8" rx="2"/></svg><span class="v">64</span></div>
+<div class="bar-row"><span>GPU</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="100.0" height="8" rx="2"/></svg><span class="v">693</span></div>
+          </div>
+        </div>
+        <span class="go">Open the calculator &rarr;</span>
+      </a>
+      <a class="card link" href="/codec-grid/">
+        <p><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span></p>
+        <h3>Codec grid explorer</h3>
+        <p>900 real transcripts from 6 speech models, through 6 audio paths and 5 noise levels. Click a cell and read what the model wrote.</p>
+        <div class="preview" aria-label="Preview: mean word error rate by noise level">
+          <div class="row"><span>Mean word error</span><span>by noise level</span></div>
+          <div class="bars">
+<div class="bar-row alt"><span>No noise</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="37.4" height="8" rx="2"/></svg><span class="v">59%</span></div>
+<div class="bar-row alt"><span>20 dB</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="38.1" height="8" rx="2"/></svg><span class="v">60%</span></div>
+<div class="bar-row alt"><span>10 dB</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="51.0" height="8" rx="2"/></svg><span class="v">80%</span></div>
+<div class="bar-row alt"><span>0 dB</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="82.0" height="8" rx="2"/></svg><span class="v">129%</span></div>
+<div class="bar-row alt"><span>−6 dB</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="100.0" height="8" rx="2"/></svg><span class="v">158%</span></div>
+          </div>
+        </div>
+        <span class="go">Explore the transcripts &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="how-h">How these are built</h2>
+    </div>
+    <div class="principles">
+      <div class="principle"><h3>Assumptions in view</h3><p>Every default has a source and a date. Every input can be changed, and the page URL keeps your choices so you can share them.</p></div>
+      <div class="principle"><h3>Measured, modelled or assumed</h3><p>Each number carries a mark. A formula output is never presented as a reading, and an assumption is never presented as a measurement.</p></div>
+      <div class="principle"><h3>Limits first</h3><p>Each instrument says what it does not model. The calculator is an optimistic upper bound for batch size one, not a forecast for a busy server.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="rec-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="rec-h">The record behind the numbers</h2>
+      <p>The measurements these instruments use are published as dated records with their sample sizes and limits on roamingpigs.org. When I find a mistake, it goes in the corrections log.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="https://roamingpigs.org/#inference-energy">Energy records</a>
+      <a class="btn" href="https://roamingpigs.org/#radio-audio">Speech records</a>
+      <a class="btn" href="/method/">How the calculator works</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>RoamingPigs Instruments</h2>
+      <p>Calculators and explorers that show their assumptions. By <a href="https://ciscocaceres.com/">Cisco Caceres</a>. Self-published and not peer reviewed.</p>
+    </div>
+    <div>
+      <h2>Instruments</h2>
+      <ul><li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li></ul>
+    </div>
+    <div>
+      <h2>The record</h2>
+      <ul>
+        <li><a href="https://roamingpigs.org/">Research notes</a></li>
+        <li><a href="https://roamingpigs.org/corrections/">Corrections</a></li>
+        <li><a href="https://roamingpigs.org/datasets/trcs/">TRCS dataset</a></li>
+        <li><a href="https://ciscocaceres.com/research/">Papers</a></li>
       </ul>
     </div>
-  </nav>
-
-  <!-- Main Hardware Rack Chassis -->
-  <main class="rack-container hardware-rack">
-    <div class="rack-bays">
-
-      <!-- ====================================================================
-           BAY 01: TRCS ACOUSTIC CHANNEL ANALYZER
-           ==================================================================== -->
-      <article class="instrument-bay" id="bay-01">
-        <header class="bay-header-chassis">
-          <div class="bay-title-group">
-            <span class="bay-index">BAY 01</span>
-            <h2 class="bay-heading">TRCS Acoustic Channel Analyzer</h2>
-          </div>
-          <span class="bay-status-badge active">ONLINE // 8 kHz VAD GATED</span>
-        </header>
-
-        <div class="bay-body">
-          <p class="bay-lead-prose">
-            Characterizing vocoder parameter distortion, fricative collapse, and autoregressive hallucination loops across operational narrowband channels.
-          </p>
-
-          <!-- Interactive Codec Selection Buttons -->
-          <div class="instrument-controls">
-            <span class="control-label">Channel Profile:</span>
-            <button type="button" class="bezel-btn codec-btn active" data-codec="g711">ITU-T G.711 &mu;-law</button>
-            <button type="button" class="bezel-btn codec-btn" data-codec="amr">3GPP AMR-NB (12.2 kbps)</button>
-            <button type="button" class="bezel-btn codec-btn" data-codec="gsm">ETSI GSM-FR (13.0 kbps)</button>
-          </div>
-
-          <!-- Screen Recess: Oscillogram & Spectrum -->
-          <div class="screen-recess">
-            <div class="oscillogram-container">
-              <div class="oscilloscope-canvas-wrap">
-                <svg class="oscilloscope-svg" viewBox="0 0 400 180" preserveAspectRatio="none">
-                  <!-- Reticle Grid -->
-                  <defs>
-                    <pattern id="gridReticle" width="40" height="30" patternUnits="userSpaceOnUse">
-                      <path d="M 40 0 L 0 0 0 30" fill="none" stroke="rgba(0, 229, 255, 0.1)" stroke-width="1" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#gridReticle)" />
-                  <line x1="0" y1="90" x2="400" y2="90" stroke="rgba(0, 229, 255, 0.25)" stroke-width="1" stroke-dasharray="4 4" />
-                  <line x1="200" y1="0" x2="200" y2="180" stroke="rgba(0, 229, 255, 0.25)" stroke-width="1" stroke-dasharray="4 4" />
-                  
-                  <!-- FFT Spectrum Fill -->
-                  <path id="oscFftPath" d="M 0 170 L 40 40 L 80 80 L 120 120 L 160 165 L 200 170 L 400 170" fill="rgba(0, 229, 255, 0.08)" />
-                  
-                  <!-- Oscilloscope Trace -->
-                  <path id="oscWavePath" d="M 0 90 Q 25 15, 50 90 T 100 90 T 150 90 T 200 90 T 250 90 T 300 90 T 350 90 T 400 90" fill="none" stroke="#00e5ff" stroke-width="2" />
-                </svg>
-              </div>
-
-              <div class="acoustic-metrics-strip">
-                <div class="metric-row">
-                  <span class="metric-key">Specification</span>
-                  <span class="metric-val" id="codecSpecVal">8 kHz, 8-bit log PCM (64 kbps)</span>
-                </div>
-                <div class="metric-row">
-                  <span class="metric-key">Word Error Rate</span>
-                  <span class="metric-val" id="codecWerVal">18.2% &plusmn; 1.1% WER</span>
-                </div>
-                <div class="metric-row">
-                  <span class="metric-key">Fricative Attenuation</span>
-                  <span class="metric-val" id="codecFricativeVal">-14.2 dB (/s/ sibilance collapse)</span>
-                </div>
-                <div class="squelch-indicator-box">
-                  <div>
-                    <span class="squelch-led"></span>
-                    <span>SQUELCH NOISE GATE:</span>
-                  </div>
-                  <strong style="color: var(--led-emerald);">ACTIVE / BLOCKED</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pull-Out Schematic Drawer Toggle -->
-          <div class="drawer-toggle-row">
-            <button type="button" class="drawer-toggle-btn" data-drawer="drawer-bay-01">
-              <span>[PULL-OUT SCHEMATIC DRAWER &darr;]</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Telemetry Drawer -->
-        <div class="schematic-drawer" id="drawer-bay-01">
-          <div class="drawer-inner">
-            <div class="drawer-section-title">
-              <span>ITU-T G.712 Filter Specifications &amp; Tactical Sample Counts (n=1,050)</span>
-            </div>
-            <div class="telemetry-table-wrap">
-              <table class="telemetry-table">
-                <thead>
-                  <tr>
-                    <th>Channel Parameter</th>
-                    <th>Standard Specification</th>
-                    <th>Measured Impact</th>
-                    <th>Sample Fixtures</th>
-                    <th>Verification Digest</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="data-mono">G.712 Bandpass</td>
-                    <td>300 Hz &ndash; 3400 Hz (4th-order Butterworth)</td>
-                    <td>Collapse of /s/ causing "Sector" to register as "Hector"</td>
-                    <td class="data-mono">n = 1,050</td>
-                    <td class="data-emerald">SHA-256 VERIFIED</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">AMR-NB MR122</td>
-                    <td>3GPP TS 26.071 ACELP (12.2 kbps)</td>
-                    <td>Smearing of nasal vowel anti-formants under 8 kHz</td>
-                    <td class="data-mono">n = 1,050</td>
-                    <td class="data-emerald">SHA-256 VERIFIED</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">GSM 06.10 FR</td>
-                    <td>ETSI GSM 06.10 RPE-LTP (13.0 kbps)</td>
-                    <td>Regular pulse excitation distortion on plosive bursts</td>
-                    <td class="data-mono">n = 1,050</td>
-                    <td class="data-emerald">SHA-256 VERIFIED</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Squelch Tail</td>
-                    <td>FM Discriminator Unmuting (50&ndash;150 ms)</td>
-                    <td>Ungrounded hallucinations (24 to 160 WPM) without energy gate</td>
-                    <td class="data-mono">n = 1,050</td>
-                    <td class="data-emerald">SHA-256 VERIFIED</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="drawer-section-title">
-              <span>Hugging Face Hermetic Replication</span>
-            </div>
-            <div class="code-snippet-box">
-              <code>from datasets import load_dataset<br>
-# Load 1,050 tactical radio fixtures with cryptographic SHA-256 manifest<br>
-ds = load_dataset("RoamingPigs/trcs-tactical-audio")<br>
-print(f"Loaded {len(ds['test'])} clips across 30 narrowband conditions")</code>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ====================================================================
-           BAY 02: VEC-SCR VERIFIER COVARIANCE SCOPE
-           ==================================================================== -->
-      <article class="instrument-bay" id="bay-02">
-        <header class="bay-header-chassis">
-          <div class="bay-title-group">
-            <span class="bay-index">BAY 02</span>
-            <h2 class="bay-heading">VEC-SCR Verifier Covariance Scope</h2>
-          </div>
-          <span class="bay-status-badge amber">CALIBRATED // N=504 TASKS</span>
-        </header>
-
-        <div class="bay-body">
-          <p class="bay-lead-prose">
-            2D decision error scope characterizing positive verifier error dependence (&rho; = 0.42 &plusmn; 0.04) and asymmetric risk penalty dynamics in test-time compute.
-          </p>
-
-          <!-- Interactive Controls -->
-          <div class="instrument-controls">
-            <span class="control-label">Decision Risk Model:</span>
-            <button type="button" class="bezel-btn risk-btn risk-active" data-risk="asymmetric">Asymmetric Loss (C_FA &gt;&gt; C_FR, 10:1 Ratio)</button>
-            <button type="button" class="bezel-btn risk-btn" data-risk="symmetric">Symmetric Loss (C_FA = C_FR)</button>
-          </div>
-
-          <!-- Screen Recess: 2D Covariance Plot & Readouts -->
-          <div class="screen-recess">
-            <div class="scope-2d-layout">
-              <div class="scope-plot-pane">
-                <svg class="covariance-svg" viewBox="0 0 240 220">
-                  <!-- Scope Grid -->
-                  <defs>
-                    <pattern id="scopeGrid" width="24" height="22" patternUnits="userSpaceOnUse">
-                      <path d="M 24 0 L 0 0 0 22" fill="none" stroke="rgba(255, 176, 0, 0.12)" stroke-width="1" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#scopeGrid)" />
-                  <line x1="20" y1="200" x2="220" y2="200" stroke="#475569" stroke-width="1" />
-                  <line x1="20" y1="20" x2="20" y2="200" stroke="#475569" stroke-width="1" />
-                  <text x="200" y="215" fill="#94a3b8" font-size="9" font-family="monospace">e_A</text>
-                  <text x="24" y="28" fill="#94a3b8" font-size="9" font-family="monospace">e_B</text>
-
-                  <!-- Positive Covariance Ellipse (rho = 0.42) -->
-                  <ellipse cx="110" cy="110" rx="65" ry="28" transform="rotate(-40 110 110)" fill="rgba(255, 176, 0, 0.15)" stroke="#ffb000" stroke-width="1.5" />
-                  
-                  <!-- Decision Boundary Line -->
-                  <line id="scopeBoundaryLine" x1="60" y1="190" x2="200" y2="30" stroke="#ff3344" stroke-width="2" stroke-dasharray="4 3" />
-                  <text x="130" y="70" fill="#ff3344" font-size="9" font-family="monospace">Boundary &tau;*</text>
-                </svg>
-              </div>
-
-              <div class="scope-telemetry-pane">
-                <div class="metric-row">
-                  <span class="metric-key">Error Correlation</span>
-                  <span class="metric-val" style="color: var(--led-amber);">&rho; = 0.42 &plusmn; 0.04</span>
-                </div>
-                <div class="metric-row">
-                  <span class="metric-key">Penalty Ratio</span>
-                  <span class="metric-val" id="scopeRiskStatus">C_FA &gt;&gt; C_FR (10:1 Ratio)</span>
-                </div>
-                <div class="metric-row">
-                  <span class="metric-key">Abstention Rate</span>
-                  <span class="metric-val" id="scopeAbstainRate">95.7% Bayes Risk Reduction (&tau; = 0.70)</span>
-                </div>
-                <div class="metric-row">
-                  <span class="metric-key">Log-Odds Status</span>
-                  <span class="metric-val" id="scopeOverconf">Corrected: 59.4% Posterior Log-Odds</span>
-                </div>
-
-                <div class="stopping-stages-strip">
-                  <span class="metric-key">Sequential Stopping Horizon (Optimal K* = 3):</span>
-                  <div class="stopping-stage-steps">
-                    <div class="stopping-stage-step active-step">Stage 1 (&tau;<sub>1</sub>*)</div>
-                    <div class="stopping-stage-step active-step">Stage 2 (&tau;<sub>2</sub>*)</div>
-                    <div class="stopping-stage-step terminal-stop">Stage 3 (&tau;<sub>3</sub>* &rarr; Stop)</div>
-                    <div class="stopping-stage-step">Stage 4 (&mdash;)</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pull-Out Schematic Drawer Toggle -->
-          <div class="drawer-toggle-row">
-            <button type="button" class="drawer-toggle-btn" data-drawer="drawer-bay-02">
-              <span>[PULL-OUT SCHEMATIC DRAWER &darr;]</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Telemetry Drawer -->
-        <div class="schematic-drawer" id="drawer-bay-02">
-          <div class="drawer-inner">
-            <div class="drawer-section-title">
-              <span>Neyman-Pearson Formulations &amp; Dynamic Programming Calibration</span>
-            </div>
-            <div class="telemetry-table-wrap">
-              <table class="telemetry-table">
-                <thead>
-                  <tr>
-                    <th>Theoretical Formulation</th>
-                    <th>Analytical Expression</th>
-                    <th>Empirical Calibration Result</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="data-mono">Theorem 1: Total Error Covariance</td>
-                    <td>&sigma;<sub>AB</sub> = (1&minus;&pi;)&sigma;<sub>FA</sub> + &pi;&sigma;<sub>FR</sub> + &pi;(1&minus;&pi;)(&alpha;<sub>A</sub>&minus;&beta;<sub>A</sub>)(&alpha;<sub>B</sub>&minus;&beta;<sub>B</sub>)</td>
-                    <td class="data-emerald">&Sigma;<sub>AB</sub> = 0.42 &plusmn; 0.04 over 504 calibration tasks</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Lemma 1: Coupling Saturation</td>
-                    <td>&kappa;<sub>FA</sub> = &sigma;<sub>FA</sub> / &radic;(&alpha;<sub>A</sub>(1&minus;&alpha;<sub>A</sub>)&alpha;<sub>B</sub>(1&minus;&alpha;<sub>B</sub>))</td>
-                    <td class="data-emerald">89.53% saturation of Fr&eacute;chet-Hoeffding upper bound</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Theorem 2: Bayesian Log-Odds Distortion</td>
-                    <td>&Delta;I = ln(1 + &sigma;<sub>FA</sub> / (&alpha;<sub>A</sub> &alpha;<sub>B</sub>))</td>
-                    <td class="data-emerald">+2.675 nats uncalibrated distortion under independent voting</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Theorem 3: Stopping Monotonicity</td>
-                    <td>&tau;<sub>1</sub>* &gt; &tau;<sub>2</sub>* &gt; &hellip; &gt; &tau;<sub>K</sub>* under C<sub>FA</sub> &gt;&gt; C<sub>FR</sub></td>
-                    <td class="data-emerald">Optimal stopping terminates at stage K* = 3</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ====================================================================
-           BAY 03: ECHO SWARM PRG GATE ARRAY
-           ==================================================================== -->
-      <article class="instrument-bay" id="bay-03">
-        <header class="bay-header-chassis">
-          <div class="bay-title-group">
-            <span class="bay-index">BAY 03</span>
-            <h2 class="bay-heading">Echo Swarm PRG Gate Array</h2>
-          </div>
-          <span class="bay-status-badge nominal">10 CHANNELS SYNCED</span>
-        </header>
-
-        <div class="bay-body">
-          <p class="bay-lead-prose">
-            Concurrency logic analyzer monitoring 10 autonomous agents across 12,400 advisory file holds, verifying zero lock collisions and publication gate criteria.
-          </p>
-
-          <!-- Screen Recess: Logic Analyzer Timing Diagram -->
-          <div class="screen-recess">
-            <div class="swarm-logic-grid">
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 01 // AGT-01</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave"></div></div>
-                <span class="channel-status">HOLD LEASED (0.00ms)</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 02 // AGT-02</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 4.8s;"></div></div>
-                <span class="channel-status">HEARTBEAT OK</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 03 // AGT-03</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 5.5s;"></div></div>
-                <span class="channel-status">VERIFYING CODEC</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 04 // AGT-04</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 5.2s;"></div></div>
-                <span class="channel-status">TASK DISPATCH</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 05 // AGT-05</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 6.2s;"></div></div>
-                <span class="channel-status">ATOMIC RELEASE</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 06 // AGT-06</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 4.4s;"></div></div>
-                <span class="channel-status">HOLD LEASED</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 07 // AGT-07</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 5.8s;"></div></div>
-                <span class="channel-status">HEARTBEAT OK</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 08 // AGT-08</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 5.0s;"></div></div>
-                <span class="channel-status">HOLD LEASED</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 09 // AGT-09</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 6.5s;"></div></div>
-                <span class="channel-status">SYNC BARRIER</span>
-              </div>
-              <div class="logic-channel-row">
-                <span class="channel-id">CH 10 // AGT-10</span>
-                <div class="channel-pulse-rail"><div class="channel-pulse-wave" style="animation-duration: 4.9s;"></div></div>
-                <span class="channel-status">GATE VERIFIED</span>
-              </div>
-            </div>
-
-            <!-- Telemetry Summary Statistics Strip -->
-            <div class="swarm-stats-row">
-              <div class="swarm-stat-box">
-                <div class="swarm-stat-num">10</div>
-                <div class="swarm-stat-label">Active Agents</div>
-              </div>
-              <div class="swarm-stat-box">
-                <div class="swarm-stat-num">12,400</div>
-                <div class="swarm-stat-label">Advisory File Holds</div>
-              </div>
-              <div class="swarm-stat-box">
-                <div class="swarm-stat-num" style="color: var(--led-cyan);">0.00%</div>
-                <div class="swarm-stat-label">Lock Collisions</div>
-              </div>
-              <div class="swarm-stat-box">
-                <div class="swarm-stat-num">84.7% &plusmn; 1.6%</div>
-                <div class="swarm-stat-label">Pass^5 Consistency</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pull-Out Schematic Drawer Toggle -->
-          <div class="drawer-toggle-row">
-            <button type="button" class="drawer-toggle-btn" data-drawer="drawer-bay-03">
-              <span>[PULL-OUT SCHEMATIC DRAWER &darr;]</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Telemetry Drawer -->
-        <div class="schematic-drawer" id="drawer-bay-03">
-          <div class="drawer-inner">
-            <div class="drawer-section-title">
-              <span>Publication Readiness Gate Array (PRG 01&ndash;06 Verification Checklist)</span>
-            </div>
-            <div class="telemetry-table-wrap">
-              <table class="telemetry-table">
-                <thead>
-                  <tr>
-                    <th>Gate Identifier</th>
-                    <th>Standard Requirement</th>
-                    <th>Telemetry Verification Method</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="data-mono">PRG-GATE-01</td>
-                    <td>Cryptographic Provenance</td>
-                    <td>SHA-256 manifests across 1,050 audio fixtures and weights</td>
-                    <td class="data-emerald">PASSED (0 missing)</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">PRG-GATE-02</td>
-                    <td>Dependency Isolation</td>
-                    <td>Hermetic clean-room execution in standard Python without host paths</td>
-                    <td class="data-emerald">PASSED (Hermetic)</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">PRG-GATE-03</td>
-                    <td>Negative Controls</td>
-                    <td>Ground truth WER=0.0; Silence deletion WER=1.0; Squelch test</td>
-                    <td class="data-emerald">PASSED (Invariants hold)</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">PRG-GATE-04</td>
-                    <td>Schema Validity</td>
-                    <td>Strict JSON schema validation; zero undefined or NaN variables</td>
-                    <td class="data-emerald">PASSED (Valid)</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">PRG-GATE-05</td>
-                    <td>Statistical Rigor</td>
-                    <td>95% confidence intervals via 1,000 stratified bootstrap resamples</td>
-                    <td class="data-emerald">PASSED (Powered N)</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">PRG-GATE-06</td>
-                    <td>Public Surface Boundaries</td>
-                    <td>Bio-canon compliance: zero vendor model names in public copy</td>
-                    <td class="data-emerald">PASSED (Clean)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ====================================================================
-           BAY 04: SILICON THERMODYNAMICS & MEMORY ROOFLINE
-           ==================================================================== -->
-      <article class="instrument-bay" id="bay-04">
-        <header class="bay-header-chassis">
-          <div class="bay-title-group">
-            <span class="bay-index">BAY 04</span>
-            <h2 class="bay-heading">Silicon Thermodynamics &amp; Memory Roofline</h2>
-          </div>
-          <span class="bay-status-badge ruby">HWMON5 TELEMETRY ACTIVE</span>
-        </header>
-
-        <div class="bay-body">
-          <p class="bay-lead-prose">
-            Calibrated hardware telemetry monitoring wall power draw, thermodynamic prefill-decode asymmetry, and sustained 256-bit APU memory bus saturation.
-          </p>
-
-          <!-- Screen Recess: Needle Wattmeter & Nixie Panel -->
-          <div class="screen-recess">
-            <div class="thermo-meters-layout">
-              
-              <!-- Analog Needle Wattmeter -->
-              <div class="wattmeter-chassis">
-                <svg class="wattmeter-svg" viewBox="0 0 260 150">
-                  <!-- Dial Face Arc -->
-                  <path d="M 30 130 A 100 100 0 0 1 230 130" fill="none" stroke="#2a3346" stroke-width="12" />
-                  <!-- Yellow Warning Arc -->
-                  <path d="M 160 38 A 100 100 0 0 1 205 68" fill="none" stroke="#ffb000" stroke-width="12" />
-                  <!-- Redline Warning Arc -->
-                  <path d="M 205 68 A 100 100 0 0 1 230 130" fill="none" stroke="#ff3344" stroke-width="12" />
-                  
-                  <!-- Scale Ticks and Numbers -->
-                  <text x="32" y="145" fill="#64748b" font-size="10" font-family="monospace">0W</text>
-                  <text x="75" y="70" fill="#64748b" font-size="10" font-family="monospace">75W</text>
-                  <text x="120" y="42" fill="#64748b" font-size="10" font-family="monospace">150W</text>
-                  <text x="180" y="70" fill="#ffb000" font-size="10" font-family="monospace">225W</text>
-                  <text x="210" y="145" fill="#ff3344" font-size="10" font-family="monospace">300W</text>
-                  
-                  <!-- Needle Element (Pivot at 130, 130) -->
-                  <g id="wattmeterNeedle" transform="rotate(-16.6, 130, 130)" style="transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);">
-                    <line x1="130" y1="130" x2="130" y2="35" stroke="#ff3344" stroke-width="2.5" />
-                    <circle cx="130" cy="130" r="6" fill="#1e293b" stroke="#ffffff" stroke-width="1.5" />
-                  </g>
-                </svg>
-                <div class="wattmeter-dial-label">
-                  <span>WALL POWER: </span>
-                  <span id="wattmeterValLabel" style="color: #ffffff;">108 W</span>
-                </div>
-              </div>
-
-              <!-- Nixie Tube & Roofline Status -->
-              <div class="nixie-panel-chassis">
-                <div class="nixie-display-cage">
-                  <div class="nixie-label-group">
-                    <div class="nixie-header-tag">THERMODYNAMIC EFFICIENCY</div>
-                    <div class="nixie-sub-tag">WALL JOULES / TOKEN</div>
-                  </div>
-                  <div class="nixie-readout" id="nixieDigitReadout">1.66 J</div>
-                </div>
-
-                <div class="roofline-meter-box">
-                  <div class="roofline-meta-flex">
-                    <span>256-bit Unified APU Memory Bus</span>
-                    <strong style="color: var(--led-cyan);" id="rooflinePercent">87.0%</strong>
-                  </div>
-                  <div class="roofline-bar-track">
-                    <div class="roofline-bar-fill" id="rooflineBarFill"></div>
-                  </div>
-                  <div class="roofline-meta-flex">
-                    <span id="rooflineBwLabel">222.7 GB/s sustained</span>
-                    <span>256.0 GB/s theoretical</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Pull-Out Schematic Drawer Toggle -->
-          <div class="drawer-toggle-row">
-            <button type="button" class="drawer-toggle-btn" data-drawer="drawer-bay-04">
-              <span>[PULL-OUT SCHEMATIC DRAWER &darr;]</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Telemetry Drawer -->
-        <div class="schematic-drawer" id="drawer-bay-04">
-          <div class="drawer-inner">
-            <div class="drawer-section-title">
-              <span>Physical Power Telemetry &amp; Prefill-Decode Thermodynamic Breakdown</span>
-            </div>
-            <div class="telemetry-table-wrap">
-              <table class="telemetry-table">
-                <thead>
-                  <tr>
-                    <th>Operating Phase</th>
-                    <th>Wall Power Draw</th>
-                    <th>Silicon Package (PPT)</th>
-                    <th>Joules / Token</th>
-                    <th>Thermodynamic Ratio</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="data-mono">System Idle (Baseline)</td>
-                    <td>15.0 W (AC Wall)</td>
-                    <td>4.2 W (SoC hwmon5)</td>
-                    <td>&mdash;</td>
-                    <td>Baseline tare</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Prefill Phase (Compute-Bound)</td>
-                    <td>42.0 W (AC Wall)</td>
-                    <td>28.5 W (SoC hwmon5)</td>
-                    <td class="data-emerald">0.1305 J / token</td>
-                    <td>1.0&times; (Reference)</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Decode Phase (Memory-Bound)</td>
-                    <td>108.4 W (AC Wall)</td>
-                    <td>78.2 W (SoC hwmon5)</td>
-                    <td class="data-mono">2.8220 J / token</td>
-                    <td class="data-mono" style="color: var(--led-amber);">21.6&times; Prefill Asymmetry</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Sustained APU Bus Peak</td>
-                    <td>108.4 W (AC Wall)</td>
-                    <td>80.0 W (Full Package)</td>
-                    <td class="data-emerald">1.66 J / token (30B MoE tier)</td>
-                    <td>87.0% Saturation Efficiency</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ====================================================================
-           BAY 05: MASTER CALIBRATION BAY & SIZING SIMULATOR
-           ==================================================================== -->
-      <article class="instrument-bay" id="bay-05">
-        <header class="bay-header-chassis">
-          <div class="bay-title-group">
-            <span class="bay-index">BAY 05</span>
-            <h2 class="bay-heading">Master Calibration Bay (Hardware Sizing Simulator)</h2>
-          </div>
-          <span class="bay-status-badge active">REACTIVE TELEMETRY ENGINE</span>
-        </header>
-
-        <div class="bay-body">
-          <p class="bay-lead-prose">
-            Interactive silicon calibration engine. Adjust model architecture, quantization format, and context length to dynamically drive Bay 04 wattmeter deflection and full TCO economics.
-          </p>
-
-          <div class="simulator-bay-grid">
-            
-            <!-- Controls Pane -->
-            <div class="simulator-controls-pane">
-              <div class="sim-field">
-                <div class="sim-label-row">
-                  <span>Model Parameter Class</span>
-                  <span class="sim-label-unit">ARCHITECTURE</span>
-                </div>
-                <select id="modelSelect" class="sim-select">
-                  <option value="8b">8B Dense (32 layers, 4096 hidden)</option>
-                  <option value="14b">14B Dense (48 layers, 5120 hidden)</option>
-                  <option value="32b">32B Dense (64 layers, 5120 hidden)</option>
-                  <option value="70b">70B Dense (80 layers, 8192 hidden)</option>
-                  <option value="moe_30b" selected>30B MoE (48 layers, 3.3B active weights)</option>
-                </select>
-              </div>
-
-              <div class="sim-field">
-                <div class="sim-label-row">
-                  <span>Quantization Scheme</span>
-                  <span class="sim-label-unit">BITS / WEIGHT</span>
-                </div>
-                <select id="quantSelect" class="sim-select">
-                  <option value="fp16">FP16 (16.0 bpw &ndash; Uncompressed)</option>
-                  <option value="q8_0">Q8_0 (8.5 bpw &ndash; Near-Lossless)</option>
-                  <option value="q5_k_m">Q5_K_M (5.5 bpw &ndash; High Fidelity)</option>
-                  <option value="q4_k_m" selected>Q4_K_M (4.8 bpw &ndash; Frontier Sweet Spot)</option>
-                  <option value="iq4_xs">IQ4_XS (4.25 bpw &ndash; Compact Matrix)</option>
-                </select>
-              </div>
-
-              <div class="sim-field">
-                <div class="sim-label-row">
-                  <span>Context Window Length</span>
-                  <span class="sim-label-unit" id="contextVal">16,384 tokens</span>
-                </div>
-                <input type="range" id="contextSlider" class="sim-slider" min="2048" max="65536" step="2048" value="16384">
-              </div>
-
-              <div class="sim-field">
-                <div class="sim-label-row">
-                  <span>Hardware Target Architecture</span>
-                  <span class="sim-label-unit">SYSTEM CLASS</span>
-                </div>
-                <select id="hwSelect" class="sim-select">
-                  <option value="unified_apu" selected>Sovereign Unified APU (256-bit LPDDR5X, 256 GB/s peak)</option>
-                  <option value="desktop_ddr5">Desktop Dual-Channel DDR5 (128-bit DDR5-6000, 96 GB/s peak)</option>
-                  <option value="server_ddr5">Server Multi-Channel DDR5 (8-Channel DDR5-4800, 307 GB/s peak)</option>
-                  <option value="discrete_hbm">Datacenter HBM Accelerator (80GB HBM3, 3,350 GB/s peak)</option>
-                </select>
-              </div>
-
-              <div class="sim-field">
-                <div class="sim-label-row">
-                  <span>Grid Electricity Tariff</span>
-                  <span class="sim-label-unit">USD / KWH</span>
-                </div>
-                <input type="number" id="tariffInput" class="sim-input" value="0.14" step="0.01" min="0.01">
-              </div>
-            </div>
-
-            <!-- Readouts Screen -->
-            <div class="simulator-readouts-pane">
-              <div class="readouts-matrix">
-                <div class="readout-cell highlight">
-                  <div class="cell-title">Total RAM Allocation</div>
-                  <div class="cell-data cyan" id="ramVal">-- GB</div>
-                </div>
-                <div class="readout-cell">
-                  <div class="cell-title">KV-Cache Allocation</div>
-                  <div class="cell-data" id="kvVal">-- GB</div>
-                </div>
-                <div class="readout-cell">
-                  <div class="cell-title">Sustained Bandwidth</div>
-                  <div class="cell-data" id="bwVal">-- GB/s</div>
-                </div>
-                <div class="readout-cell emerald">
-                  <div class="cell-title">Decode Speed</div>
-                  <div class="cell-data emerald" id="speedVal">-- tok/s</div>
-                </div>
-                <div class="readout-cell">
-                  <div class="cell-title">Wall Power Draw</div>
-                  <div class="cell-data amber" id="powerVal">-- W</div>
-                </div>
-                <div class="readout-cell">
-                  <div class="cell-title">Energy per Token</div>
-                  <div class="cell-data" id="energyVal">-- J/tok</div>
-                </div>
-                <div class="readout-cell">
-                  <div class="cell-title">Electricity Cost / 1M Tokens</div>
-                  <div class="cell-data" id="costElecVal">--</div>
-                </div>
-                <div class="readout-cell highlight">
-                  <div class="cell-title">Amortized 3-Yr TCO / 1M Tokens</div>
-                  <div class="cell-data cyan" id="costTcoVal">--</div>
-                </div>
-              </div>
-
-              <div class="verdict-banner">
-                <span class="verdict-tag">ECONOMIC VERDICT:</span>
-                <span class="verdict-text" id="savingsVal">Calculating...</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Pull-Out Schematic Drawer Toggle -->
-          <div class="drawer-toggle-row">
-            <button type="button" class="drawer-toggle-btn" data-drawer="drawer-bay-05">
-              <span>[PULL-OUT SCHEMATIC DRAWER &darr;]</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Telemetry Drawer -->
-        <div class="schematic-drawer" id="drawer-bay-05">
-          <div class="drawer-inner">
-            <div class="drawer-section-title">
-              <span>Comparative Hardware Architecture Physics &amp; Memory Roofline Formulations</span>
-            </div>
-            <div class="telemetry-table-wrap">
-              <table class="telemetry-table">
-                <thead>
-                  <tr>
-                    <th>Hardware Architecture Class</th>
-                    <th>Bus Interface Width</th>
-                    <th>Peak Memory Bandwidth</th>
-                    <th>Sustained Saturation</th>
-                    <th>Idle / Active System Power</th>
-                    <th>Capital Cost / Mtok</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="data-mono">Sovereign Unified APU</td>
-                    <td>256-bit LPDDR5X-8000</td>
-                    <td>256.0 GB/s</td>
-                    <td class="data-emerald">87.0% sustained</td>
-                    <td>15 W / 108 W</td>
-                    <td class="data-mono">$0.65 / Mtok</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Desktop Dual-Channel DDR5</td>
-                    <td>128-bit DDR5-6000</td>
-                    <td>96.0 GB/s</td>
-                    <td class="data-mono">78.0% sustained</td>
-                    <td>45 W / 175 W</td>
-                    <td class="data-mono">$1.20 / Mtok</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Server 8-Channel DDR5</td>
-                    <td>512-bit DDR5-4800</td>
-                    <td>307.2 GB/s</td>
-                    <td class="data-mono">81.0% sustained</td>
-                    <td>95 W / 380 W</td>
-                    <td class="data-mono">$2.10 / Mtok</td>
-                  </tr>
-                  <tr>
-                    <td class="data-mono">Datacenter HBM Accelerator</td>
-                    <td>5,120-bit HBM3</td>
-                    <td>3,350.0 GB/s</td>
-                    <td class="data-mono">72.0% sustained</td>
-                    <td>250 W / 1,050 W</td>
-                    <td class="data-mono">$9.50 / Mtok</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="drawer-section-title">
-              <span>Roofline Formula &amp; Analytical Equations</span>
-            </div>
-            <div class="code-snippet-box">
-              <code>Generation Speed (tok/s) = (Peak_BW * Efficiency) / (Active_Weights_GB + 0.05 * KV_Cache_GB)<br>
-Energy (J/token) = Wall_Power_Watts / Generation_Speed_tok_s<br>
-Amortized TCO ($/Mtok) = Electricity_Cost + Capital_Depreciation_Rate</code>
-            </div>
-          </div>
-        </div>
-      </article>
-
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://roamingpigs.com/">Field Manual</a></li>
+        <li><a href="https://github.com/RoamingPigs">GitHub</a></li>
+        <li><a href="https://huggingface.co/RoamingPigs">Hugging Face</a></li>
+        <li><a href="https://orcid.org/0009-0005-7810-5077">ORCID</a></li>
+      </ul>
     </div>
-  </main>
-
-  <!-- Ground Base Plate & Colophon Footer -->
-  <footer class="workbench-footer">
-    <div class="rack-container">
-      
-      <!-- Ground Busbar -->
-      <div class="ground-rail-strip">
-        <div class="ground-rail-flex">
-          <div>CHASSIS GROUND LUG: EARTH BONDED // ZERO OHMIC DRIFT</div>
-          <div>CALIBRATION TIMESTAMP: 2026-10 // SHA-256 MANIFEST VERIFIED</div>
-        </div>
-      </div>
-
-      <div class="footer-colophon-grid">
-        <div class="colophon-desc">
-          <h3>RoamingPigs AI</h3>
-          <p>
-            An independent AI systems practice. Formulating mathematical limits, conducting clean-room empirical benchmarks, and characterizing sovereign hardware thermodynamics. Error bars included.
-          </p>
-        </div>
-
-        <div class="footer-nav-col">
-          <h4>Modular Bays</h4>
-          <ul>
-            <li><a href="#bay-01">Bay 01: TRCS Speech</a></li>
-            <li><a href="#bay-02">Bay 02: VEC-SCR Verifiers</a></li>
-            <li><a href="#bay-03">Bay 03: Echo Swarm PRG</a></li>
-            <li><a href="#bay-04">Bay 04: Silicon Thermodynamics</a></li>
-            <li><a href="#bay-05">Bay 05: Sizing Simulator</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-nav-col">
-          <h4>Ecosystem Triad</h4>
-          <ul>
-            <li><a href="https://roamingpigs.com/" target="_blank" rel="noopener"><strong>.com:</strong> The Field Manual</a></li>
-            <li><a href="https://roamingpigs.org/" target="_blank" rel="noopener"><strong>.org:</strong> The Research Commons</a></li>
-            <li><a href="https://roamingpigs.ai/"><strong>.ai:</strong> The Instrument Lab</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-nav-col">
-          <h4>Open Artifacts</h4>
-          <ul>
-            <li><a href="https://huggingface.co/datasets/RoamingPigs/trcs-tactical-audio" target="_blank" rel="noopener">TRCS Dataset Card</a></li>
-            <li><a href="https://github.com/RoamingPigs/trcs" target="_blank" rel="noopener">TRCS Evaluation Suite</a></li>
-            <li><a href="https://github.com/RoamingPigs/roamingpigs.ai" target="_blank" rel="noopener">roamingpigs.ai GitHub</a></li>
-            <li><a href="https://orcid.org/0009-0005-7810-5077" target="_blank" rel="noopener">ORCID 0009-0005-7810-5077</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="colophon-bottom-bar">
-        <div>&copy; 2026 RoamingPigs AI. All rights reserved. SHA-256 Provenance Verified.</div>
-        <div>Anodized Modular Instrument Workbench &middot; Hardware Rack Edition.</div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="/js/calculator.js"></script>
+    <p class="footer-note">&copy; 2026 Cisco Caceres. No cookies, no analytics, nothing loaded from other domains. Everything you type into an instrument stays in your browser. Last build 11 October 2026.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=294f21cf" defer></script>
 </body>
 </html>

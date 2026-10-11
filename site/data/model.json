@@ -1,0 +1,287 @@
+{
+  "_note": "Constants for the inference calculator. Every value has a source and a date. Measured runs are merged in from data/canon.json at build time.",
+  "version": "2026-10-11",
+  "model_formula": "tokens_per_s = efficiency * peak_bandwidth / (active_weights_GB + kv_cache_GB)",
+  "overhead_gb": {
+    "value": 2.0,
+    "basis": "assumed",
+    "note": "Runtime buffers and the operating system. Adjust if your stack differs."
+  },
+  "quants": [
+    {
+      "id": "fp16",
+      "label": "FP16",
+      "bpw": 16.0,
+      "source": "Definition of the format"
+    },
+    {
+      "id": "q8_0",
+      "label": "Q8_0",
+      "bpw": 8.5,
+      "source": "llama.cpp quantize README, fetched 2026-10-11"
+    },
+    {
+      "id": "q5_k_m",
+      "label": "Q5_K_M",
+      "bpw": 5.7,
+      "source": "llama.cpp quantize README, whole-model figure, fetched 2026-10-11"
+    },
+    {
+      "id": "q4_k_m",
+      "label": "Q4_K_M",
+      "bpw": 4.89,
+      "source": "llama.cpp quantize README, whole-model figure, fetched 2026-10-11"
+    },
+    {
+      "id": "iq4_xs",
+      "label": "IQ4_XS",
+      "bpw": 4.46,
+      "source": "llama.cpp quantize README, whole-model figure, fetched 2026-10-11"
+    }
+  ],
+  "models": [
+    {
+      "id": "d8",
+      "label": "8B dense",
+      "kind": "dense",
+      "total_b": 8.0,
+      "active_b": 8.0,
+      "layers": 32,
+      "kv_heads": 8,
+      "head_dim": 128,
+      "source": "Public config.json of an 8B open model, fetched 2026-10-11"
+    },
+    {
+      "id": "d14",
+      "label": "14B dense",
+      "kind": "dense",
+      "total_b": 14.8,
+      "active_b": 14.8,
+      "layers": 48,
+      "kv_heads": 8,
+      "head_dim": 128,
+      "source": "Public config.json of a 14B open model, fetched 2026-10-11"
+    },
+    {
+      "id": "d32",
+      "label": "32B dense",
+      "kind": "dense",
+      "total_b": 32.8,
+      "active_b": 32.8,
+      "layers": 64,
+      "kv_heads": 8,
+      "head_dim": 128,
+      "source": "Public config.json of a 32B open model, fetched 2026-10-11"
+    },
+    {
+      "id": "d70",
+      "label": "70B dense",
+      "kind": "dense",
+      "total_b": 70.6,
+      "active_b": 70.6,
+      "layers": 80,
+      "kv_heads": 8,
+      "head_dim": 128,
+      "source": "Public config.json of a 70B open model, fetched 2026-10-11"
+    },
+    {
+      "id": "m30",
+      "label": "30B mixture of experts, 3.3B active",
+      "kind": "moe",
+      "total_b": 30.5,
+      "active_b": 3.3,
+      "layers": 48,
+      "kv_heads": 4,
+      "head_dim": 128,
+      "source": "Public config.json of a 30B-A3B open model, fetched 2026-10-11"
+    }
+  ],
+  "expected_fraction_of_ceiling": {
+    "dense": {
+      "low": 0.9,
+      "high": 1.07,
+      "basis": "Spans the metered dense run and the published 70B range. The method page shows each ratio."
+    },
+    "moe": {
+      "low": 0.55,
+      "high": 0.85,
+      "basis": "Spans the metered mixture run and the published 30B-A3B range. The method page shows each ratio."
+    }
+  },
+  "hardware": [
+    {
+      "id": "apu",
+      "label": "Unified-memory APU, 256-bit LPDDR5X-8000",
+      "peak_gbps": 256.0,
+      "capacity_gb": 122.7,
+      "efficiency": {
+        "value": 0.84,
+        "basis": "measured",
+        "range": [
+          0.83,
+          0.88
+        ],
+        "source": "About 215 GB/s sustained on this class of machine (Framework community forum, 2025-07-22); 83 to 88% in the owner's ledger, 2026-10-10"
+      },
+      "power_w": {
+        "dense": 140,
+        "moe": 171,
+        "basis": "measured",
+        "source": "Smart-plug wall power, one run each, 2026-10-10: 139.6 W (9.7B dense), 170.7 W (31B mixture). Other sizes assumed equal to the nearest class."
+      },
+      "cost": {
+        "mode": "own",
+        "price_usd": 2400,
+        "life_years": 3,
+        "basis": "assumed",
+        "source": "Illustrative. 128 GB machines of this class were listed near $2,459 in January 2026."
+      },
+      "validated": true
+    },
+    {
+      "id": "desktop",
+      "label": "Desktop, dual-channel DDR5-6000",
+      "peak_gbps": 96.0,
+      "capacity_gb": 64,
+      "efficiency": {
+        "value": 0.75,
+        "basis": "assumed",
+        "range": [
+          0.6,
+          0.85
+        ],
+        "source": "No measurement found. A plausibility range."
+      },
+      "power_w": {
+        "dense": 150,
+        "moe": 150,
+        "basis": "assumed",
+        "source": "Assumed whole-system draw with a CPU under inference load."
+      },
+      "cost": {
+        "mode": "own",
+        "price_usd": 1800,
+        "life_years": 3,
+        "basis": "assumed",
+        "source": "Illustrative."
+      },
+      "validated": false
+    },
+    {
+      "id": "server",
+      "label": "Server, 8-channel DDR5-4800",
+      "peak_gbps": 307.2,
+      "capacity_gb": 512,
+      "efficiency": {
+        "value": 0.75,
+        "basis": "assumed",
+        "range": [
+          0.6,
+          0.85
+        ],
+        "source": "STREAM runs on larger server parts reach about 82% of peak; this part was not measured."
+      },
+      "power_w": {
+        "dense": 380,
+        "moe": 380,
+        "basis": "assumed",
+        "source": "Assumed whole-system draw."
+      },
+      "cost": {
+        "mode": "own",
+        "price_usd": 9000,
+        "life_years": 3,
+        "basis": "assumed",
+        "source": "Illustrative."
+      },
+      "validated": false
+    },
+    {
+      "id": "h100",
+      "label": "Data-centre GPU, HBM3 (H100 SXM class)",
+      "peak_gbps": 3350.0,
+      "capacity_gb": 80,
+      "efficiency": {
+        "value": 0.75,
+        "basis": "assumed",
+        "range": [
+          0.6,
+          0.9
+        ],
+        "source": "No measurement found."
+      },
+      "power_w": {
+        "dense": 315,
+        "moe": 315,
+        "basis": "assumed",
+        "source": "45% of the 700 W board rating. Published decode measurements report 34 to 60% of rated power (see sources). GPU board only: excludes host, networking and cooling."
+      },
+      "cost": {
+        "mode": "rent",
+        "usd_per_hour": 3.0,
+        "basis": "assumed",
+        "source": "About $3 per GPU-hour in August 2026 rental listings."
+      },
+      "validated": false
+    }
+  ],
+  "defaults": {
+    "model": "m30",
+    "quant": "q4_k_m",
+    "context": 16384,
+    "hardware": "apu",
+    "tariff_usd_per_kwh": 0.18,
+    "duty_pct": 100,
+    "api_usd_per_mtok": 0.5,
+    "kv_bytes": 2
+  },
+  "tariff_note": "EIA Electric Power Monthly, release 2026-09-24: US residential 18.31 cents per kWh, commercial 14.53 cents per kWh, July 2026.",
+  "api_note": "A 30B-A3B-class open-weight model was listed at $0.50 per million output tokens by one provider (DeepInfra, undated page, fetched 2026-10-11). Prices vary widely. Set your own.",
+  "sources": [
+    {
+      "claim": "Peak bandwidth of a 256-bit LPDDR5X-8000 bus is 256 GB/s",
+      "ref": "AMD Ryzen AI Max+ 395 product page, fetched 2026-10-11, and the arithmetic 8000 MT/s x 256 bit / 8",
+      "url": null
+    },
+    {
+      "claim": "About 215 GB/s sustained on this class of APU",
+      "ref": "Framework community forum, Strix Halo llama-bench tests, 2025-07-22",
+      "url": "https://community.frame.work/t/amd-strix-halo-ryzen-ai-max-395-gpu-llm-performance-tests/72521"
+    },
+    {
+      "claim": "H100 SXM: 3.35 TB/s HBM3, 80 GB, up to 700 W",
+      "ref": "NVIDIA H100 page, fetched 2026-10-11",
+      "url": "https://www.nvidia.com/en-us/data-center/h100/"
+    },
+    {
+      "claim": "An H100 uses about 34% of its rated power during decode",
+      "ref": "arXiv:2602.18568, \"RPU: A Reasoning Processing Unit\", 2026-02-20, verified in the full text 2026-10-11",
+      "url": "https://arxiv.org/abs/2602.18568"
+    },
+    {
+      "claim": "NVIDIA GPUs use 45 to 60% of rated power during decode",
+      "ref": "arXiv:2604.10852, \"The xPU-athalon\", 2026-04, verified in the full text 2026-10-11",
+      "url": "https://arxiv.org/abs/2604.10852"
+    },
+    {
+      "claim": "Bits per weight of llama.cpp quantisations",
+      "ref": "llama.cpp quantize README",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md"
+    },
+    {
+      "claim": "US electricity prices, July 2026",
+      "ref": "EIA Electric Power Monthly, release 2026-09-24",
+      "url": "https://www.eia.gov/electricity/monthly/"
+    },
+    {
+      "claim": "H100 rental about $3 per GPU-hour",
+      "ref": "Akash Network H100 rental price overview, August 2026",
+      "url": "https://akash.network/the-bid/h100-rental-price-2026-cost-per-hour/"
+    },
+    {
+      "claim": "A 30B-A3B-class open-weight model near $0.50 per million output tokens",
+      "ref": "DeepInfra model page, fetched 2026-10-11, undated",
+      "url": "https://deepinfra.com/Qwen/Qwen3-30B-A3B"
+    }
+  ]
+}

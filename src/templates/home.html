@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% from "macros.html" import chip %}
+{% block main %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">RoamingPigs Instruments</p>
+      <h1>Instruments for the real cost of running AI.</h1>
+      <p class="lede">Calculators and explorers that show their assumptions. Where I have measurements, they use them. Where I do not, they say so.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="/inference-cost/">Open the cost calculator</a>
+        <a class="btn" href="/codec-grid/">Explore the transcripts</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Example calculator output">
+      <div class="cap"><span>Example, default inputs</span>{{ chip('modelled') }}</div>
+      <p class="scn">{{ prev.hero.scenario }}</p>
+      <div class="trio">
+        <div class="a"><b>{{ prev.hero.tok }}</b><span>tokens per second</span></div>
+        <div><b>{{ prev.hero.j }}</b><span>joules per token</span></div>
+        <div><b>{{ prev.hero.cost }}</b><span>per million tokens</span></div>
+      </div>
+      <p class="foot">Batch size one. Electricity is {{ prev.hero.elec }} of that. <a href="/inference-cost/">Change any input</a>.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="tools-h">Two instruments</h2>
+      <p>Each reads from data you can inspect and states what it cannot tell you.</p>
+    </div>
+    <div class="cards two">
+      <a class="card link" href="/inference-cost/">
+        <p>{{ chip('modelled') }} {{ chip('measured') }}</p>
+        <h3>Inference cost calculator</h3>
+        <p>For a model on a given machine: memory needed, decode speed, energy per token and cost per million tokens. Checked against wall-meter runs on one machine.</p>
+        <div class="preview" aria-label="Preview: decode speed ceiling by hardware, default model">
+          <div class="row"><span>{{ prev.calc.label }}</span><span>tokens per second, ceiling</span></div>
+          <div class="bars">
+            {% for r in prev.calc.rows %}<div class="bar-row"><span>{{ r.name }}</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="{{ r.pct }}" height="8" rx="2"/></svg><span class="v">{{ r.value }}</span></div>
+            {% endfor %}
+          </div>
+        </div>
+        <span class="go">Open the calculator &rarr;</span>
+      </a>
+      <a class="card link" href="/codec-grid/">
+        <p>{{ chip('measured') }}</p>
+        <h3>Codec grid explorer</h3>
+        <p>{{ "{:,}".format(c.e2.records) }} real transcripts from {{ c.e2.models|length }} speech models, through {{ c.e2.codecs|length }} audio paths and {{ c.e2.snr_db|length }} noise levels. Click a cell and read what the model wrote.</p>
+        <div class="preview" aria-label="Preview: mean word error rate by noise level">
+          <div class="row"><span>Mean word error</span><span>by noise level</span></div>
+          <div class="bars">
+            {% for r in prev.grid.rows %}<div class="bar-row alt"><span>{{ r.name }}</span><svg class="track" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><rect class="trk" width="100" height="8" rx="2"/><rect class="fil" width="{{ r.pct }}" height="8" rx="2"/></svg><span class="v">{{ r.value }}</span></div>
+            {% endfor %}
+          </div>
+        </div>
+        <span class="go">Explore the transcripts &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="how-h">How these are built</h2>
+    </div>
+    <div class="principles">
+      <div class="principle"><h3>Assumptions in view</h3><p>Every default has a source and a date. Every input can be changed, and the page URL keeps your choices so you can share them.</p></div>
+      <div class="principle"><h3>Measured, modelled or assumed</h3><p>Each number carries a mark. A formula output is never presented as a reading, and an assumption is never presented as a measurement.</p></div>
+      <div class="principle"><h3>Limits first</h3><p>Each instrument says what it does not model. The calculator is an optimistic upper bound for batch size one, not a forecast for a busy server.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="rec-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="rec-h">The record behind the numbers</h2>
+      <p>The measurements these instruments use are published as dated records with their sample sizes and limits on roamingpigs.org. When I find a mistake, it goes in the corrections log.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="https://roamingpigs.org/#inference-energy">Energy records</a>
+      <a class="btn" href="https://roamingpigs.org/#radio-audio">Speech records</a>
+      <a class="btn" href="/method/">How the calculator works</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,27 +1,38 @@
-# RoamingPigs AI Inference Engine & Hardware Telemetry
+# RoamingPigs Instruments (roamingpigs.ai)
 
-Official live telemetry engine and interactive inference physics calculator for **RoamingPigs AI** (`https://roamingpigs.ai`).
+Calculators and explorers that show their assumptions. Two instruments today:
 
-## Capabilities
+- **Inference cost calculator** (`/inference-cost/`): memory, decode speed, energy per token and cost per million tokens for a model on a given machine. Batch size one. Validated against wall-meter runs on one unified-memory machine only.
+- **Codec grid explorer** (`/codec-grid/`): 900 real transcripts from six open speech models through six audio paths and five noise levels, with a word-level diff of what was said against what the model wrote.
 
-1. **Interactive Client-Side Physics Calculator:**
-   - Real-time memory footprint estimation (weights + attention KV-cache).
-   - Sustained memory bus bandwidth saturation (256.0 GB/s peak on unified LPDDR5X vs. 3.35 TB/s H100).
-   - Joules-per-token decode thermodynamics and physical wall-socket power draw.
-   - Marginal electricity cost and amortized 3-year hardware TCO comparisons ($/Mtok).
+The research record (dated figures, samples, limits, corrections) is on roamingpigs.org. Papers are on ciscocaceres.com. Nothing is repeated across the three.
 
-2. **Progressive 4-Stage Storyboard Pipeline:**
-   - Stage 1: Z-Image-Turbo 6B (8 steps, ~14s, 512x896) for rapid composition exploration.
-   - Stage 2: FLUX.2 klein 9B (4 steps, cfg 1.0, Euler, ~32s) for facial and structural identity anchoring.
-   - Stage 3: Qwen-Image-Edit-2511 20B (20 steps, cfg 2.5, flow-shift 3, ~75s) for textual and instruction editing.
-   - Stage 4: RealESRGAN x4plus (~4.5s) to 1080x1920 or 4K production upscaling.
+## How it is built
 
-3. **Four-Tier AI Compute Continuum:**
-   - Tier 1: Sovereign Warden APU (122.7 GB unified RAM, Vulkan, strictly $0.00 cloud spend).
-   - Tier 2: Haywire Host (Dual Xeon 8160, 96 cores, 768 GB RAM, EBU R128 mastering, YuNet+SFace).
-   - Tier 3: Edge API Platform (Ambie.ai Cloudflare Workers AI with 15 LLMs, Whisper Large v3, Llama 3.3 70B).
-   - Tier 4: Vastops Spot GPU Fleet ($0.30–$1.50/hr, <$0.01/s video, eval-gated training).
+```bash
+python3 scripts/build.py           # tests, then render site/
+python3 scripts/build.py --check   # fail if canon or the rendered output is stale
+```
 
-## Deployment
+- **One formula, written once.** `site/js/model.js` is the only implementation. The build runs `tests/model.test.mjs` and `tests/cross-check.py` (an independent Python implementation, 400 random inputs, must agree to 1e-9) and refuses to build otherwise. The home-page preview numbers are computed by running `model.js` under node at build time.
+- **Constants with sources.** `data/model.json` holds every constant with its source and date, marks each as measured or assumed, and is served to the browser. The method page renders from it. The build asserts that the expected-fraction ranges cover every row of the validation table, so the range cannot drift from the evidence.
+- **Measured data** (`data/canon.json`, `site/data/e2-grid.json`) comes from the research ledgers via `siteops/scripts/rp-canon.py`. Metered runs that imply more memory traffic than the bus can carry are excluded and the method page says so.
+- **CSP is strict**: no inline script, style or handlers. The UI builds DOM with `textContent` only. Fonts are self-hosted and OFL (Geist, Geist Mono). The page URL hash holds the calculator state, validated on read.
 
-Deployable via `cf-deploy.py roamingpigs.ai -y` to Cloudflare Pages project `roamingpigs-ai`.
+## Gates before a deploy
+
+```bash
+python3 scripts/build.py --check
+python3 ~/projects/siteops/scripts/seo-audit.py --domain roamingpigs.ai --mode static
+python3 ~/projects/siteops/scripts/llm-smell-audit.py --root site --auto --max-em-dashes 1
+~/projects/siteops/scripts/rp-shoot.sh site /tmp/shots / /inference-cost/ /codec-grid/ /method/
+```
+
+Deploy: `cf-deploy.py roamingpigs.ai -y` (Pages project `roamingpigs-ai`). Never `wrangler`.
+
+## Rules for editing
+
+- Every default needs a source and a date in `data/model.json`, or it is marked assumed.
+- An output is "modelled". Only a reading is "measured".
+- Say what the instrument does not model. Batching is the big one.
+- Models appear by size and kind, never by product name.

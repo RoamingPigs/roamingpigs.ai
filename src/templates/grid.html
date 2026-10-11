@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "macros.html" import chip %}
+{% block main %}
+<section class="page-head">
+  <div class="wrap">
+    <nav class="breadcrumb crumbs" aria-label="Breadcrumb"><a href="/">Instruments</a> / Codec grid</nav>
+    <h1>Where the words go wrong</h1>
+    <p class="lede">{{ "{:,}".format(c.e2.records) }} transcripts from {{ c.e2.models|length }} open speech models, run through {{ c.e2.codecs|length }} audio paths and {{ c.e2.snr_db|length }} noise levels. Choose a model, click a cell, and read what it wrote next to what was said.</p>
+    <p class="banner"><strong>{{ chip('measured') }} A small pilot.</strong> Run {{ v.e2_date }}. {{ c.e2.utterances }} scripted utterances, synthetic speech, one decoding setting, point estimates with no confidence intervals. Word error above 100% includes inserted words. <a href="https://roamingpigs.org/#radio-audio">The record and its limits</a>.</p>
+  </div>
+</section>
+<div class="wrap">
+  <noscript><p class="noscript">The explorer needs JavaScript. The per-cell figures are on <a href="https://roamingpigs.org/#radio-audio">the record</a>.</p></noscript>
+  <div class="calc grid-page" id="grid" data-src="/data/e2-grid.json">
+    <div class="controls">
+      <div class="panel">
+        <fieldset class="field"><legend>Model size</legend><div class="seg cols2" id="seg-model"></div></fieldset>
+        <fieldset class="field" id="f-utt" hidden><legend>Utterance</legend><div class="seg cols3" id="seg-utt"></div></fieldset>
+        <p class="key-line">In the transcripts: <ins>inserted</ins> <del>missed</del> <span class="sub">wrong word</span></p>
+      </div>
+    </div>
+    <div id="out" aria-live="polite">
+      <div class="panel">
+        <h3 class="sr-only">Mean word error rate by audio path and noise level</h3>
+        <div class="heat-wrap" tabindex="0" role="region" aria-label="Heat map, scrolls sideways on small screens"><table class="heat-table" id="heat"></table></div>
+        <div class="scale-key"><span>0%</span><span class="ramp" id="ramp"></span><span>160%+</span><span>Each cell is a mean of utterances and models. Click one.</span></div>
+      </div>
+      <div class="panel viz" id="detail" hidden>
+        <h3 id="detail-h"></h3>
+        <div class="transcripts" id="trs"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

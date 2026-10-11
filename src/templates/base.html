@@ -1,0 +1,82 @@
+<!doctype html>
+<!-- nav-canonical-exempt: independent RoamingPigs property on a personal Cloudflare account, not an Abundera site; it has its own header and footer. -->
+<!-- footer-canonical-exempt: same reason as the nav exemption above. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  {{ head|safe }}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ asset('/css/site.css') }}">
+</head>
+<body{% if page.get('sumbar') %} class="has-sumbar"{% endif %}>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="g-measured" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="currentColor"/></symbol>
+    <symbol id="g-modelled" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></symbol>
+    <symbol id="g-simulated" viewBox="0 0 16 16"><path d="M8 1.8 14.2 8 8 14.2 1.8 8z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="g-proposed" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-dasharray="2.6 2.2"/></symbol>
+  </defs>
+</svg>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">RoamingPigs <span>Instruments</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {% for n in nav %}<li><a href="{{ n.path }}"{% if n.path == page.path %} aria-current="page"{% endif %}>{{ n.label }}</a></li>{% endfor %}
+        <li><a class="sister" href="https://roamingpigs.org/">Research notes <span aria-hidden="true">&nearr;</span><span class="sr-only"> (roamingpigs.org)</span></a></li>
+      </ul>
+    </nav>
+    <details class="nav-toggle">
+      <summary>Menu</summary>
+      <nav class="site-nav-mobile" aria-label="Main (mobile)">
+        <ul>
+          {% for n in nav %}<li><a href="{{ n.path }}"{% if n.path == page.path %} aria-current="page"{% endif %}>{{ n.label }}</a></li>{% endfor %}
+          <li><a class="sister" href="https://roamingpigs.org/">Research notes (roamingpigs.org) &nearr;</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>RoamingPigs Instruments</h2>
+      <p>Calculators and explorers that show their assumptions. By <a href="https://ciscocaceres.com/">Cisco Caceres</a>. Self-published and not peer reviewed.</p>
+    </div>
+    <div>
+      <h2>Instruments</h2>
+      <ul>{% for n in nav %}<li><a href="{{ n.path }}">{{ n.label }}</a></li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h2>The record</h2>
+      <ul>
+        <li><a href="https://roamingpigs.org/">Research notes</a></li>
+        <li><a href="https://roamingpigs.org/corrections/">Corrections</a></li>
+        <li><a href="https://roamingpigs.org/datasets/trcs/">TRCS dataset</a></li>
+        <li><a href="https://ciscocaceres.com/research/">Papers</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://roamingpigs.com/">Field Manual</a></li>
+        <li><a href="https://github.com/RoamingPigs">GitHub</a></li>
+        <li><a href="https://huggingface.co/RoamingPigs">Hugging Face</a></li>
+        <li><a href="https://orcid.org/0009-0005-7810-5077">ORCID</a></li>
+      </ul>
+    </div>
+    <p class="footer-note">&copy; 2026 Cisco Caceres. No cookies, no analytics, nothing loaded from other domains. Everything you type into an instrument stays in your browser. Last build {{ site.modified_human }}.</p>
+  </div>
+</footer>
+{% for s in scripts %}<script src="{{ asset(s) }}" defer></script>
+{% endfor %}
+</body>
+</html>

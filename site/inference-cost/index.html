@@ -1,0 +1,180 @@
+<!doctype html>
+<!-- nav-canonical-exempt: independent RoamingPigs property on a personal Cloudflare account, not an Abundera site; it has its own header and footer. -->
+<!-- footer-canonical-exempt: same reason as the nav exemption above. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Local LLM Cost Calculator: Memory, Speed, Energy, Price</title>
+  <meta name="description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.">
+  <link rel="canonical" href="https://roamingpigs.ai/inference-cost/">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="color-scheme" content="dark">
+  <meta name="author" content="Cisco Caceres">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RoamingPigs Instruments">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Local LLM Cost Calculator: Memory, Speed, Energy, Price">
+  <meta property="og:description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.">
+  <meta property="og:url" content="https://roamingpigs.ai/inference-cost/">
+  <meta property="og:image" content="https://roamingpigs.ai/og/inference-cost.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Local LLM Cost Calculator: Memory, Speed, Energy, Price">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Local LLM Cost Calculator: Memory, Speed, Energy, Price">
+  <meta name="twitter:description" content="Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.">
+  <meta name="twitter:image" content="https://roamingpigs.ai/og/inference-cost.png">
+  <meta name="twitter:image:alt" content="Local LLM Cost Calculator: Memory, Speed, Energy, Price">
+  <meta property="article:modified_time" content="2026-10-11">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://roamingpigs.ai/#website","url":"https://roamingpigs.ai/","name":"RoamingPigs Instruments","inLanguage":"en","publisher":{"@id":"https://roamingpigs.ai/#org"},"author":{"@id":"https://roamingpigs.ai/#author"}},{"@type":"Organization","@id":"https://roamingpigs.ai/#org","name":"RoamingPigs","url":"https://roamingpigs.ai/","logo":"https://roamingpigs.ai/icon-512.png","founder":{"@id":"https://roamingpigs.ai/#author"},"sameAs":["https://roamingpigs.org/","https://roamingpigs.com/","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"Person","@id":"https://roamingpigs.ai/#author","name":"Cisco Caceres","url":"https://ciscocaceres.com/","sameAs":["https://orcid.org/0009-0005-7810-5077","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"WebPage","@id":"https://roamingpigs.ai/inference-cost/#page","url":"https://roamingpigs.ai/inference-cost/","name":"Local LLM Cost Calculator: Memory, Speed, Energy, Price","description":"Estimate memory, decode speed, energy per token and cost per million tokens for a local model on unified memory, desktop, server or GPU. Sourced, editable, checked against wall-meter runs.","inLanguage":"en","isPartOf":{"@id":"https://roamingpigs.ai/#website"},"author":{"@id":"https://roamingpigs.ai/#author"},"dateModified":"2026-10-11"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Instruments","item":"https://roamingpigs.ai/"},{"@type":"ListItem","position":2,"name":"Inference cost","item":"https://roamingpigs.ai/inference-cost/"}]},{"@type":"WebApplication","name":"Local inference cost calculator","url":"https://roamingpigs.ai/inference-cost/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@id":"https://roamingpigs.ai/#author"}}]}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css?v=3194abd3">
+</head>
+<body class="has-sumbar">
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="g-measured" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="currentColor"/></symbol>
+    <symbol id="g-modelled" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></symbol>
+    <symbol id="g-simulated" viewBox="0 0 16 16"><path d="M8 1.8 14.2 8 8 14.2 1.8 8z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="g-proposed" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-dasharray="2.6 2.2"/></symbol>
+  </defs>
+</svg>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">RoamingPigs <span>Instruments</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+<li><a href="/inference-cost/" aria-current="page">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li>        <li><a class="sister" href="https://roamingpigs.org/">Research notes <span aria-hidden="true">&nearr;</span><span class="sr-only"> (roamingpigs.org)</span></a></li>
+      </ul>
+    </nav>
+    <details class="nav-toggle">
+      <summary>Menu</summary>
+      <nav class="site-nav-mobile" aria-label="Main (mobile)">
+        <ul>
+<li><a href="/inference-cost/" aria-current="page">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li>          <li><a class="sister" href="https://roamingpigs.org/">Research notes (roamingpigs.org) &nearr;</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <nav class="breadcrumb crumbs" aria-label="Breadcrumb"><a href="/">Instruments</a> / Inference cost</nav>
+    <h1>What does a model cost to run?</h1>
+    <p class="lede">Pick a model and a machine. Memory, decode speed, energy per token and cost per million tokens appear with their assumptions beside them.</p>
+    <p class="banner"><strong>Batch size one.</strong> This models one request at a time, which is how a single person uses a local machine. A busy server batches many requests and changes the energy and cost per token several-fold, so do not read these figures as a forecast for one. Speed is an upper bound, checked against wall-meter runs on one machine only. <a href="/method/">How it works</a>.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <noscript><p class="noscript">This calculator needs JavaScript to run. The method page lists every constant and formula if you want to work it by hand.</p></noscript>
+  <div class="calc" id="calc" data-model="/data/model.json">
+    <form class="controls" id="controls" aria-label="Calculator inputs">
+      <div class="panel">
+        <fieldset class="field" id="f-hw"><legend>Machine</legend><div class="seg stack" id="seg-hw"></div></fieldset>
+        <div class="field"><label for="sel-model">Model <span class="hint" id="hint-model"></span></label><select id="sel-model"></select></div>
+        <fieldset class="field" id="f-q"><legend>Quantisation <span class="hint" id="hint-q"></span></legend><div class="seg cols3" id="seg-q"></div></fieldset>
+        <div class="field"><label for="rng-ctx">Context length <span class="hint" id="val-ctx"></span></label><input type="range" id="rng-ctx" min="0" max="6" step="1" value="3"><div class="ticks" id="ticks-ctx"></div></div>
+        <details class="adv" id="adv">
+          <summary>Assumptions</summary>
+          <div class="field"><label for="in-tariff">Electricity, $ per kWh <span class="hint">US avg 0.18</span></label><input type="number" id="in-tariff" step="0.01" min="0.01" max="2" inputmode="decimal"></div>
+          <div class="field"><label for="in-duty">Hours in use, share of the day <span class="hint" id="val-duty"></span></label><input type="range" id="in-duty" min="5" max="100" step="5"></div>
+          <div class="field"><label for="in-api">API price to compare, $ per million tokens <span class="hint">output</span></label><input type="number" id="in-api" step="0.05" min="0" inputmode="decimal"></div>
+          <div class="grid2">
+            <div class="field"><label for="in-eff">Bandwidth efficiency <span class="hint" id="tag-eff"></span></label><input type="number" id="in-eff" step="0.01" min="0.3" max="1" inputmode="decimal"></div>
+            <div class="field"><label for="in-pow">Power at decode, W <span class="hint" id="tag-pow"></span></label><input type="number" id="in-pow" step="5" min="10" inputmode="decimal"></div>
+          </div>
+          <div class="field"><label for="in-cost" id="lbl-cost">Machine price, $</label><input type="number" id="in-cost" step="50" min="0" inputmode="decimal"></div>
+          <p class="small" id="note-sources"></p>
+          <button class="reset" type="button" id="btn-reset">Reset assumptions to the sourced defaults</button>
+        </details>
+      </div>
+    </form>
+
+    <div id="results" aria-live="polite">
+      <p class="banner bad" id="warn-fit" hidden></p>
+      <p class="banner" id="warn-assumed" hidden></p>
+
+      <div class="readouts">
+        <div class="readout hero-r"><div class="k"><span>Decode speed</span><span class="chip modelled"><svg aria-hidden="true"><use href="#g-modelled"/></svg>Modelled</span></div><div class="v" id="o-tok">&ndash;</div><div class="sub" id="o-tok-sub"></div></div>
+        <div class="readout"><div class="k"><span>Energy per token</span><span class="chip modelled"><svg aria-hidden="true"><use href="#g-modelled"/></svg>Modelled</span></div><div class="v" id="o-j">&ndash;</div><div class="sub" id="o-j-sub"></div></div>
+        <div class="readout"><div class="k"><span>Cost per million tokens</span><span class="chip modelled"><svg aria-hidden="true"><use href="#g-modelled"/></svg>Modelled</span></div><div class="v" id="o-cost">&ndash;</div><div class="sub" id="o-cost-sub"></div></div>
+      </div>
+
+      <div class="panel viz">
+        <h3>Memory</h3>
+        <div class="membar" id="membar" role="img" aria-label="Memory use"></div>
+        <div class="legend" id="memlegend"></div>
+      </div>
+
+      <div class="panel viz">
+        <h3>Decode speed, tokens per second</h3>
+        <div class="scale" id="scale" role="img" aria-label="Expected speed range"></div>
+        <p class="small" id="scale-note"></p>
+      </div>
+
+      <div class="panel viz">
+        <h3>Cost per million tokens</h3>
+        <div class="costs" id="costs"></div>
+        <p class="verdict" id="verdict"></p>
+      </div>
+
+      <div class="panel viz" id="refs-panel" hidden>
+        <h3>Metered on this machine <span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span></h3>
+        <table class="refs">
+          <thead><tr><th>Model, one run</th><th class="n">tok/s</th><th class="n">Wall W</th><th class="n">J/token</th></tr></thead>
+          <tbody>
+<tr><td>9.7B dense, Q4_K_M</td><td class="n">36.7</td><td class="n">140</td><td class="n">3.81</td></tr>
+<tr><td>31.1B mixture, 3B active, Q4_K_M</td><td class="n">67.3</td><td class="n">171</td><td class="n">2.54</td></tr>
+          </tbody>
+        </table>
+        <p class="small">Smart-plug wall power averaged over a single run of 6 to 10 seconds, 2026-10-10 23:26 UTC. Includes the whole machine. <a href="https://roamingpigs.org/#inference-energy">The record and its limits</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sumbar" id="sumbar" aria-hidden="true"><span><small>Speed</small><b id="s-tok">&ndash;</b></span><span><small>Energy</small><b id="s-j">&ndash;</b></span><span><small>Cost / M tok</small><b id="s-cost">&ndash;</b></span></div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>RoamingPigs Instruments</h2>
+      <p>Calculators and explorers that show their assumptions. By <a href="https://ciscocaceres.com/">Cisco Caceres</a>. Self-published and not peer reviewed.</p>
+    </div>
+    <div>
+      <h2>Instruments</h2>
+      <ul><li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li></ul>
+    </div>
+    <div>
+      <h2>The record</h2>
+      <ul>
+        <li><a href="https://roamingpigs.org/">Research notes</a></li>
+        <li><a href="https://roamingpigs.org/corrections/">Corrections</a></li>
+        <li><a href="https://roamingpigs.org/datasets/trcs/">TRCS dataset</a></li>
+        <li><a href="https://ciscocaceres.com/research/">Papers</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://roamingpigs.com/">Field Manual</a></li>
+        <li><a href="https://github.com/RoamingPigs">GitHub</a></li>
+        <li><a href="https://huggingface.co/RoamingPigs">Hugging Face</a></li>
+        <li><a href="https://orcid.org/0009-0005-7810-5077">ORCID</a></li>
+      </ul>
+    </div>
+    <p class="footer-note">&copy; 2026 Cisco Caceres. No cookies, no analytics, nothing loaded from other domains. Everything you type into an instrument stays in your browser. Last build 11 October 2026.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=294f21cf" defer></script>
+<script src="/js/model.js?v=d3e16a0b" defer></script>
+<script src="/js/calc.js?v=a927855f" defer></script>
+</body>
+</html>

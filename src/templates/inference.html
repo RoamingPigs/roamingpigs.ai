@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% from "macros.html" import chip %}
+{% block main %}
+<section class="page-head">
+  <div class="wrap">
+    <nav class="breadcrumb crumbs" aria-label="Breadcrumb"><a href="/">Instruments</a> / Inference cost</nav>
+    <h1>What does a model cost to run?</h1>
+    <p class="lede">Pick a model and a machine. Memory, decode speed, energy per token and cost per million tokens appear with their assumptions beside them.</p>
+    <p class="banner"><strong>Batch size one.</strong> This models one request at a time, which is how a single person uses a local machine. A busy server batches many requests and changes the energy and cost per token several-fold, so do not read these figures as a forecast for one. Speed is an upper bound, checked against wall-meter runs on one machine only. <a href="/method/">How it works</a>.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <noscript><p class="noscript">This calculator needs JavaScript to run. The method page lists every constant and formula if you want to work it by hand.</p></noscript>
+  <div class="calc" id="calc" data-model="/data/model.json">
+    <form class="controls" id="controls" aria-label="Calculator inputs">
+      <div class="panel">
+        <fieldset class="field" id="f-hw"><legend>Machine</legend><div class="seg stack" id="seg-hw"></div></fieldset>
+        <div class="field"><label for="sel-model">Model <span class="hint" id="hint-model"></span></label><select id="sel-model"></select></div>
+        <fieldset class="field" id="f-q"><legend>Quantisation <span class="hint" id="hint-q"></span></legend><div class="seg cols3" id="seg-q"></div></fieldset>
+        <div class="field"><label for="rng-ctx">Context length <span class="hint" id="val-ctx"></span></label><input type="range" id="rng-ctx" min="0" max="6" step="1" value="3"><div class="ticks" id="ticks-ctx"></div></div>
+        <details class="adv" id="adv">
+          <summary>Assumptions</summary>
+          <div class="field"><label for="in-tariff">Electricity, $ per kWh <span class="hint">US avg 0.18</span></label><input type="number" id="in-tariff" step="0.01" min="0.01" max="2" inputmode="decimal"></div>
+          <div class="field"><label for="in-duty">Hours in use, share of the day <span class="hint" id="val-duty"></span></label><input type="range" id="in-duty" min="5" max="100" step="5"></div>
+          <div class="field"><label for="in-api">API price to compare, $ per million tokens <span class="hint">output</span></label><input type="number" id="in-api" step="0.05" min="0" inputmode="decimal"></div>
+          <div class="grid2">
+            <div class="field"><label for="in-eff">Bandwidth efficiency <span class="hint" id="tag-eff"></span></label><input type="number" id="in-eff" step="0.01" min="0.3" max="1" inputmode="decimal"></div>
+            <div class="field"><label for="in-pow">Power at decode, W <span class="hint" id="tag-pow"></span></label><input type="number" id="in-pow" step="5" min="10" inputmode="decimal"></div>
+          </div>
+          <div class="field"><label for="in-cost" id="lbl-cost">Machine price, $</label><input type="number" id="in-cost" step="50" min="0" inputmode="decimal"></div>
+          <p class="small" id="note-sources"></p>
+          <button class="reset" type="button" id="btn-reset">Reset assumptions to the sourced defaults</button>
+        </details>
+      </div>
+    </form>
+
+    <div id="results" aria-live="polite">
+      <p class="banner bad" id="warn-fit" hidden></p>
+      <p class="banner" id="warn-assumed" hidden></p>
+
+      <div class="readouts">
+        <div class="readout hero-r"><div class="k"><span>Decode speed</span>{{ chip('modelled') }}</div><div class="v" id="o-tok">&ndash;</div><div class="sub" id="o-tok-sub"></div></div>
+        <div class="readout"><div class="k"><span>Energy per token</span>{{ chip('modelled') }}</div><div class="v" id="o-j">&ndash;</div><div class="sub" id="o-j-sub"></div></div>
+        <div class="readout"><div class="k"><span>Cost per million tokens</span>{{ chip('modelled') }}</div><div class="v" id="o-cost">&ndash;</div><div class="sub" id="o-cost-sub"></div></div>
+      </div>
+
+      <div class="panel viz">
+        <h3>Memory</h3>
+        <div class="membar" id="membar" role="img" aria-label="Memory use"></div>
+        <div class="legend" id="memlegend"></div>
+      </div>
+
+      <div class="panel viz">
+        <h3>Decode speed, tokens per second</h3>
+        <div class="scale" id="scale" role="img" aria-label="Expected speed range"></div>
+        <p class="small" id="scale-note"></p>
+      </div>
+
+      <div class="panel viz">
+        <h3>Cost per million tokens</h3>
+        <div class="costs" id="costs"></div>
+        <p class="verdict" id="verdict"></p>
+      </div>
+
+      <div class="panel viz" id="refs-panel" hidden>
+        <h3>Metered on this machine {{ chip('measured') }}</h3>
+        <table class="refs">
+          <thead><tr><th>Model, one run</th><th class="n">tok/s</th><th class="n">Wall W</th><th class="n">J/token</th></tr></thead>
+          <tbody>
+            {% for r in refs %}<tr><td>{{ r.label }}</td><td class="n">{{ r.tok }}</td><td class="n">{{ r.w }}</td><td class="n">{{ r.j }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <p class="small">Smart-plug wall power averaged over a single run of {{ refs_seconds }} seconds, {{ refs_date }}. Includes the whole machine. <a href="https://roamingpigs.org/#inference-energy">The record and its limits</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sumbar" id="sumbar" aria-hidden="true"><span><small>Speed</small><b id="s-tok">&ndash;</b></span><span><small>Energy</small><b id="s-j">&ndash;</b></span><span><small>Cost / M tok</small><b id="s-cost">&ndash;</b></span></div>
+{% endblock %}

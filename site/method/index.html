@@ -1,0 +1,199 @@
+<!doctype html>
+<!-- nav-canonical-exempt: independent RoamingPigs property on a personal Cloudflare account, not an Abundera site; it has its own header and footer. -->
+<!-- footer-canonical-exempt: same reason as the nav exemption above. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Calculator Method: Formula, Constants, Validation</title>
+  <meta name="description" content="The one formula behind the inference cost calculator, every constant with its source and date, and a comparison with real wall-meter and published speeds.">
+  <link rel="canonical" href="https://roamingpigs.ai/method/">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="color-scheme" content="dark">
+  <meta name="author" content="Cisco Caceres">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RoamingPigs Instruments">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Calculator Method: Formula, Constants, Validation">
+  <meta property="og:description" content="The one formula behind the inference cost calculator, every constant with its source and date, and a comparison with real wall-meter and published speeds.">
+  <meta property="og:url" content="https://roamingpigs.ai/method/">
+  <meta property="og:image" content="https://roamingpigs.ai/og/method.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Calculator Method: Formula, Constants, Validation">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculator Method: Formula, Constants, Validation">
+  <meta name="twitter:description" content="The one formula behind the inference cost calculator, every constant with its source and date, and a comparison with real wall-meter and published speeds.">
+  <meta name="twitter:image" content="https://roamingpigs.ai/og/method.png">
+  <meta name="twitter:image:alt" content="Calculator Method: Formula, Constants, Validation">
+  <meta property="article:modified_time" content="2026-10-11">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://roamingpigs.ai/#website","url":"https://roamingpigs.ai/","name":"RoamingPigs Instruments","inLanguage":"en","publisher":{"@id":"https://roamingpigs.ai/#org"},"author":{"@id":"https://roamingpigs.ai/#author"}},{"@type":"Organization","@id":"https://roamingpigs.ai/#org","name":"RoamingPigs","url":"https://roamingpigs.ai/","logo":"https://roamingpigs.ai/icon-512.png","founder":{"@id":"https://roamingpigs.ai/#author"},"sameAs":["https://roamingpigs.org/","https://roamingpigs.com/","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"Person","@id":"https://roamingpigs.ai/#author","name":"Cisco Caceres","url":"https://ciscocaceres.com/","sameAs":["https://orcid.org/0009-0005-7810-5077","https://github.com/RoamingPigs","https://huggingface.co/RoamingPigs"]},{"@type":"WebPage","@id":"https://roamingpigs.ai/method/#page","url":"https://roamingpigs.ai/method/","name":"Calculator Method: Formula, Constants, Validation","description":"The one formula behind the inference cost calculator, every constant with its source and date, and a comparison with real wall-meter and published speeds.","inLanguage":"en","isPartOf":{"@id":"https://roamingpigs.ai/#website"},"author":{"@id":"https://roamingpigs.ai/#author"},"dateModified":"2026-10-11"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Instruments","item":"https://roamingpigs.ai/"},{"@type":"ListItem","position":2,"name":"Method","item":"https://roamingpigs.ai/method/"}]}]}</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css?v=3194abd3">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="g-measured" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="currentColor"/></symbol>
+    <symbol id="g-modelled" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></symbol>
+    <symbol id="g-simulated" viewBox="0 0 16 16"><path d="M8 1.8 14.2 8 8 14.2 1.8 8z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="g-proposed" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-dasharray="2.6 2.2"/></symbol>
+  </defs>
+</svg>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">RoamingPigs <span>Instruments</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+<li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/" aria-current="page">Method</a></li>        <li><a class="sister" href="https://roamingpigs.org/">Research notes <span aria-hidden="true">&nearr;</span><span class="sr-only"> (roamingpigs.org)</span></a></li>
+      </ul>
+    </nav>
+    <details class="nav-toggle">
+      <summary>Menu</summary>
+      <nav class="site-nav-mobile" aria-label="Main (mobile)">
+        <ul>
+<li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/" aria-current="page">Method</a></li>          <li><a class="sister" href="https://roamingpigs.org/">Research notes (roamingpigs.org) &nearr;</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <nav class="breadcrumb crumbs" aria-label="Breadcrumb"><a href="/">Instruments</a> / Method</nav>
+    <h1>How the calculator works</h1>
+    <p class="lede">One formula, a table of constants with their sources, and a comparison against every measurement I have. If the model and a meter disagree, the page shows the disagreement.</p>
+  </div>
+</section>
+<div class="wrap">
+  <div class="prose">
+    <h2 id="formula">The formula</h2>
+    <p>Generating one token means reading every active weight and the whole key-value cache from memory once. On the machines compared here, memory bandwidth is the limit, not arithmetic. So the speed ceiling at batch size one is:</p>
+    <p><code>tokens per second = efficiency &times; peak bandwidth &divide; (active weights in GB + KV cache in GB)</code></p>
+    <ul>
+      <li><strong>Weights</strong> = parameters &times; bits per weight &divide; 8. A mixture-of-experts model stores all its parameters but reads only the active ones for each token.</li>
+      <li><strong>KV cache</strong> = 2 &times; layers &times; KV heads &times; head dimension &times; context length &times; bytes per value. It uses KV heads, not the hidden size. Using the hidden size overstates the cache two- to eight-fold.</li>
+      <li><strong>Energy per token</strong> = power at decode &divide; tokens per second. <strong>Electricity per million tokens</strong> = kilowatts &times; price per kWh &times; hours to generate a million tokens.</li>
+      <li><strong>Hardware per million tokens</strong> = price &divide; (tokens per second &times; share of time in use &times; lifetime in seconds) &times; one million. For a rented GPU it is the hourly rate over tokens per hour.</li>
+    </ul>
+    <p>The page shows a range, not a point. The range is the ceiling times an empirical fraction, taken from the comparison below.</p>
+  </div>
+
+  <h2 id="constants" class="prose-h">Constants and where they come from</h2>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Hardware constants, scrolls sideways on small screens">
+    <table class="data">
+      <caption>Defaults. Every one can be changed in the calculator.</caption>
+      <thead><tr><th>Machine</th><th class="n">Peak GB/s</th><th class="n">Efficiency</th><th class="n">Power W (dense / mixture)</th><th>Basis</th></tr></thead>
+      <tbody>
+<tr>
+          <td>Unified-memory APU, 256-bit LPDDR5X-8000</td><td class="n">256.0</td><td class="n">0.84</td><td class="n">140 / 171</td>
+          <td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Efficiency measured</span> <span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Power measured</span></td>
+        </tr>
+        <tr><td colspan="5" class="small">About 215 GB/s sustained on this class of machine (Framework community forum, 2025-07-22); 83 to 88% in the owner's ledger, 2026-10-10. Smart-plug wall power, one run each, 2026-10-10: 139.6 W (9.7B dense), 170.7 W (31B mixture). Other sizes assumed equal to the nearest class.</td></tr>
+<tr>
+          <td>Desktop, dual-channel DDR5-6000</td><td class="n">96.0</td><td class="n">0.75</td><td class="n">150 / 150</td>
+          <td><span class="chip assumed">Efficiency assumed</span> <span class="chip assumed">Power assumed</span></td>
+        </tr>
+        <tr><td colspan="5" class="small">No measurement found. A plausibility range.. Assumed whole-system draw with a CPU under inference load.</td></tr>
+<tr>
+          <td>Server, 8-channel DDR5-4800</td><td class="n">307.2</td><td class="n">0.75</td><td class="n">380 / 380</td>
+          <td><span class="chip assumed">Efficiency assumed</span> <span class="chip assumed">Power assumed</span></td>
+        </tr>
+        <tr><td colspan="5" class="small">STREAM runs on larger server parts reach about 82% of peak; this part was not measured.. Assumed whole-system draw.</td></tr>
+<tr>
+          <td>Data-centre GPU, HBM3 (H100 SXM class)</td><td class="n">3350.0</td><td class="n">0.75</td><td class="n">315 / 315</td>
+          <td><span class="chip assumed">Efficiency assumed</span> <span class="chip assumed">Power assumed</span></td>
+        </tr>
+        <tr><td colspan="5" class="small">No measurement found.. 45% of the 700 W board rating. Published decode measurements report 34 to 60% of rated power (see sources). GPU board only: excludes host, networking and cooling.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="validation" class="prose-h">Does the model match what was measured?</h2>
+  <div class="prose"><p>Each row compares the speed ceiling with a real run on the unified-memory machine. A ratio near 1 means the ceiling is tight. Below 1 means the machine runs slower than the bandwidth limit.</p></div>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Validation table, scrolls sideways on small screens">
+    <table class="data">
+      <caption>Efficiency 0.84 &times; 256 GB/s = 215 GB/s. Context for published rows is not stated by their authors, so I assumed 512 tokens.</caption>
+      <thead><tr><th>Run</th><th class="n">GB read per token</th><th class="n">Ceiling tok/s</th><th class="n">Observed tok/s</th><th class="n">Ratio</th><th>Evidence</th></tr></thead>
+      <tbody>
+<tr><td>9.7B dense, Q4_K_M</td><td class="n">6.14</td><td class="n">35.0</td><td class="n">36.68</td><td class="n">1.05</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Smart-plug run, 2026-10-10, one run</span></td></tr>
+<tr><td>31.1B mixture, 3B active, Q4_K_M</td><td class="n">1.76</td><td class="n">122.2</td><td class="n">67.32</td><td class="n">0.55</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Smart-plug run, 2026-10-10, one run</span></td></tr>
+<tr><td>70B dense, Q4_K_M</td><td class="n">43.32</td><td class="n">5.0</td><td class="n">4.5 to 5.1</td><td class="n">0.91 to 1.03</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Published llama-bench, 2025-07-22 and repo to 2026-03</span></td></tr>
+<tr><td>32B dense, Q4_K_M</td><td class="n">20.18</td><td class="n">10.7</td><td class="n">11.3</td><td class="n">1.06</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Published llama-bench, repo to 2026-03</span></td></tr>
+<tr><td>14B dense, Q4_K_M</td><td class="n">9.15</td><td class="n">23.5</td><td class="n">24.5</td><td class="n">1.04</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Published llama-bench, repo to 2026-03</span></td></tr>
+<tr><td>30B mixture of experts, 3.3B active, Q4_K_M</td><td class="n">2.07</td><td class="n">104.0</td><td class="n">66.3 to 86.1</td><td class="n">0.64 to 0.83</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Published llama-bench, 2025-07-22 and repo to 2026-03</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>Dense models land at the ceiling. Mixture models run well below it, because routing between experts and small reads cost more than the bandwidth sum suggests. The calculator turns this into an expected range of 0.9 to 1.07 of the ceiling for dense models and 0.55 to 0.85 for mixtures. The build fails if a row above falls outside its range.</p>
+    <p>A third metered run, on a 125B mixture model, is excluded. Its recorded speed implies 356 GB/s of memory traffic on a 256 GB/s bus. Either its speed or its active-parameter count is wrong in the ledger.</p>
+
+    <h2 id="gaps">What it does not model</h2>
+    <ul>
+      <li><strong>Batching.</strong> Serving many requests at once reuses each weight read many times. It changes energy and cost per token several-fold and is the main reason data-centre figures differ from this page.</li>
+      <li><strong>Prompt processing.</strong> The first tokens are limited by arithmetic, not bandwidth, and are not estimated here.</li>
+      <li><strong>Other machines.</strong> Only the unified-memory machine is validated. Efficiency and power for the other three are assumptions, marked as such.</li>
+      <li><strong>Long contexts.</strong> Attention compute grows with context and is ignored. The KV read is included.</li>
+      <li><strong>Prices.</strong> Electricity, hardware and API prices move. The defaults are dated and editable.</li>
+    </ul>
+
+    <h2 id="sources">Sources</h2>
+    <ul>
+<li>Peak bandwidth of a 256-bit LPDDR5X-8000 bus is 256 GB/s. AMD Ryzen AI Max+ 395 product page, fetched 2026-10-11, and the arithmetic 8000 MT/s x 256 bit / 8.</li>
+<li>About 215 GB/s sustained on this class of APU. <a href="https://community.frame.work/t/amd-strix-halo-ryzen-ai-max-395-gpu-llm-performance-tests/72521">Framework community forum, Strix Halo llama-bench tests, 2025-07-22</a>.</li>
+<li>H100 SXM: 3.35 TB/s HBM3, 80 GB, up to 700 W. <a href="https://www.nvidia.com/en-us/data-center/h100/">NVIDIA H100 page, fetched 2026-10-11</a>.</li>
+<li>An H100 uses about 34% of its rated power during decode. <a href="https://arxiv.org/abs/2602.18568">arXiv:2602.18568, "RPU: A Reasoning Processing Unit", 2026-02-20, verified in the full text 2026-10-11</a>.</li>
+<li>NVIDIA GPUs use 45 to 60% of rated power during decode. <a href="https://arxiv.org/abs/2604.10852">arXiv:2604.10852, "The xPU-athalon", 2026-04, verified in the full text 2026-10-11</a>.</li>
+<li>Bits per weight of llama.cpp quantisations. <a href="https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md">llama.cpp quantize README</a>.</li>
+<li>US electricity prices, July 2026. <a href="https://www.eia.gov/electricity/monthly/">EIA Electric Power Monthly, release 2026-09-24</a>.</li>
+<li>H100 rental about $3 per GPU-hour. <a href="https://akash.network/the-bid/h100-rental-price-2026-cost-per-hour/">Akash Network H100 rental price overview, August 2026</a>.</li>
+<li>A 30B-A3B-class open-weight model near $0.50 per million output tokens. <a href="https://deepinfra.com/Qwen/Qwen3-30B-A3B">DeepInfra model page, fetched 2026-10-11, undated</a>.</li>
+      <li>EIA Electric Power Monthly, release 2026-09-24: US residential 18.31 cents per kWh, commercial 14.53 cents per kWh, July 2026.</li>
+      <li>A 30B-A3B-class open-weight model was listed at $0.50 per million output tokens by one provider (DeepInfra, undated page, fetched 2026-10-11). Prices vary widely. Set your own.</li>
+    </ul>
+    <p>Model sizes and attention layouts come from public configuration files of open models, described here by size and kind.</p>
+    <p>The formula is implemented once in <code>model.js</code> and checked against a separate Python implementation on 400 random inputs, with zero disagreements at build time.</p>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>RoamingPigs Instruments</h2>
+      <p>Calculators and explorers that show their assumptions. By <a href="https://ciscocaceres.com/">Cisco Caceres</a>. Self-published and not peer reviewed.</p>
+    </div>
+    <div>
+      <h2>Instruments</h2>
+      <ul><li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li></ul>
+    </div>
+    <div>
+      <h2>The record</h2>
+      <ul>
+        <li><a href="https://roamingpigs.org/">Research notes</a></li>
+        <li><a href="https://roamingpigs.org/corrections/">Corrections</a></li>
+        <li><a href="https://roamingpigs.org/datasets/trcs/">TRCS dataset</a></li>
+        <li><a href="https://ciscocaceres.com/research/">Papers</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://roamingpigs.com/">Field Manual</a></li>
+        <li><a href="https://github.com/RoamingPigs">GitHub</a></li>
+        <li><a href="https://huggingface.co/RoamingPigs">Hugging Face</a></li>
+        <li><a href="https://orcid.org/0009-0005-7810-5077">ORCID</a></li>
+      </ul>
+    </div>
+    <p class="footer-note">&copy; 2026 Cisco Caceres. No cookies, no analytics, nothing loaded from other domains. Everything you type into an instrument stays in your browser. Last build 11 October 2026.</p>
+  </div>
+</footer>
+<script src="/js/site.js?v=294f21cf" defer></script>
+</body>
+</html>
