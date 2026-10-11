@@ -6,7 +6,7 @@
     <nav class="breadcrumb crumbs" aria-label="Breadcrumb"><a href="/">Instruments</a> / Codec grid</nav>
     <h1>Where the words go wrong</h1>
     <p class="lede">{{ "{:,}".format(c.e2.records) }} transcripts from {{ c.e2.models|length }} open speech models, run through {{ c.e2.codecs|length }} audio paths and {{ c.e2.snr_db|length }} noise levels. Choose a model, click a cell, and read what it wrote next to what was said.</p>
-    <p class="banner"><strong>{{ chip('measured') }} A small pilot.</strong> Run {{ v.e2_date }}. {{ c.e2.utterances }} scripted utterances, synthetic speech, one decoding setting, point estimates with no confidence intervals. Word error above 100% includes inserted words. <a href="https://roamingpigs.org/#radio-audio">The record and its limits</a>.</p>
+    <p class="banner"><strong>{{ chip('measured') }} A small pilot.</strong> Run {{ v.e2_date }}. {{ c.e2.utterances }} scripted utterances, synthetic speech, one decoding setting, point estimates with no confidence intervals. Word error above 100% includes inserted words. <a href="https://roamingpigs.org/#radio-audio">The record and its limits</a>, and <a href="https://roamingpigs.org/results/e2-telephone-grid-ledger.json">the results file</a>.</p>
   </div>
 </section>
 <div class="wrap">
