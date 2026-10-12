@@ -53,6 +53,7 @@
   <div class="prose">
     <p>Dense models land at the ceiling. Mixture models run well below it, because routing between experts and small reads cost more than the bandwidth sum suggests. The calculator turns this into an expected range of {{ m.expected_fraction_of_ceiling.dense.low }} to {{ m.expected_fraction_of_ceiling.dense.high }} of the ceiling for dense models and {{ m.expected_fraction_of_ceiling.moe.low }} to {{ m.expected_fraction_of_ceiling.moe.high }} for mixtures. These same reference rows were used to fit the ranges; coverage by construction is not held-out predictive validation. The build checks arithmetic and fit consistency only.</p>
     <p>A third metered run, on a 125B mixture model, is excluded. Its recorded speed implies {{ val.excl_gbps }} GB/s of memory traffic on a {{ val.peak }} GB/s bus. It is outside this simplified traffic model, not proven wrong; the original summary remains in the results file.</p>
+    <p>Energy figures here are assumptions. For measured joules per token on one machine, with the plan written first and raw power logs, see the <a href="https://github.com/RoamingPigs/strix-halo-energy/blob/main/RESULTS.md">published study</a>.</p>
 
     <h2 id="gaps">What it does not model</h2>
     <ul>

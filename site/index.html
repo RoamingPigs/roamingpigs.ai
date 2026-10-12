@@ -33,7 +33,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/site.css?v=df0f8712">
+  <link rel="stylesheet" href="/css/site.css?v=96561fc5">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -54,7 +54,7 @@
       </ul>
     </nav>
     <details class="nav-toggle">
-      <summary>Menu</summary>
+      <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></summary>
       <nav class="site-nav-mobile" aria-label="Main (mobile)">
         <ul>
 <li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li>          <li><a class="sister" href="https://roamingpigs.org/">Research notes (roamingpigs.org) &nearr;</a></li>
@@ -98,7 +98,7 @@
       <a class="card link" href="/inference-cost/">
         <p><span class="chip modelled"><svg aria-hidden="true"><use href="#g-modelled"/></svg>Modelled</span> <span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span></p>
         <h3>Inference cost calculator</h3>
-        <p>For a model on a given machine: memory needed, decode speed, energy per token and cost per million tokens. Checked against wall-meter runs on one machine.</p>
+        <p>For a model on a given machine: memory needed, decode speed, energy per token and cost per million tokens. Checked against wall-meter runs on one machine (<a href="https://github.com/RoamingPigs/strix-halo-energy/blob/main/RESULTS.md">results and raw logs</a>).</p>
         <div class="preview" aria-label="Preview: decode speed ceiling by hardware, default model">
           <div class="row"><span>30B mixture of experts, 3.3B active, Q4_K_M</span><span>tokens per second, ceiling</span></div>
           <div class="bars">

@@ -65,7 +65,7 @@ code { font-size: 0.88em; background: var(--surface-2); padding: 0.1em 0.4em; bo
 .nav-toggle { display: none; }
 @media (max-width: 54rem) {
   .nav-toggle { display: block; }
-  .nav-toggle > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.95rem; border: 1px solid var(--line-2); border-radius: 8px; font-weight: 560; font-size: 0.9375rem; color: var(--text); background: var(--surface); }
+  .nav-toggle > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0; border: 1px solid var(--line-2); border-radius: 8px; font-weight: 560; font-size: 0.9375rem; color: var(--text); background: var(--surface); }
   .nav-toggle > summary::-webkit-details-marker { display: none; }
   .site-nav { display: none; }
   .site-nav-mobile { position: absolute; left: 0; right: 0; top: 100%; background: var(--bg-2); border-bottom: 1px solid var(--line-2); padding: 0.5rem var(--gutter) 1rem; }

@@ -33,7 +33,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/site.css?v=df0f8712">
+  <link rel="stylesheet" href="/css/site.css?v=96561fc5">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -54,7 +54,7 @@
       </ul>
     </nav>
     <details class="nav-toggle">
-      <summary>Menu</summary>
+      <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></summary>
       <nav class="site-nav-mobile" aria-label="Main (mobile)">
         <ul>
 <li><a href="/inference-cost/">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/" aria-current="page">Method</a></li>          <li><a class="sister" href="https://roamingpigs.org/">Research notes (roamingpigs.org) &nearr;</a></li>
@@ -134,6 +134,7 @@
   <div class="prose">
     <p>Dense models land at the ceiling. Mixture models run well below it, because routing between experts and small reads cost more than the bandwidth sum suggests. The calculator turns this into an expected range of 0.9 to 1.07 of the ceiling for dense models and 0.55 to 0.85 for mixtures. These same reference rows were used to fit the ranges; coverage by construction is not held-out predictive validation. The build checks arithmetic and fit consistency only.</p>
     <p>A third metered run, on a 125B mixture model, is excluded. Its recorded speed implies 356 GB/s of memory traffic on a 256 GB/s bus. It is outside this simplified traffic model, not proven wrong; the original summary remains in the results file.</p>
+    <p>Energy figures here are assumptions. For measured joules per token on one machine, with the plan written first and raw power logs, see the <a href="https://github.com/RoamingPigs/strix-halo-energy/blob/main/RESULTS.md">published study</a>.</p>
 
     <h2 id="gaps">What it does not model</h2>
     <ul>

@@ -33,7 +33,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/site.css?v=df0f8712">
+  <link rel="stylesheet" href="/css/site.css?v=96561fc5">
 </head>
 <body class="has-sumbar">
 <a class="skip" href="#main">Skip to content</a>
@@ -54,7 +54,7 @@
       </ul>
     </nav>
     <details class="nav-toggle">
-      <summary>Menu</summary>
+      <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></summary>
       <nav class="site-nav-mobile" aria-label="Main (mobile)">
         <ul>
 <li><a href="/inference-cost/" aria-current="page">Inference cost</a></li><li><a href="/codec-grid/">Codec grid</a></li><li><a href="/method/">Method</a></li>          <li><a class="sister" href="https://roamingpigs.org/">Research notes (roamingpigs.org) &nearr;</a></li>
@@ -69,7 +69,7 @@
     <nav class="breadcrumb crumbs" aria-label="Breadcrumb"><a href="/">Instruments</a> / Inference cost</nav>
     <h1>What does a model cost to run?</h1>
     <p class="lede">Pick a model and a machine. Memory, decode speed, energy per token and cost per million tokens appear with their assumptions beside them.</p>
-    <p class="banner"><strong>Batch size one.</strong> This models one request at a time, which is how a single person uses a local machine. A busy server batches many requests and changes the energy and cost per token several-fold, so do not read these figures as a forecast for one. Speed is an upper bound, checked against wall-meter runs on one machine only. <a href="/method/">How it works</a>.</p>
+    <p class="banner"><strong>Batch size one.</strong> This models one request at a time, which is how a single person uses a local machine. A busy server batches many requests and changes the energy and cost per token several-fold, so do not read these figures as a forecast for one. Speed is an upper bound, checked against wall-meter runs on one machine only (<a href="https://github.com/RoamingPigs/strix-halo-energy/blob/main/RESULTS.md">plan, results and raw logs</a>). <a href="/method/">How it works</a>.</p>
   </div>
 </section>
 
