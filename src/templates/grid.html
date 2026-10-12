@@ -6,7 +6,7 @@
     <nav class="breadcrumb crumbs" aria-label="Breadcrumb"><a href="/">Instruments</a> / Codec grid</nav>
     <h1>Where the words go wrong</h1>
     <p class="lede">{{ v.n_transcripts }} transcripts from six open speech models reading {{ v.n_utt }} scripted radio calls through six audio paths at four noise levels. Choose a model, click a cell, and read what it wrote next to what was said.</p>
-    <p class="banner"><strong>{{ chip('measured') }} Synthetic speech.</strong> Run finished {{ v.run_end }} UTC. {{ v.n_utt }} scripted calls in one voice, greedy decoding, no real radio. Cells show corpus word error (total errors over total words); intervals and the plan are on the record. Word error above 100% includes inserted words. <a href="https://roamingpigs.org/#radio-audio">The record and its limits</a>, and <a href="https://roamingpigs.org/results/trcs-full-grid-e2-per-clip.jsonl">the per-clip results</a>.</p>
+    <p class="banner"><strong>{{ chip('measured') }} Synthetic speech.</strong> Run finished {{ v.run_end }} UTC. {{ v.n_utt }} scripted calls in one voice, greedy decoding, no real radio. Each narrowband path is band-passed to 300 to 3400 Hz before coding. Cells show corpus word error (total errors over total words); intervals and the plan are on the record. Word error above 100% includes inserted words. <a href="https://roamingpigs.org/#radio-audio">The record and its limits</a>, and <a href="https://roamingpigs.org/results/trcs-full-grid-e2-per-clip.jsonl">the per-clip results</a>.</p>
   </div>
 </section>
 <div class="wrap">
