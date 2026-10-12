@@ -21,3 +21,4 @@ Durable backlog. Update at every milestone and pause.
 - [ ] **Model batching** (throughput and energy per token against batch size) so the data-centre comparison can be fair. Needs a source or a measurement.
 - [ ] Add prompt-processing (prefill) estimates. Currently not modelled.
 - [ ] An explorer for the gate results (energy against neural VAD, with the speech cost), once real recorded audio exists to test them on.
+- [ ] **Old unlinked files at the edge** (see the roamingpigs.org tracker): `/js/calculator.js`, `/css/style.css` and `/data/e2-grid.json` from the retired design are still served from cache and should expire by about 18 October.
