@@ -22,3 +22,6 @@ Durable backlog. Update at every milestone and pause.
 - [ ] Add prompt-processing (prefill) estimates. Currently not modelled.
 - [ ] An explorer for the gate results (energy against neural VAD, with the speech cost), once real recorded audio exists to test them on.
 - [ ] **Old unlinked files at the edge** (see the roamingpigs.org tracker): `/js/calculator.js`, `/css/style.css` and `/data/e2-grid.json` from the retired design are still served from cache and should expire by about 18 October.
+
+## 2026-10-12
+- Corrections shipped: strict hallucination rate, band-pass and codec description, generator link (corrections page logs it). Web Analytics auto-injection off. Stale pilot files still cached on custom domain; recheck 2026-10-19. Paper draft is in ~/projects/trcs/arxiv (untracked).
