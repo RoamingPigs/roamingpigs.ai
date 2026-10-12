@@ -48,7 +48,7 @@
       <a class="card link" href="/codec-grid/">
         <p>{{ chip('measured') }}</p>
         <h3>Codec grid explorer</h3>
-        <p>{{ "{:,}".format(c.e2.records) }} real transcripts from {{ c.e2.models|length }} speech models, through {{ c.e2.codecs|length }} audio paths and {{ c.e2.snr_db|length }} noise levels. Click a cell and read what the model wrote.</p>
+        <p>{{ v.n_transcripts }} real transcripts from six speech models, through six audio paths and four noise levels. Click a cell and read what the model wrote.</p>
         <div class="preview" aria-label="Preview: mean word error rate by noise level">
           <div class="row"><span>Mean word error</span><span>by noise level</span></div>
           <div class="bars">
