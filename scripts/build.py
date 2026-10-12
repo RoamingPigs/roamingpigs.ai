@@ -276,7 +276,11 @@ def static_files() -> dict[str, str]:
 """
     sec = f"Contact: https://ciscocaceres.com/contact/\nExpires: 2027-10-11T00:00:00.000Z\nPreferred-Languages: en\nCanonical: {BASE}.well-known/security.txt\n"
     gpc = json.dumps({"gpc": True, "lastUpdate": MODIFIED}) + "\n"
-    return {"site.webmanifest": json.dumps(manifest, indent=2) + "\n", "_headers": headers, ".well-known/security.txt": sec, ".well-known/gpc.json": gpc}
+    return {"site.webmanifest": json.dumps(manifest, indent=2) + "\n", "_headers": headers, "_redirects": RETIRED_REDIRECTS, ".well-known/security.txt": sec, ".well-known/gpc.json": gpc}
+
+
+# Files from the pilot design. Pages kept serving them after they left the deployment, so they redirect.
+RETIRED_REDIRECTS = "/css/style.css /css/site.css 301\n/js/calculator.js /js/calc.js 301\n/data/e2-grid.json /data/e2v2-grid.json 301\n"
 
 
 def main() -> int:
