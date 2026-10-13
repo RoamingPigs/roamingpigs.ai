@@ -88,6 +88,25 @@ def kv_gb(m: dict, ctx: int) -> float:
     return 2 * m["layers"] * m["kv_heads"] * m["head_dim"] * ctx * 2 / 1e9
 
 
+STUDY = ROOT / "data/strix-halo-energy"
+
+
+def load_study() -> dict:
+    """Measured speeds and wall power from the energy study, each file checked against PROVENANCE.json first."""
+    prov = json.loads((STUDY / "PROVENANCE.json").read_text(encoding="utf-8"))
+    for rel, want in prov["files"].items():
+        if hashlib.sha256((STUDY / rel).read_bytes()).hexdigest() != want:
+            raise SystemExit(f"data/strix-halo-energy/{rel} does not match PROVENANCE.json; re-export it from the study repository")
+    V = json.loads((STUDY / "summary-vulkan.json").read_text(encoding="utf-8"))
+    models = json.loads((STUDY / "models.json").read_text(encoding="utf-8"))
+    watts = {"dense": [], "moe": []}
+    for m in models:
+        for d in (64, 4096, 16384, 32768):
+            watts[m["kind"]].append(V["cells"][f"{m['id']}@{d}"]["wall_mean_w"]["mean"])
+    power = {k: round(sum(v) / len(v)) for k, v in watts.items()}
+    return {"V": V, "models": models, "power": power, "commit": prov["source_commit"][:7], "run": prov["run"]}
+
+
 def validation(model: dict, canon: dict) -> dict:
     hw = next(h for h in model["hardware"] if h["id"] == "apu")
     bw = hw["efficiency"]["value"] * hw["peak_gbps"]
@@ -120,6 +139,15 @@ def validation(model: dict, canon: dict) -> dict:
         m = byid[mid]
         gb = m["active_b"] * q4 / 8 + kv_gb(m, VAL_CTX)
         add(f'{m["label"]}, Q4_K_M', gb, lo, hi, "published", src, m["kind"])
+    study = load_study()
+    for m in study["models"]:
+        t = study["V"]["cells"][f"{m['id']}@64"]["tok_per_s"]
+        gb = m["file_bytes"] / 1e9 * m["active_b"] / m["total_b"]
+        add(f"{m['label']}, this machine", gb, round(t["min"], 1), round(t["max"], 1), "measured",
+            "Measured 12 to 13 October 2026, Vulkan, 64 tokens of context, three repeats", m["kind"])
+    apu = next(h for h in model["hardware"] if h["id"] == "apu")
+    for k in ("dense", "moe"):
+        assert apu["power_w"][k] == study["power"][k], f"data/model.json APU {k} power {apu['power_w'][k]} W differs from the measured mean {study['power'][k]} W"
     for kind, f in model["expected_fraction_of_ceiling"].items():
         for r in rows:
             if r["kind"] != kind:

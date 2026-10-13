@@ -33,7 +33,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/site.css?v=96561fc5">
+  <link rel="stylesheet" href="/css/site.css?v=eb441ee7">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -92,10 +92,10 @@
       <thead><tr><th>Machine</th><th class="n">Peak GB/s</th><th class="n">Efficiency</th><th class="n">Power W (dense / mixture)</th><th>Basis</th></tr></thead>
       <tbody>
 <tr>
-          <td>Unified-memory APU, 256-bit LPDDR5X-8000</td><td class="n">256.0</td><td class="n">0.84</td><td class="n">140 / 171</td>
-          <td><span class="chip assumed">Efficiency assumed</span> <span class="chip assumed">Power assumed</span></td>
+          <td>Unified-memory APU, 256-bit LPDDR5X-8000</td><td class="n">256.0</td><td class="n">0.84</td><td class="n">144 / 132</td>
+          <td><span class="chip assumed">Efficiency assumed</span> <span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Power measured</span></td>
         </tr>
-        <tr><td colspan="5" class="small">Editable 0.84 modeling assumption. The owner saturation curve was formula-generated and supplies no measured-efficiency evidence.. Defaults rounded from two limited owner-labeled wall-power summaries. Raw timestamped traces are absent; extrapolation to other models is an assumption.</td></tr>
+        <tr><td colspan="5" class="small">Editable 0.84 modeling assumption. The owner saturation curve was formula-generated and supplies no measured-efficiency evidence.. Mean wall power while decoding, measured 12 to 13 October 2026 on the machine this model is calibrated for (Vulkan backend, four models, four context lengths, three repeats, uncalibrated plug that reads whole watts), from the energy study at roamingpigs.org/studies/strix-halo-energy/. Other machines keep their assumed values.</td></tr>
 <tr>
           <td>Desktop, dual-channel DDR5-6000</td><td class="n">96.0</td><td class="n">0.75</td><td class="n">150 / 150</td>
           <td><span class="chip assumed">Efficiency assumed</span> <span class="chip assumed">Power assumed</span></td>
@@ -116,7 +116,8 @@
   </div>
 
   <h2 id="validation" class="prose-h">Source-fitted calibration references</h2>
-  <div class="prose"><p>Each row compares the assumed speed ceiling with a reported owner summary or a cited published speed. Raw traces and external source validation are not supplied by this build. A ratio near 1 means the ceiling is tight. Below 1 means the machine runs slower than the bandwidth limit.</p></div>
+  <div class="prose"><p>Each row compares the assumed speed ceiling with a reported owner summary or a cited published speed. Raw traces and external source validation are not supplied by this build. A ratio near 1 means the ceiling is tight. Below 1 means the machine runs slower than the bandwidth limit.</p>
+  <p>The four rows marked measured are from <a href="https://roamingpigs.org/studies/strix-halo-energy/">the energy study</a> on this machine, taken after the ranges were set. All four fall inside them. Four points from one machine is a weak check, and it is not a validation.</p></div>
   <div class="table-wrap" tabindex="0" role="region" aria-label="Validation table, scrolls sideways on small screens">
     <table class="data">
       <caption>Assumed efficiency 0.84 &times; 256 GB/s = 215 GB/s. Context for published rows is not stated by their authors, so I assumed 512 tokens.</caption>
@@ -128,13 +129,17 @@
 <tr><td>32B dense, Q4_K_M</td><td class="n">20.18</td><td class="n">10.7</td><td class="n">11.3</td><td class="n">1.06</td><td><span class="chip published">Published</span> <span class="small">Published llama-bench, repo to 2026-03</span></td></tr>
 <tr><td>14B dense, Q4_K_M</td><td class="n">9.15</td><td class="n">23.5</td><td class="n">24.5</td><td class="n">1.04</td><td><span class="chip published">Published</span> <span class="small">Published llama-bench, repo to 2026-03</span></td></tr>
 <tr><td>30B mixture of experts, 3.3B active, Q4_K_M</td><td class="n">2.07</td><td class="n">104.0</td><td class="n">66.3 to 86.1</td><td class="n">0.64 to 0.83</td><td><span class="chip published">Published</span> <span class="small">Published llama-bench, 2025-07-22 and repo to 2026-03</span></td></tr>
+<tr><td>9B dense, 4-bit, this machine</td><td class="n">5.68</td><td class="n">37.9</td><td class="n">37.7 to 37.9</td><td class="n">1.00 to 1.00</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Measured 12 to 13 October 2026, Vulkan, 64 tokens of context, three repeats</span></td></tr>
+<tr><td>12B dense, 4-bit, this machine</td><td class="n">6.72</td><td class="n">32.0</td><td class="n">29.3</td><td class="n">0.92</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Measured 12 to 13 October 2026, Vulkan, 64 tokens of context, three repeats</span></td></tr>
+<tr><td>26B mixture, 4B active, 4-bit, this machine</td><td class="n">2.19</td><td class="n">98.1</td><td class="n">72.5 to 72.6</td><td class="n">0.74 to 0.74</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Measured 12 to 13 October 2026, Vulkan, 64 tokens of context, three repeats</span></td></tr>
+<tr><td>35B mixture, 3B active, 8-bit, this machine</td><td class="n">3.24</td><td class="n">66.4</td><td class="n">54.2 to 54.4</td><td class="n">0.82 to 0.82</td><td><span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span> <span class="small">Measured 12 to 13 October 2026, Vulkan, 64 tokens of context, three repeats</span></td></tr>
       </tbody>
     </table>
   </div>
   <div class="prose">
     <p>Dense models land at the ceiling. Mixture models run well below it, because routing between experts and small reads cost more than the bandwidth sum suggests. The calculator turns this into an expected range of 0.9 to 1.07 of the ceiling for dense models and 0.55 to 0.85 for mixtures. These same reference rows were used to fit the ranges; coverage by construction is not held-out predictive validation. The build checks arithmetic and fit consistency only.</p>
     <p>A third metered run, on a 125B mixture model, is excluded. Its recorded speed implies 356 GB/s of memory traffic on a 256 GB/s bus. It is outside this simplified traffic model, not proven wrong; the original summary remains in the results file.</p>
-    <p>Energy figures here are assumptions. For measured joules per token on one machine, with the plan written first and raw power logs, see the <a href="https://github.com/RoamingPigs/strix-halo-energy/blob/main/RESULTS.md">published study</a>.</p>
+    <p>Energy figures here are assumptions. For measured joules per token on one machine, with the plan written first and raw power logs, see the <a href="https://roamingpigs.org/studies/strix-halo-energy/">published study</a>.</p>
 
     <h2 id="gaps">What it does not model</h2>
     <ul>

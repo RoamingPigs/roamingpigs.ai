@@ -33,7 +33,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/site.css?v=96561fc5">
+  <link rel="stylesheet" href="/css/site.css?v=eb441ee7">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -80,10 +80,10 @@
       <p class="scn">30B mixture of experts, 3.3B active, Q4_K_M, 16k context, unified-memory APU</p>
       <div class="trio">
         <div class="a"><b>33–50</b><span>tokens per second</span></div>
-        <div><b>3.4–5.2</b><span>joules per token</span></div>
-        <div><b>$0.82</b><span>per million tokens</span></div>
+        <div><b>2.6–4.0</b><span>joules per token</span></div>
+        <div><b>$0.77</b><span>per million tokens</span></div>
       </div>
-      <p class="foot">Batch size one. Electricity is $0.21 of that. <a href="/inference-cost/">Change any input</a>.</p>
+      <p class="foot">Batch size one. Electricity is $0.16 of that. <a href="/inference-cost/">Change any input</a>.</p>
     </aside>
   </div>
 </section>
@@ -98,7 +98,7 @@
       <a class="card link" href="/inference-cost/">
         <p><span class="chip modelled"><svg aria-hidden="true"><use href="#g-modelled"/></svg>Modelled</span> <span class="chip measured"><svg aria-hidden="true"><use href="#g-measured"/></svg>Measured</span></p>
         <h3>Inference cost calculator</h3>
-        <p>For a model on a given machine: memory needed, decode speed, energy per token and cost per million tokens. Checked against wall-meter runs on one machine (<a href="https://github.com/RoamingPigs/strix-halo-energy/blob/main/RESULTS.md">results and raw logs</a>).</p>
+        <p>For a model on a given machine: memory needed, decode speed, energy per token and cost per million tokens. Checked against wall-meter runs on one machine (<a href="https://roamingpigs.org/studies/strix-halo-energy/">results and raw logs</a>).</p>
         <div class="preview" aria-label="Preview: decode speed ceiling by hardware, default model">
           <div class="row"><span>30B mixture of experts, 3.3B active, Q4_K_M</span><span>tokens per second, ceiling</span></div>
           <div class="bars">

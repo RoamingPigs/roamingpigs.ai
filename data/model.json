@@ -124,10 +124,10 @@
         "source": "Editable 0.84 modeling assumption. The owner saturation curve was formula-generated and supplies no measured-efficiency evidence."
       },
       "power_w": {
-        "dense": 140,
-        "moe": 171,
-        "basis": "assumed",
-        "source": "Defaults rounded from two limited owner-labeled wall-power summaries. Raw timestamped traces are absent; extrapolation to other models is an assumption."
+        "dense": 144,
+        "moe": 132,
+        "basis": "measured",
+        "source": "Mean wall power while decoding, measured 12 to 13 October 2026 on the machine this model is calibrated for (Vulkan backend, four models, four context lengths, three repeats, uncalibrated plug that reads whole watts), from the energy study at roamingpigs.org/studies/strix-halo-energy/. Other machines keep their assumed values."
       },
       "cost": {
         "mode": "own",

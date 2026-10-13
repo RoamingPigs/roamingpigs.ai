@@ -1,0 +1,9 @@
+{
+ "source": "https://github.com/RoamingPigs/strix-halo-energy",
+ "source_commit": "d82510a0f6ccd844012954472b42cdc282ce20fa",
+ "run": "paired4",
+ "files": {
+  "models.json": "f57b02f0992e651c83ed85b1aa4aa1ab325079ec3741476bf9c47289f289ea18",
+  "summary-vulkan.json": "47d7112e9a4590931bd83c3157dac472ab6c76431ccc663c729d809d153feaf9"
+ }
+}
